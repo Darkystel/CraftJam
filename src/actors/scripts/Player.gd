@@ -1,5 +1,9 @@
 extends Actor
 
+export(Resource) var inventory = null
+
+func _ready(): assert(inventory != null)
+
 func _unhandled_input(event):
 	if event.is_action_pressed("jump"):
 		velocity.y = -jumping_height
