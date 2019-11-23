@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Actor
 
+export(float) var gravity := 40.0
 export(float) var movement_speed := 300.0
 export(float) var jumping_height := 400.0
 
