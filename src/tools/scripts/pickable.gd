@@ -19,5 +19,5 @@ func _on_pickable_body_exited(body):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact") and pickable:
-		if player.inventory.add_to_inventory(item):
+		if player.pick_up_item(item):
 			queue_free()
