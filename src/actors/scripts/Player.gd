@@ -5,10 +5,10 @@ export(Resource) var inventory = null
 func _ready(): 
 	assert(inventory != null)
 	$CanvasLayer/HUD.get_node("inventory").initialize_inventory(inventory)
+	$CanvasLayer/crafting_HUD.initialize(inventory)
 
 func pick_up_item(item):
 	if inventory.add_to_inventory(item):
-		$CanvasLayer/HUD.get_node("inventory").update_inventory(inventory)
 		return true
 	else:
 		return false
