@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/idle/idle_new0.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://assets/animations/walking/walking_Animation 2_3.png" type="Texture" id=8]
 [ext_resource path="res://assets/animations/walking/walking_Animation 2_4.png" type="Texture" id=9]
 [ext_resource path="res://assets/animations/walking/walking_Animation 2_5.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=12]
+[ext_resource path="res://assets/animations/fall/fall_fall_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,6 +26,16 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "fall",
+"speed": 8.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -33,7 +47,8 @@ script = ExtResource( 1 )
 
 [node name="character" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "jump"
+frame = 1
 playing = true
 offset = Vector2( 0, -8 )
 
@@ -42,7 +57,7 @@ position = Vector2( 0, -7 )
 shape = SubResource( 2 )
 
 [node name="main_camera" type="Camera2D" parent="."]
+offset = Vector2( 0, -32 )
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-offset_v = -1.0

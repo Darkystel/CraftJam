@@ -21,7 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="CraftJam"
+run/main_scene="res://src/worlds/testworld.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+settings/fps/force_fps=60
 
 [display]
 
