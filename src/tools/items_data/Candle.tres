@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Candle"
-description = "Candle lights up a small range of light to show you the way.
+description = "Lights up a small range of light showing what is around it
 "
 type = 1
 item_texture = ExtResource( 1 )

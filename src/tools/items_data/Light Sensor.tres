@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "Light Sensor"
-description = "Placed on platform that gives a small light to send the enemy away once it sensors an enemy around it"
+description = "Placed on any platform, gives a small light to send the enemy away once it sensors an enemy around it"
 type = 1
 item_texture = ExtResource( 1 )

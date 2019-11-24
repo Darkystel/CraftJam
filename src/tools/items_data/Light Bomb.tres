@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "Light Bomb"
-description = "Throwable bomb that has compressed lihts around it that moves the enemy away once it is released"
+description = "Throwable bomb that has compressed lights around it that moves the enemy away once it is released"
 type = 1
 item_texture = ExtResource( 1 )

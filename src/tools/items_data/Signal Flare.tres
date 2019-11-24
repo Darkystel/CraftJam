@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "Signal Flare"
-description = "A flare you can throw to show you what is around you, it will light the direction chosen for 30 seconds"
+description = "Throwable flare shows what is around the player, it will light the direction chosen for 30 seconds"
 type = 1
 item_texture = ExtResource( 1 )

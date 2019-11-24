@@ -53,7 +53,7 @@ func try_crafting() -> Message:
 			msg.success = true
 			return msg
 	
-	msg.description = "Those components don't mix up!"
+	msg.description = "Those components do not mix up!"
 	msg.success = false
 	return msg
 

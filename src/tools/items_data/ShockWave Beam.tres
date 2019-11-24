@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "ShockWave Beam"
-description = "Atttached to the player that moves (or banish) the enemy away from the direction you are looking at with a longer light range than beam light."
+description = "Atttached to the player that moves (or banish) the enemy away from the direction the player is looking at with a longer light range than beam light"
 type = 1
 item_texture = ExtResource( 1 )

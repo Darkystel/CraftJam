@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "Light Flower"
-description = "Sticks on the ground and lights the area around you for 60 seconds and the enemy can not attack you"
+description = "Sticks on the ground and lights the area around itself for 60 seconds and the enemy can not go throught the light"
 type = 1
 item_texture = ExtResource( 1 )
