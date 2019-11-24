@@ -186,6 +186,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [node name="testworld" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -214,5 +215,9 @@ position = Vector2( -10, 59 )
 item = ExtResource( 4 )
 
 [node name="pickable2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 121, 59 )
+position = Vector2( 6, 59 )
+item = ExtResource( 5 )
+
+[node name="pickable3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 21, 59 )
 item = ExtResource( 5 )

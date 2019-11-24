@@ -4,6 +4,7 @@ export(Resource) var inventory = null
 
 func _ready(): 
 	assert(inventory != null)
+	inventory.initialize_recipes()
 	$CanvasLayer/HUD.get_node("inventory").initialize_inventory(inventory)
 	$CanvasLayer/crafting_HUD.initialize(inventory)
 

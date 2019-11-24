@@ -74,5 +74,13 @@ margin_top = -64.0
 margin_right = -7.0
 margin_bottom = -32.0
 text = "Craft"
+
+[node name="description" type="Label" parent="."]
+margin_top = 112.0
+margin_right = 256.0
+margin_bottom = 144.0
+align = 1
+valign = 1
 [connection signal="item_activated" from="VBoxContainer/inventory_panel/inventory_list" to="." method="_on_inventory_list_item_activated"]
+[connection signal="item_activated" from="VBoxContainer/crafting_panel/crafting_list" to="." method="_on_crafting_list_item_activated"]
 [connection signal="pressed" from="craft" to="." method="_on_craft_pressed"]
