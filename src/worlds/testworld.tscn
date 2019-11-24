@@ -1,10 +1,15 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/temp_assets/Tiles Set.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/tools/items_data/Red Ball.tres" type="Resource" id=4]
 [ext_resource path="res://src/tools/items_data/Green Ball.tres" type="Resource" id=5]
+[ext_resource path="res://src/tools/items_data/Candle.tres" type="Resource" id=6]
+[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=7]
+[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=8]
+[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=9]
+[ext_resource path="res://src/tools/items_data/ShockWave Beam.tres" type="Resource" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -220,3 +225,23 @@ item = ExtResource( 5 )
 [node name="pickable3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 21, 59 )
 item = ExtResource( 5 )
+
+[node name="pickable4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 81, 58 )
+item = ExtResource( 6 )
+
+[node name="pickable5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 92, 58 )
+item = ExtResource( 7 )
+
+[node name="pickable6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 70, 58 )
+item = ExtResource( 8 )
+
+[node name="pickable7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 60, 58 )
+item = ExtResource( 9 )
+
+[node name="pickable8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 51, 58 )
+item = ExtResource( 10 )

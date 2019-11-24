@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/items/FlashBomb.png" type="Texture" id=1]
+[ext_resource path="res://src/tools/scripts/Item.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Flash Bomb"
+description = "A throwable square that has light inside of it that banishes the enemy when the compressed power is released"
+type = 1
+item_texture = ExtResource( 1 )

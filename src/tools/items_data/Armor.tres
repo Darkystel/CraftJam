@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/temp_assets/small red ball.png" type="Texture" id=1]
+[ext_resource path="res://assets/items/Armor.png" type="Texture" id=1]
 [ext_resource path="res://src/tools/scripts/Item.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-name = "Red Ball"
-description = "A spherical looking object, it's also red"
+name = "Armor"
+description = "A barrier around you that protects you from the enemy only once, (enemies who hit it banishes)"
 type = 1
 item_texture = ExtResource( 1 )

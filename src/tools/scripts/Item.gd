@@ -8,7 +8,7 @@ enum types {
 	}
 
 export(String) var name = ""
-export(String) var description = ""
+export(String, MULTILINE) var description = ""
 export(types) var type = types.USABLE
 export(Texture) var item_texture = null
 

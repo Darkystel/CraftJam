@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/items/SignalFlare.png" type="Texture" id=1]
+[ext_resource path="res://src/tools/scripts/Item.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Signal Flare"
+description = "A flare you can throw to show you what is around you, it will light the direction chosen for 30 seconds"
+type = 1
+item_texture = ExtResource( 1 )

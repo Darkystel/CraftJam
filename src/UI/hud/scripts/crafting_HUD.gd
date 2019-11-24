@@ -35,11 +35,13 @@ func update_grids():
 
 
 func _on_inventory_list_item_activated(index):
+	$item_description_panel.update_item(inventory.items[index])
 	inventory.put_in_crafting(inventory.items[index])
 	update_grids()
 
 
 func _on_crafting_list_item_activated(index):
+	$item_description_panel.update_item(inventory.crafting_components[index])
 	inventory.put_back_in_items(inventory.crafting_components[index])
 	update_grids()
 
@@ -49,3 +51,15 @@ func _on_craft_pressed():
 	if msg.success:
 		update_grids()
 	$description.text = msg.description
+
+
+
+
+func _on_crafting_list_item_selected(index):
+	$item_description_panel.update_item(inventory.crafting_components[index])
+
+
+func _on_inventory_list_item_selected(index):
+	$item_description_panel.update_item(inventory.items[index])
+
+

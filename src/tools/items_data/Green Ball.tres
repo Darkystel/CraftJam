@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "Green Ball"
-description = ""
+description = "A spherical looking object, it's also green"
 type = 1
 item_texture = ExtResource( 1 )

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/items/BeamLight.png" type="Texture" id=1]
+[ext_resource path="res://src/tools/scripts/Item.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Beam Light"
+description = "Atttached to the player that moves the enemy away from the direction you are looking at with a long light range."
+type = 1
+item_texture = ExtResource( 1 )
