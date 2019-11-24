@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 name = "Armor"
-description = "A barrier around you that protects you from the enemy only once, (enemies who hit it banishes)"
+description = "A barrier around the player that protects him from the enemy only once, (enemies who hit it banishes)"
 type = 1
 item_texture = ExtResource( 1 )
