@@ -7,6 +7,9 @@ var items = []
 var crafting_components = []
 var recipe_list = []
 
+var available_capacity: int setget , get_available_capacity
+func get_available_capacity() -> int: return capacity - items.size()
+
 signal inventory_changed
 # This script will handle the inventory system of the player character
 

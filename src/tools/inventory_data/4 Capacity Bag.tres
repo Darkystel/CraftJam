@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-capacity = 50
+capacity = 4

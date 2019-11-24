@@ -1,6 +1,6 @@
 extends Actor
 
-export(Resource) var inventory = null
+export(Resource) var inventory
 
 func _ready(): 
 	assert(inventory != null)
@@ -14,6 +14,16 @@ func pick_up_item(item):
 	else:
 		return false
 
+func pick_up_items(items) -> bool:
+	if inventory.get_available_capacity():
+		
+		for item in items:
+			inventory.add_to_inventory(item)
+			
+		return true
+	else:
+		print("Not enough place for all those items!")
+		return false
 
 func _physics_process(delta):
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")

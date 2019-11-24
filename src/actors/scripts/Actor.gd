@@ -6,3 +6,4 @@ export(float) var movement_speed := 100.0
 export(float) var jumping_height := 280.0
 
 var velocity := Vector2(0,0)
+onready var environment = get_parent()
