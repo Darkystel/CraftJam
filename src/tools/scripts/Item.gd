@@ -7,7 +7,8 @@ enum types {
 	
 	}
 
-export(String) var name = "No Name.png"
+export(String) var name = ""
+export(String) var description = ""
 export(types) var type = types.USABLE
 export(Texture) var item_texture = null
 

@@ -15,10 +15,12 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("crafting_hud"):
 		if get_tree().paused:
+			get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT,SceneTree.STRETCH_ASPECT_KEEP, Vector2(256,144))
 			inventory_list.clear()
 			visible = false
 			get_tree().paused = false
 		else:
+			get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,SceneTree.STRETCH_ASPECT_KEEP, Vector2(256,144))
 			update_grids()
 			visible = true
 			get_tree().paused = true
