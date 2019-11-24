@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/tools/scripts/pouch_overlay.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/cross.png" type="Texture" id=2]
+
+[node name="pouch_overlay" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="item_list" type="ItemList" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -32.0
+margin_right = 40.0
+margin_bottom = 32.0
+allow_reselect = true
+max_columns = 3
+same_column_width = true
+fixed_column_width = 16
+icon_mode = 0
+fixed_icon_size = Vector2( 16, 16 )
+
+[node name="close" type="TextureButton" parent="."]
+anchor_left = 0.344
+anchor_top = 0.278
+anchor_right = 0.656
+anchor_bottom = 0.722
+margin_left = 71.936
+margin_top = -8.03201
+margin_right = 0.0639954
+margin_bottom = -63.968
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 2 )
+texture_focused = ExtResource( 2 )
+[connection signal="item_activated" from="item_list" to="." method="_on_item_list_item_activated"]
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

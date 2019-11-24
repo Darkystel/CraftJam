@@ -15,11 +15,9 @@ func pick_up_item(item):
 		return false
 
 func pick_up_items(items) -> bool:
-	if inventory.get_available_capacity():
-		
+	if inventory.get_available_capacity() >= items.size():
 		for item in items:
 			inventory.add_to_inventory(item)
-			
 		return true
 	else:
 		print("Not enough place for all those items!")
