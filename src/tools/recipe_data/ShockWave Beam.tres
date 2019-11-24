@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=1]
+[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=2]
+[ext_resource path="res://src/tools/items_data/Long Base.tres" type="Resource" id=3]
+[ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=4]
+[ext_resource path="res://src/tools/items_data/ShockWave Beam.tres" type="Resource" id=5]
+[ext_resource path="res://src/tools/scripts/Recipe.gd" type="Script" id=6]
+
+[resource]
+script = ExtResource( 6 )
+items = [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ) ]
+result = ExtResource( 5 )
