@@ -6,16 +6,16 @@
 [ext_resource path="res://assets/animations/idle/idle_new0.png" type="Texture" id=4]
 [ext_resource path="res://assets/animations/idle/idle_new1.png" type="Texture" id=5]
 [ext_resource path="res://assets/animations/idle/idle_new2.png" type="Texture" id=6]
-[ext_resource path="res://assets/animations/fall/fall_fall_0.png" type="Texture" id=7]
-[ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=8]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_0.png" type="Texture" id=9]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_1.png" type="Texture" id=10]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_2.png" type="Texture" id=11]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_3.png" type="Texture" id=12]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_4.png" type="Texture" id=13]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_5.png" type="Texture" id=14]
-[ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=15]
-[ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=16]
+[ext_resource path="res://assets/animations/walking/walking_Animation 2_0.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/walking/walking_Animation 2_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/walking/walking_Animation 2_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/walking/walking_Animation 2_3.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/walking/walking_Animation 2_4.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/walking/walking_Animation 2_5.png" type="Texture" id=12]
+[ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=13]
+[ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=14]
+[ext_resource path="res://assets/animations/fall/fall_fall_0.png" type="Texture" id=15]
+[ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=16]
 [ext_resource path="res://src/UI/hud/HUD.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/UI/hud/crafting_HUD.tscn" type="PackedScene" id=18]
 
@@ -26,19 +26,19 @@ animations = [ {
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "fall",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "walk",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": false,
 "name": "jump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "fall",
 "speed": 8.0
 } ]
 
