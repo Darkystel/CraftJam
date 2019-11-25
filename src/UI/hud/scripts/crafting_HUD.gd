@@ -4,6 +4,7 @@ var inventory: Inventory
 
 onready var inventory_list = $VBoxContainer/inventory_panel/inventory_list
 onready var crafting_list = $VBoxContainer/crafting_panel/crafting_list
+onready var fast_equip_list = $VBoxContainer/fast_equip_panel/fast_equip_items
 onready var parent = get_parent().get_parent()
 onready var environment = parent.get_parent()
 
@@ -48,10 +49,13 @@ func create_pouch(items, consumeInput: bool = false) -> DroppedPouch:
 func update_grids():
 	inventory_list.clear()
 	crafting_list.clear()
+	fast_equip_list.clear()
 	for item in inventory.items:
 		inventory_list.add_icon_item(item.item_texture)
 	for component in inventory.crafting_components:
 		crafting_list.add_icon_item(component.item_texture)
+	for item in inventory.fast_equip_items:
+		fast_equip_list.add_icon_item(item.item_texture)
 
 
 func _on_inventory_list_item_activated(index):
@@ -73,7 +77,7 @@ func _on_craft_pressed():
 	$description.text = msg.description
 
 func _on_crafting_list_item_selected(index):
-	$item_description_panel.update_item(inventory.crafting_components[index], true)
+	$item_description_panel.update_item(inventory.crafting_components[index], true, true)
 
 func _on_inventory_list_item_selected(index):
 	$item_description_panel.update_item(inventory.items[index])
@@ -82,4 +86,18 @@ func _on_inventory_list_item_selected(index):
 func _on_drop_pressed():
 	$item_description_panel.clear()
 	items_to_drop.push_back(inventory.consume_item(selected_item))
+	update_grids()
+
+func _on_fast_equip_items_item_activated(index):
+	$item_description_panel.clear()
+	inventory.move_to_items(inventory.fast_equip_items[index])
+	update_grids()
+
+func _on_fast_equip_items_item_selected(index):
+	$item_description_panel.update_item(inventory.fast_equip_items[index], true, true)
+	selected_item = inventory.fast_equip_items[index]
+
+func _on_equip_pressed():
+	$item_description_panel.clear()
+	inventory.move_to_fast_equip(selected_item)
 	update_grids()

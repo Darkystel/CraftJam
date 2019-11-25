@@ -21,14 +21,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -112.0
-margin_top = -40.0
+margin_top = -56.0
 margin_right = 16.0
-margin_bottom = 40.0
+margin_bottom = 24.0
 rect_min_size = Vector2( 128, 80 )
 custom_constants/separation = 16
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="inventory_panel" type="Panel" parent="VBoxContainer"]
 margin_right = 128.0
@@ -64,6 +61,28 @@ theme = ExtResource( 2 )
 text = "Crafting"
 
 [node name="crafting_list" type="ItemList" parent="VBoxContainer/crafting_panel"]
+margin_right = 128.0
+margin_bottom = 32.0
+allow_reselect = true
+max_columns = 8
+same_column_width = true
+fixed_column_width = 16
+icon_mode = 0
+fixed_icon_size = Vector2( 16, 16 )
+
+[node name="fast_equip_panel" type="Panel" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="Label" type="Label" parent="VBoxContainer/fast_equip_panel"]
+margin_top = -16.0
+margin_right = 128.0
+theme = ExtResource( 2 )
+text = "Fast Equip Items"
+
+[node name="fast_equip_items" type="ItemList" parent="VBoxContainer/fast_equip_panel"]
 margin_right = 128.0
 margin_bottom = 32.0
 allow_reselect = true
@@ -143,13 +162,27 @@ custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "Drop"
 
+[node name="equip" type="Button" parent="item_description_panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -76.0
+margin_top = -18.0
+margin_right = -42.0
+margin_bottom = -4.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+disabled = true
+text = "Equip"
+
 [node name="description" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = -24.0
+margin_top = 4.0
 margin_right = 192.0
-margin_bottom = -4.0
+margin_bottom = 24.0
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 4 )
 text = "Double click items to craft items "
@@ -160,5 +193,8 @@ autowrap = true
 [connection signal="item_selected" from="VBoxContainer/inventory_panel/inventory_list" to="." method="_on_inventory_list_item_selected"]
 [connection signal="item_activated" from="VBoxContainer/crafting_panel/crafting_list" to="." method="_on_crafting_list_item_activated"]
 [connection signal="item_selected" from="VBoxContainer/crafting_panel/crafting_list" to="." method="_on_crafting_list_item_selected"]
+[connection signal="item_activated" from="VBoxContainer/fast_equip_panel/fast_equip_items" to="." method="_on_fast_equip_items_item_activated"]
+[connection signal="item_selected" from="VBoxContainer/fast_equip_panel/fast_equip_items" to="." method="_on_fast_equip_items_item_selected"]
 [connection signal="pressed" from="craft" to="." method="_on_craft_pressed"]
 [connection signal="pressed" from="item_description_panel/drop" to="." method="_on_drop_pressed"]
+[connection signal="pressed" from="item_description_panel/equip" to="." method="_on_equip_pressed"]

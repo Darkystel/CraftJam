@@ -1,22 +1,45 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/UI/hud/scripts/inventory_hud.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/hud/item.tscn" type="PackedScene" id=1]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 0.960784 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 1, 1, 0.156863 )
-
-[node name="inventory" type="Panel"]
+[node name="inventory" type="GridContainer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -40.0
+margin_left = -32.0
 margin_top = -32.0
-margin_right = 40.0
+margin_right = 32.0
 margin_bottom = -16.0
-custom_styles/panelf = SubResource( 1 )
-custom_styles/panel = SubResource( 2 )
-script = ExtResource( 1 )
+custom_constants/hseparation = 0
+columns = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="item1" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 16.0
+margin_bottom = 16.0
+
+[node name="item2" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_right = 32.0
+margin_bottom = 16.0
+
+[node name="item3" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_right = 48.0
+margin_bottom = 16.0
+
+[node name="item4" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_right = 64.0
+margin_bottom = 16.0
