@@ -4,12 +4,8 @@ class_name Inventory
 export(int) var capacity = 8
 
 var items = []
-var crafting_components = []
-var fast_equip_items = []
-
+var craft = []
 var recipe_list = []
-
-
 
 var available_capacity: int setget , get_available_capacity
 func get_available_capacity() -> int: return capacity - items.size()
@@ -18,7 +14,7 @@ signal inventory_changed
 # This script will handle the inventory system of the player character
 
 func add_to_inventory(item) -> bool:
-	if items.size() + crafting_components.size() < capacity:
+	if items.size() < capacity:
 		items.push_back(item)
 		emit_signal("inventory_changed")
 		return true
@@ -31,54 +27,45 @@ func consume_item(item) -> Item:
 		return item
 	return null
 
-func consume_fast_equip_item(item) -> Item:
-	if fast_equip_items.has(item):
-		fast_equip_items.erase(item)
-		emit_signal("inventory_changed")
-		return item
-	return null
-
-func move_to_fast_equip(item):
+func add_to_craft(item) -> bool:
 	if items.has(item):
-		fast_equip_items.push_back(consume_item(item))
-		emit_signal("inventory_changed")
+		craft.push_back(consume_item(item))
+		return true
+	else:
+		return false
 
-func move_to_items(item):
-	if fast_equip_items.has(item):
-		items.push_back(consume_fast_equip_item(item))
+func consume_craft(item) -> Item:
+	if craft.has(item):
+		craft.erase(item)
 		emit_signal("inventory_changed")
-
-func consume_crafting_component(item) -> Item:
-	if crafting_components.has(item):
-		crafting_components.erase(item)
 		return item
 	return null
 
-func consume_crafting_components():
-	crafting_components.clear()
+func remove_from_craft(item) -> bool:
+	if craft.has(item):
+		items.push_back(consume_craft(item))
+		return true
+	else:
+		return false
 
-func put_in_crafting(item: Item):
-	var item_to_move = consume_item(item)
-	if item_to_move != null:
-		crafting_components.push_back(item)
-
-func put_back_in_items(item: Item):
-	var item_to_move = consume_crafting_component(item)
-	if item_to_move != null:
-		items.push_back(item)
+func return_all_from_craft():
+	for item in craft:
+		remove_from_craft(item)
 
 func try_crafting() -> Message:
 	var msg = Message.new()
 	msg.title = "Crafting Information"
-	for recipe in recipe_list:
-		if recipe.check_components(crafting_components):
-			add_to_inventory(recipe.result)
-			consume_crafting_components()
-			msg.description = str(recipe.result.name) + " Crafted!"
-			msg.success = true
-			return msg
-	
-	msg.description = "Those components do not mix up!"
+	if craft.empty():
+		msg.description = "No items to craft"
+	else:
+		for recipe in recipe_list:
+			if recipe.check_components(craft):
+				add_to_inventory(recipe.result)
+				craft.clear()
+				msg.description = str(recipe.result.name) + " Crafted!"
+				msg.success = true
+				return msg
+		msg.description = "Those components do not mix up!"
 	msg.success = false
 	return msg
 

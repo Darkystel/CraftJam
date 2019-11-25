@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/tools/inventory_data/4 Capacity Bag.tres" type="Resource" id=2]
@@ -17,8 +17,7 @@
 [ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=15]
 [ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=16]
 [ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=17]
-[ext_resource path="res://src/UI/hud/HUD.tscn" type="PackedScene" id=18]
-[ext_resource path="res://src/UI/hud/crafting_HUD.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -59,7 +58,7 @@ position = Vector2( 0, -5 )
 position = Vector2( 0, -8 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
-texture_scale = 0.3
+texture_scale = 0.6
 energy = 1.2
 shadow_enabled = true
 shadow_gradient_length = 0.7
@@ -83,11 +82,5 @@ current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="fast_equip" parent="CanvasLayer" instance=ExtResource( 18 )]
-visible = false
-
-[node name="crafting_HUD" parent="CanvasLayer" instance=ExtResource( 19 )]
-pause_mode = 2
-visible = false
+[node name="UI_controller" parent="." instance=ExtResource( 18 )]
+pause_mode = 1

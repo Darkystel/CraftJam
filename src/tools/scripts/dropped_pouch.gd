@@ -8,6 +8,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interact") and pickable:
 		$CanvasLayer/pouch_overlay.initialize_overlay(player.inventory, dropped_pouch)
 		$CanvasLayer/pouch_overlay.visible = true
+		$CanvasLayer/pouch_overlay/AnimationPlayer.play("appear")
 		get_tree().paused = true
 
 func _on_dropped_pouch_body_entered(body):

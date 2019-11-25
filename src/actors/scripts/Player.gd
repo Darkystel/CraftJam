@@ -1,12 +1,11 @@
 extends Actor
+class_name Player
 
 export(Resource) var inventory
 
 func _ready(): 
 	assert(inventory != null)
 	inventory.initialize_recipes()
-	$CanvasLayer/fast_equip.initialize(inventory)
-	$CanvasLayer/crafting_HUD.initialize(inventory)
 
 func pick_up_item(item):
 	if inventory.add_to_inventory(item):

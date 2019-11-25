@@ -23,10 +23,15 @@ func _on_item_list_item_activated(index):
 		update_grid()
 
 func _on_close_pressed():
-	visible = false
+	close_panel()
+
+func close_panel(freeAfter: bool = false):
 	get_tree().paused = false
+	$AnimationPlayer.play("disappear")
+	yield($AnimationPlayer, "animation_finished")
+	visible = false
+	if freeAfter:
+		parent.queue_free()
 
 func on_pouch_emptied():
-	visible = false
-	get_tree().paused = false
-	parent.queue_free()
+	close_panel(true)

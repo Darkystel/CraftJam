@@ -1,7 +1,5 @@
 extends Panel
 
-
-
 func update_item(item: Item, disable_drop: bool = false, disable_equip: bool = false):
 	$item_texture.texture = item.item_texture
 	$item_name.text = item.name
@@ -14,3 +12,4 @@ func clear():
 	$item_name.text = ""
 	$item_description.text = ""
 	$drop.disabled = true
+	$equip.disabled = true
