@@ -13,10 +13,10 @@
 [ext_resource path="res://assets/animations/walking/walking_Animation 2_3.png" type="Texture" id=11]
 [ext_resource path="res://assets/animations/walking/walking_Animation 2_4.png" type="Texture" id=12]
 [ext_resource path="res://assets/animations/walking/walking_Animation 2_5.png" type="Texture" id=13]
-[ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=14]
-[ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=15]
-[ext_resource path="res://assets/animations/fall/fall_fall_0.png" type="Texture" id=16]
-[ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=17]
+[ext_resource path="res://assets/animations/fall/fall_fall_0.png" type="Texture" id=14]
+[ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=15]
+[ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=16]
+[ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=17]
 [ext_resource path="res://src/UI/hud/HUD.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/UI/hud/crafting_HUD.tscn" type="PackedScene" id=19]
 
@@ -33,13 +33,13 @@ animations = [ {
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": false,
-"name": "jump",
+"loop": true,
+"name": "fall",
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "fall",
+"loop": false,
+"name": "jump",
 "speed": 8.0
 } ]
 
@@ -47,7 +47,9 @@ animations = [ {
 radius = 5.0
 height = 4.0
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
 z_index = 1
 script = ExtResource( 1 )
 inventory = ExtResource( 2 )

@@ -1,0 +1,66 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/idle/idle_Shadow idle_0.png" type="Texture" id=1]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/idle/idle_Shadow idle_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/idle/idle_Shadow idle_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/idle/idle_Shadow idle_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/idle/idle_Shadow idle_4.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/idle/idle_Shadow idle_5.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/walk/walk_Shadow float_0.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/walk/walk_Shadow float_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/walk/walk_Shadow float_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/shadow_animation/round_shadow/walk/walk_Shadow float_3.png" type="Texture" id=10]
+[ext_resource path="res://src/actors/character.gd" type="Script" id=11]
+[ext_resource path="res://src/actors/FollowPlayer.gd" type="Script" id=12]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Actor
+
+
+func _physics_process(delta):
+	velocity = move_and_slide(velocity, Vector2.UP)
+	pass
+
+
+"
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.0
+height = 4.0
+
+[node name="Round Shadow" type="KinematicBody2D"]
+z_index = 1
+script = SubResource( 5 )
+movement_speed = 25.0
+
+[node name="character" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "walk"
+frame = 2
+playing = true
+offset = Vector2( 0, -8 )
+script = ExtResource( 11 )
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0.405827, -6.86472 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 1.04895, -6.46852 )
+rotation = -0.00135833
+enabled = true
+cast_to = Vector2( 50, 0 )
+script = ExtResource( 12 )
