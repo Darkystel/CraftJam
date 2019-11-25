@@ -60,7 +60,6 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.843137 )
 
 [node name="tabs" type="TabContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )

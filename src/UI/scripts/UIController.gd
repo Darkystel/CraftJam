@@ -4,7 +4,7 @@ class_name UIController
 var overlay_stack = []
 
 var overlays = {
-	"hud": preload("res://src/UI/hud/HUD.tscn"),
+	"hot_equip": preload("res://src/UI/hot_equip_overlay.tscn"),
 	"inventory_manager": preload("res://src/UI/inventory_manager.tscn")
 	}
 

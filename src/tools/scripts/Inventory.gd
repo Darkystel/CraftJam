@@ -5,6 +5,7 @@ export(int) var capacity = 8
 
 var items = []
 var craft = []
+var hot_equip = []
 var recipe_list = []
 
 var available_capacity: int setget , get_available_capacity
@@ -19,6 +20,13 @@ func add_to_inventory(item) -> bool:
 		emit_signal("inventory_changed")
 		return true
 	else: return false
+
+func put_in_hot_equip(item) -> bool:
+	if items.has(item):
+		hot_equip.push_back(consume_item(item))
+		return true
+	else:
+		return false
 
 func consume_item(item) -> Item:
 	if items.has(item):

@@ -27,7 +27,9 @@ func _on_drop_pressed():
 		update_inventory_list()
 
 func _on_equip_pressed():
-	pass # Replace with function body.
+	if selected_item != null:
+		get_inventory().put_in_hot_equip(selected_item)
+		update_inventory_list()
 
 func flush_leftovers():
 	var flush_info = UIFlushInfo.new()
