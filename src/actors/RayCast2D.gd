@@ -22,7 +22,7 @@ func detect():
 		detect_animation()
 		yield(get_tree().create_timer(0.7), "timeout")
 		detected = true
-		sprite.play("walk")
+	#	sprite.play("walk")
 
 
 
@@ -46,9 +46,9 @@ func _physics_process(delta):
 		update = false
 		detect()
 		if shadow.get_back:
-			sprite.play("idle", true)
+			sprite.play("idle")
 			yield(get_tree().create_timer(1), "timeout")
-			sprite.play("idle", true)
+			sprite.flip_h = true
 			shadow.velocity.x = -direction.x * shadow.movement_speed/1.5
 			yield(get_tree().create_timer(2), "timeout")
 			shadow.get_back = false
@@ -57,14 +57,14 @@ func _physics_process(delta):
 		elif detected and not shadow.fall and not shadow.get_back:
 			shadow.velocity.x = direction.x * shadow.movement_speed
 			sprite.play("walk")
-		if shadow.position > player.position :
+		if shadow.position > player.position and not shadow.get_back:
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
 		
 	else:
-		if not shadow.get_back:
-			sprite.play("idle")
+		
+		sprite.play("idle")
 		last_velocity = shadow.velocity.x
 		shadow.velocity.x = lerp(last_velocity,0,0.01)
 		detected = false

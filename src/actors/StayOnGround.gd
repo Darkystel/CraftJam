@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	if shadow.get_back:
-		sprite.play("idle")
+		pass
 		
 	
 	elif not is_colliding() and vision.detected:
