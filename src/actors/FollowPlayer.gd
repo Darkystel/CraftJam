@@ -25,11 +25,13 @@ func _process(delta):
 
 	if is_colliding() and get_collider().is_in_group("player"):
 		shadow.velocity = direction * shadow.movement_speed
+		sprite.play("walk")
 		if shadow.position > player.position :
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
 		
 	else:
+		sprite.play("idle")
 		shadow.velocity = Vector2(0,0)
 	
