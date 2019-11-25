@@ -7,5 +7,5 @@
 script = ExtResource( 2 )
 name = "Releaser"
 description = "Looks like a button?"
-type = 1
+types = [  ]
 item_texture = ExtResource( 1 )

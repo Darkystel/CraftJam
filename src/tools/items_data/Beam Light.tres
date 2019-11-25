@@ -7,5 +7,5 @@
 script = ExtResource( 2 )
 name = "Beam Light"
 description = "Atttached to the player that moves the enemy away from the direction you are looking at with a long light range."
-type = 1
+types = [ 2, 0 ]
 item_texture = ExtResource( 1 )

@@ -7,5 +7,5 @@
 script = ExtResource( 2 )
 name = "Compressed Power"
 description = "Strange looking radiation"
-type = 1
+types = [  ]
 item_texture = ExtResource( 1 )
