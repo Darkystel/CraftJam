@@ -1,13 +1,15 @@
 extends RayCast2D
 
 
+export var detection_range = 0
+
 onready var sprite = get_node("../character")
 onready var player = get_node("../../player")
 onready var shadow = get_node("..")
 
 
 
-func _process(delta):
+func _physics_process(delta):
 	look_at(Vector2(player.position.x,player.position.y-8))
 	var direction = shadow.position.direction_to(player.position)
 
@@ -15,10 +17,10 @@ func _process(delta):
 		if shadow.position > player.position :
 			set_cast_to(Vector2(15,0))
 		else:
-			set_cast_to(Vector2(50,0))
+			set_cast_to(Vector2(detection_range,0))
 	elif sprite.looking_left():
 		if shadow.position > player.position :
-			set_cast_to(Vector2(50,0))
+			set_cast_to(Vector2(detection_range,0))
 		else:
 			set_cast_to(Vector2(15,0))
 	

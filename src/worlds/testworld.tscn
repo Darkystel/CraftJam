@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/worlds/testworld.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=8]
 [ext_resource path="res://src/actors/Round Shadow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/actors/Weird Shadow.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/actors/Tall Shadow.tscn" type="PackedScene" id=11]
 
 [node name="testworld" type="Node2D"]
 
@@ -67,7 +68,11 @@ position = Vector2( 32, 0 )
 item = ExtResource( 4 )
 
 [node name="Round Shadow" parent="." instance=ExtResource( 9 )]
-position = Vector2( 57.0785, 49.3926 )
+position = Vector2( 9.83096, -22.1059 )
 
 [node name="Weird Shadow" parent="." instance=ExtResource( 10 )]
 position = Vector2( 309.504, -67.1478 )
+
+[node name="Tall Shadow" parent="." instance=ExtResource( 11 )]
+position = Vector2( 25.589, -64.1228 )
+direction = 1

@@ -1,0 +1,66 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/actors/Direction.gd" type="Script" id=1]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=2]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_0.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_1.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_2.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_3.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_4.png" type="Texture" id=12]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_5.png" type="Texture" id=13]
+[ext_resource path="res://src/actors/lookingdirection.gd" type="Script" id=14]
+[ext_resource path="res://src/actors/collider.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/actors/RayCast2D.gd" type="Script" id=16]
+[ext_resource path="res://src/actors/StayOnGround.gd" type="Script" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "detect",
+"speed": 9.0
+} ]
+
+[node name="Tall Shadow" type="KinematicBody2D"]
+position = Vector2( 0.174824, 0 )
+script = ExtResource( 1 )
+movement_speed = 35.0
+
+[node name="character" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "walk"
+frame = 2
+playing = true
+offset = Vector2( 0, -8 )
+script = ExtResource( 14 )
+
+[node name="collider" parent="." instance=ExtResource( 15 )]
+position = Vector2( -0.0247879, -7.10397 )
+
+[node name="vision" type="RayCast2D" parent="."]
+position = Vector2( -0.0465717, -7.08589 )
+enabled = true
+cast_to = Vector2( 50, 0 )
+script = ExtResource( 16 )
+detection_range = 100
+
+[node name="ground_check" type="RayCast2D" parent="."]
+position = Vector2( -0.428649, -2.73922 )
+enabled = true
+cast_to = Vector2( 10, 5 )
+script = ExtResource( 17 )

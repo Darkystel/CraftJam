@@ -85,7 +85,6 @@ drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 18 )]
 visible = false
