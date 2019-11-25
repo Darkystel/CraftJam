@@ -28,7 +28,7 @@ func _physics_process(delta):
 	if direction < 0: $character.flip_h = true
 	elif direction > 0: $character.flip_h = false
 	
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() :
 			velocity.y = -jumping_height
 	
