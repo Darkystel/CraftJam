@@ -42,4 +42,5 @@ func flush_leftovers():
 
 func _on_tabs_tab_changed(tab):
 	if tab == 0:
-		update_inventory_list()
+		if get_inventory().return_all_from_craft():
+			update_inventory_list()

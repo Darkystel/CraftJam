@@ -28,9 +28,12 @@ func _on_craft_pressed():
 	if message.success:
 		update_lists()
 	else:
-		get_inventory().return_all_from_craft()
-		update_lists()
+		if get_inventory().return_all_from_craft():
+			update_lists()
 	crafting_message.text = message.description
+	if message.additional_info.has("result-item"):
+		crafting_message.text += "\n" + message.additional_info["result-item"].name
+		crafting_message.text += "\n" + message.additional_info["result-item"].description
 
 func _on_reset_pressed():
 	get_inventory().return_all_from_craft()
@@ -39,9 +42,13 @@ func _on_reset_pressed():
 func _on_tabs_tab_changed(tab):
 	if tab == 1:
 		update_lists()
-	else:
-		flush_leftovers()
 
 func flush_leftovers():
 	crafting_message.text = ""
 	get_inventory().return_all_from_craft()
+
+func _on_inventory_list_item_selected(index):
+	crafting_message.text = get_inventory().items[index].name + "\n" + get_inventory().items[index].description
+
+func _on_craft_list_item_selected(index):
+	crafting_message.text = get_inventory().craft[index].name + "\n" + get_inventory().craft[index].description

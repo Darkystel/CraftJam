@@ -1,7 +1,8 @@
 extends Resource
 class_name Inventory
 
-export(int) var capacity = 8
+export(int) var capacity = 4
+export(int) var equip_capacity = 4
 
 var items = []
 var craft = []
@@ -28,12 +29,26 @@ func put_in_hot_equip(item) -> bool:
 	else:
 		return false
 
-func consume_item(item) -> Item:
+func consume_item(item: Item) -> Item:
 	if items.has(item):
 		items.erase(item)
 		emit_signal("inventory_changed")
 		return item
 	return null
+
+func consume_craft(item: Item) -> Item:
+	if craft.has(item):
+		craft.erase(item)
+		emit_signal("inventory_changed")
+		return item
+	return null
+
+func consume_hot_equip(item: Item) -> Item:
+	if hot_equip.has(item):
+		hot_equip.erase(item)
+		return item
+	else:
+		return null
 
 func add_to_craft(item) -> bool:
 	if items.has(item):
@@ -42,13 +57,6 @@ func add_to_craft(item) -> bool:
 	else:
 		return false
 
-func consume_craft(item) -> Item:
-	if craft.has(item):
-		craft.erase(item)
-		emit_signal("inventory_changed")
-		return item
-	return null
-
 func remove_from_craft(item) -> bool:
 	if craft.has(item):
 		items.push_back(consume_craft(item))
@@ -56,9 +64,28 @@ func remove_from_craft(item) -> bool:
 	else:
 		return false
 
-func return_all_from_craft():
+func return_all_from_craft() -> bool:
 	for item in craft:
-		remove_from_craft(item)
+		items.push_back(item)
+	craft.clear()
+	if craft.empty():
+		return true
+	else:
+		return false
+
+func equip_item(item: Item) -> bool:
+	if items.has(item) and item.is_equippable() and hot_equip.size() < equip_capacity:
+		hot_equip.push_back(consume_item(item))
+		return true
+	else:
+		return false
+
+func unequip_item(item: Item) -> bool:
+	if hot_equip.has(item) and items.size() < capacity:
+		items.push_back(consume_hot_equip(item))
+		return true
+	else:
+		return false
 
 func try_crafting() -> Message:
 	var msg = Message.new()
@@ -72,6 +99,7 @@ func try_crafting() -> Message:
 				craft.clear()
 				msg.description = str(recipe.result.name) + " Crafted!"
 				msg.success = true
+				msg.additional_info["result-item"] = recipe.result
 				return msg
 		msg.description = "Those components do not mix up!"
 	msg.success = false

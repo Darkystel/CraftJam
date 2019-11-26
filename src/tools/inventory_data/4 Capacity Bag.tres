@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 capacity = 4
+equip_capacity = 4

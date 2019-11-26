@@ -1,48 +1,13 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/tools/inventory_data/4 Capacity Bag.tres" type="Resource" id=2]
 [ext_resource path="res://src/devices/back_device.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=4]
-[ext_resource path="res://assets/animations/idle/idle_new0.png" type="Texture" id=5]
-[ext_resource path="res://assets/animations/idle/idle_new1.png" type="Texture" id=6]
-[ext_resource path="res://assets/animations/idle/idle_new2.png" type="Texture" id=7]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_0.png" type="Texture" id=8]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_2.png" type="Texture" id=10]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_3.png" type="Texture" id=11]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_4.png" type="Texture" id=12]
-[ext_resource path="res://assets/animations/walking/walking_Animation 2_5.png" type="Texture" id=13]
-[ext_resource path="res://assets/animations/fall/fall_fall_0.png" type="Texture" id=14]
-[ext_resource path="res://assets/animations/fall/fall_fall_1.png" type="Texture" id=15]
-[ext_resource path="res://assets/animations/Jump/jump_jump_2.png" type="Texture" id=16]
-[ext_resource path="res://assets/animations/Jump/jump_jump_3.png" type="Texture" id=17]
-[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/animations/player_animator.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "idle",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "fall",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": false,
-"name": "jump",
-"speed": 8.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
 height = 4.0
 
@@ -66,7 +31,7 @@ shadow_filter = 5
 shadow_filter_smooth = 1.4
 
 [node name="character" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = ExtResource( 5 )
 animation = "jump"
 frame = 1
 playing = true
@@ -74,7 +39,7 @@ offset = Vector2( 0, -8 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="main_camera" type="Camera2D" parent="."]
 offset = Vector2( 0, -32 )
@@ -82,5 +47,5 @@ current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-[node name="UI_controller" parent="." instance=ExtResource( 18 )]
+[node name="UI_controller" parent="." instance=ExtResource( 6 )]
 pause_mode = 1

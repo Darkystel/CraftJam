@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/UI/scripts/inventory_manager.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/crafting_menu_theme.tres" type="Theme" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://src/UI/scripts/inventory_tab.gd" type="Script" id=4]
 [ext_resource path="res://src/UI/hud/item_description.gd" type="Script" id=5]
 [ext_resource path="res://src/UI/scripts/crafting_tab.gd" type="Script" id=6]
+[ext_resource path="res://src/UI/scripts/equipment_tab.gd" type="Script" id=7]
+[ext_resource path="res://assets/animations/player_animator.tres" type="SpriteFrames" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "appear"
@@ -45,7 +47,6 @@ tracks/0/keys = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 0, 0 )
 rect_pivot_offset = Vector2( 128, 72 )
 script = ExtResource( 1 )
 
@@ -68,6 +69,7 @@ tab_align = 0
 
 [node name="Inventory" type="Tabs" parent="tabs"]
 editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
@@ -96,7 +98,6 @@ icon_mode = 0
 fixed_icon_size = Vector2( 16, 16 )
 
 [node name="item_info" type="Panel" parent="tabs/Inventory/HBoxContainer"]
-editor/display_folded = true
 margin_left = 128.0
 margin_right = 248.0
 margin_bottom = 122.0
@@ -166,7 +167,6 @@ text = "EQUIP"
 clip_text = true
 
 [node name="Crafting" type="Tabs" parent="tabs"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -176,7 +176,6 @@ custom_fonts/font = ExtResource( 3 )
 script = ExtResource( 6 )
 
 [node name="Panel" type="Panel" parent="tabs/Crafting"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -234,6 +233,7 @@ icon_mode = 0
 fixed_icon_size = Vector2( 16, 16 )
 
 [node name="Panel2" type="Panel" parent="tabs/Crafting"]
+editor/display_folded = true
 margin_left = 4.0
 margin_top = 86.0
 margin_right = 208.0
@@ -270,12 +270,72 @@ margin_right = 248.0
 margin_bottom = 122.0
 theme = ExtResource( 2 )
 text = "RESET"
+
+[node name="Equipment" type="Tabs" parent="tabs"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 18.0
+theme = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="character" type="AnimatedSprite" parent="tabs/Equipment"]
+position = Vector2( 40, 54 )
+scale = Vector2( 3.5, 3.5 )
+frames = ExtResource( 8 )
+animation = "equip"
+frame = 3
+playing = true
+
+[node name="description" type="Label" parent="tabs/Equipment"]
+margin_left = 8.0
+margin_top = 94.0
+margin_right = 248.0
+margin_bottom = 122.0
+theme = ExtResource( 2 )
+text = "Double click  items to move from and to the hot equip menu"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="inventory_list" type="ItemList" parent="tabs/Equipment"]
+margin_left = 76.0
+margin_top = 10.0
+margin_right = 228.0
+margin_bottom = 62.0
+theme = ExtResource( 2 )
+allow_reselect = true
+max_columns = 4
+same_column_width = true
+fixed_column_width = 16
+icon_mode = 0
+fixed_icon_size = Vector2( 16, 16 )
+
+[node name="hot_equip_list" type="ItemList" parent="tabs/Equipment"]
+margin_left = 76.0
+margin_top = 66.0
+margin_right = 228.0
+margin_bottom = 94.0
+theme = ExtResource( 2 )
+allow_reselect = true
+max_columns = 3
+same_column_width = true
+fixed_column_width = 16
+icon_mode = 0
+fixed_icon_size = Vector2( 16, 16 )
 [connection signal="tab_changed" from="tabs" to="tabs/Inventory" method="_on_tabs_tab_changed"]
 [connection signal="tab_changed" from="tabs" to="tabs/Crafting" method="_on_tabs_tab_changed"]
+[connection signal="tab_changed" from="tabs" to="tabs/Equipment" method="_on_tabs_tab_changed"]
 [connection signal="item_selected" from="tabs/Inventory/HBoxContainer/inventory_list" to="tabs/Inventory" method="_on_inventory_list_item_selected"]
 [connection signal="pressed" from="tabs/Inventory/HBoxContainer/item_info/drop" to="tabs/Inventory" method="_on_drop_pressed"]
 [connection signal="pressed" from="tabs/Inventory/HBoxContainer/item_info/equip" to="tabs/Inventory" method="_on_equip_pressed"]
 [connection signal="item_activated" from="tabs/Crafting/Panel/inventory_list" to="tabs/Crafting" method="_on_inventory_list_item_activated"]
+[connection signal="item_selected" from="tabs/Crafting/Panel/inventory_list" to="tabs/Crafting" method="_on_inventory_list_item_selected"]
 [connection signal="item_activated" from="tabs/Crafting/Panel/craft_list" to="tabs/Crafting" method="_on_craft_list_item_activated"]
+[connection signal="item_selected" from="tabs/Crafting/Panel/craft_list" to="tabs/Crafting" method="_on_craft_list_item_selected"]
 [connection signal="pressed" from="tabs/Crafting/craft" to="tabs/Crafting" method="_on_craft_pressed"]
 [connection signal="pressed" from="tabs/Crafting/reset" to="tabs/Crafting" method="_on_reset_pressed"]
+[connection signal="item_activated" from="tabs/Equipment/inventory_list" to="tabs/Equipment" method="_on_inventory_list_item_activated"]
+[connection signal="item_selected" from="tabs/Equipment/inventory_list" to="tabs/Equipment" method="_on_inventory_list_item_selected"]
+[connection signal="item_activated" from="tabs/Equipment/hot_equip_list" to="tabs/Equipment" method="_on_hot_equip_list_item_activated"]
+[connection signal="item_selected" from="tabs/Equipment/hot_equip_list" to="tabs/Equipment" method="_on_hot_equip_list_item_selected"]
