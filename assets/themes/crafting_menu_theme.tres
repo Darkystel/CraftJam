@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/main_font_small.tres" type="DynamicFont" id=1]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -17,7 +17,7 @@ corner_radius_bottom_left = 2
 shadow_size = 3
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -32,7 +32,7 @@ corner_radius_bottom_left = 2
 shadow_size = 3
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -47,7 +47,7 @@ corner_radius_bottom_left = 2
 shadow_size = 3
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=4]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -62,7 +62,7 @@ corner_radius_bottom_left = 2
 shadow_size = 3
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=5]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -77,7 +77,7 @@ corner_radius_bottom_left = 2
 shadow_size = 3
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=6]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -94,45 +94,45 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 1, 1, 1, 0 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 1, 1, 1, 0 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-content_margin_left = 3.0
-content_margin_right = 3.0
-
-[sub_resource type="StyleBoxEmpty" id=5]
-content_margin_left = 3.0
-content_margin_right = 3.0
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+content_margin_left = 3.0
+content_margin_right = 3.0
+
+[sub_resource type="StyleBoxEmpty" id=12]
+content_margin_left = 3.0
+content_margin_right = 3.0
+
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 4
 corner_radius_top_right = 4
@@ -140,7 +140,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 4
 corner_radius_top_right = 4
@@ -156,11 +156,11 @@ Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = SubResource( 6 )
-Button/styles/focus = SubResource( 14 )
-Button/styles/hover = SubResource( 15 )
-Button/styles/normal = SubResource( 1 )
-Button/styles/pressed = SubResource( 2 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
 ItemList/colors/font_color = Color( 0.627451, 0.627451, 0.627451, 1 )
 ItemList/colors/font_color_selected = Color( 1, 1, 1, 1 )
 ItemList/colors/guide_color = Color( 0, 0, 0, 0.1 )
@@ -169,12 +169,12 @@ ItemList/constants/icon_margin = 0
 ItemList/constants/line_separation = 0
 ItemList/constants/vseparation = 2
 ItemList/fonts/font = null
-ItemList/styles/bg = SubResource( 11 )
-ItemList/styles/bg_focus = SubResource( 12 )
+ItemList/styles/bg = SubResource( 6 )
+ItemList/styles/bg_focus = SubResource( 7 )
 ItemList/styles/cursor = null
 ItemList/styles/cursor_unfocused = null
-ItemList/styles/selected = SubResource( 7 )
-ItemList/styles/selected_focus = SubResource( 13 )
+ItemList/styles/selected = SubResource( 8 )
+ItemList/styles/selected_focus = SubResource( 9 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -184,7 +184,7 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
-Panel/styles/panel = SubResource( 11 )
+Panel/styles/panel = SubResource( 6 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
 RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -219,10 +219,10 @@ TabContainer/icons/increment = null
 TabContainer/icons/increment_highlight = null
 TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
-TabContainer/styles/panel = SubResource( 3 )
-TabContainer/styles/tab_bg = SubResource( 4 )
+TabContainer/styles/panel = SubResource( 10 )
+TabContainer/styles/tab_bg = SubResource( 11 )
 TabContainer/styles/tab_disabled = null
-TabContainer/styles/tab_fg = SubResource( 5 )
+TabContainer/styles/tab_fg = SubResource( 12 )
 Tabs/colors/font_color_bg = Color( 0.690196, 0.690196, 0.690196, 1 )
 Tabs/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Tabs/colors/font_color_fg = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -246,8 +246,8 @@ VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 8 )
+VScrollBar/styles/grabber = SubResource( 13 )
 VScrollBar/styles/grabber_highlight = null
 VScrollBar/styles/grabber_pressed = null
-VScrollBar/styles/scroll = SubResource( 9 )
+VScrollBar/styles/scroll = SubResource( 14 )
 VScrollBar/styles/scroll_focus = null

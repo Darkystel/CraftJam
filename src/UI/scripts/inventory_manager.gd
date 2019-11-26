@@ -7,13 +7,12 @@ func _ready():
 	get_tree().paused = true
 
 func _input(event):
-	if event.is_action_pressed("escape"):
+	if event.is_action_pressed("escape") or event.is_action_pressed("inventory"):
 		get_tree().paused = false
 		var flush_info = flush_leftovers()
 		if not flush_info.dropped_pouch.items.empty():
 			drop_pouch(flush_info.dropped_pouch)
 		$AnimationPlayer.play("disappear")
-		yield($AnimationPlayer, "animation_finished")
 		get_UI_controller().pop_overlay()
 
 func drop_pouch(dropped_pouch: DroppedPouch):

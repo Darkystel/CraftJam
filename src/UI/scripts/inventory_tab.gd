@@ -19,7 +19,8 @@ func update_inventory_list():
 
 func _on_inventory_list_item_selected(index): #Display item info
 	selected_item = get_inventory().items[index]
-	item_info.update_item(selected_item)
+	var equippable = selected_item.types.has(selected_item.types_enum.EQUIPPABLE)
+	item_info.update_item(selected_item, false, not equippable)
 
 func _on_drop_pressed():
 	if selected_item != null:
@@ -38,16 +39,7 @@ func flush_leftovers():
 	items_to_drop.clear()
 	flush_info.dropped_pouch = pouch
 	return flush_info
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+func _on_tabs_tab_changed(tab):
+	if tab == 0:
+		update_inventory_list()

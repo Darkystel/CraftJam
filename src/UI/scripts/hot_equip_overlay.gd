@@ -6,7 +6,7 @@ func _ready():
 	$AnimationPlayer.play("appear")
 
 func _unhandled_input(event):
-	if event.is_action_pressed("escape"):
+	if event.is_action_pressed("fast_equip") or event.is_action_pressed("escape"):
 		get_tree().paused = false
 		$AnimationPlayer.play("disappear")
 		get_UI_controller().pop_overlay()

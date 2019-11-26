@@ -68,7 +68,6 @@ tab_align = 0
 
 [node name="Inventory" type="Tabs" parent="tabs"]
 editor/display_folded = true
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
@@ -168,6 +167,7 @@ clip_text = true
 
 [node name="Crafting" type="Tabs" parent="tabs"]
 editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
@@ -270,6 +270,7 @@ margin_right = 248.0
 margin_bottom = 122.0
 theme = ExtResource( 2 )
 text = "RESET"
+[connection signal="tab_changed" from="tabs" to="tabs/Inventory" method="_on_tabs_tab_changed"]
 [connection signal="tab_changed" from="tabs" to="tabs/Crafting" method="_on_tabs_tab_changed"]
 [connection signal="item_selected" from="tabs/Inventory/HBoxContainer/inventory_list" to="tabs/Inventory" method="_on_inventory_list_item_selected"]
 [connection signal="pressed" from="tabs/Inventory/HBoxContainer/item_info/drop" to="tabs/Inventory" method="_on_drop_pressed"]

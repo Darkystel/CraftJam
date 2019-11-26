@@ -40,8 +40,8 @@ func _on_tabs_tab_changed(tab):
 	if tab == 1:
 		update_lists()
 	else:
-		crafting_message.text = ""
-		get_inventory().return_all_from_craft()
+		flush_leftovers()
 
 func flush_leftovers():
+	crafting_message.text = ""
 	get_inventory().return_all_from_craft()
