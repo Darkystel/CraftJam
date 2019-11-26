@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/turgys-behavior-tree/GraphEditor/VisualEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/turgys-behavior-tree/GraphEditor/Nodes/MenuButton.gd" type="Script" id=2]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=4]
 
 [sub_resource type="InputEventKey" id=2]
 control = true
@@ -15,9 +15,10 @@ scancode = 83
 shortcut = SubResource( 2 )
 
 [node name="Behavior Tree Graph" type="GraphEdit"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 256.0
+margin_bottom = 144.0
 right_disconnects = true
+scroll_offset = Vector2( -256, -144 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -49,7 +50,7 @@ margin_left = -97.0
 margin_top = -15.0
 margin_right = 97.0
 margin_bottom = 15.0
-theme = SubResource( 1 )
+theme = SubResource( 4 )
 text = "Add"
 items = [ "Root", null, 0, false, false, -1, 0, null, "", false, "Composites", null, 0, false, false, -1, 0, null, "", true, "Sequence", null, 0, false, false, -1, 0, null, "", false, "Selector", null, 0, false, false, -1, 0, null, "", false, "Decorators", null, 0, false, false, -1, 0, null, "", true, "Inverter", null, 0, false, false, -1, 0, null, "", false, "Succeeder", null, 0, false, false, -1, 0, null, "", false, "Repeater", null, 0, false, false, -1, 0, null, "", false, "Repeat Until Fail", null, 0, false, false, -1, 0, null, "", false, "Leaves", null, 0, false, false, -1, 0, null, "", true, "Action", null, 0, false, false, -1, 0, null, "", false, "Condition", null, 0, false, false, -1, 0, null, "", false ]
 script = ExtResource( 2 )
