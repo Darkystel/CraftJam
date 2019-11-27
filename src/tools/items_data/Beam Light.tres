@@ -8,7 +8,9 @@
 script = ExtResource( 3 )
 name = "Beam Light"
 description = "Atttached to the player that moves the enemy away from the direction you are looking at with a long light range."
-types = [ 2, 0 ]
+types = [ 2, 0, 5 ]
 item_texture = ExtResource( 2 )
 item_scene = ExtResource( 1 )
-battery_drain = 0.12
+additional_item_info = {
+"battery_drain": 0.12
+}

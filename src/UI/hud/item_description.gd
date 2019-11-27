@@ -11,4 +11,3 @@ func clear():
 	$item_name.text = ""
 	$item_description.text = ""
 	$drop.disabled = true
-	$charge.disabled = true

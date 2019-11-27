@@ -9,3 +9,6 @@ name = "Armor"
 description = "A barrier around the player that protects him from the enemy only once, (enemies who hit it banishes)"
 types = [ 2 ]
 item_texture = ExtResource( 1 )
+additional_item_info = {
+"battery_drain": 0.12
+}

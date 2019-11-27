@@ -98,6 +98,10 @@ mouse_cursor/custom_image="res://assets/ui/cursor.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "notes_tab", "todo" )
+
 [input]
 
 move_left={

@@ -22,9 +22,12 @@ func get_has_charger() -> bool:
 signal inventory_changed
 # This script will handle the inventory system of the player character
 
-func add_to_inventory(item) -> bool:
+func add_to_inventory(item, duplicate: bool = true) -> bool:
 	if items.size() < capacity:
-		items.push_back(item.duplicate())
+		if duplicate:
+			items.push_back(item.duplicate())
+		else:
+			items.push_back(item)
 		print(items)
 		emit_signal("inventory_changed")
 		return true

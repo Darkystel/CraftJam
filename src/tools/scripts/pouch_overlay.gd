@@ -19,7 +19,7 @@ func update_grid():
 func _on_item_list_item_activated(index):
 	if inventory.get_available_capacity() > 0:
 		var item_to_pick = pouch.consume_item(pouch.items[index])
-		inventory.add_to_inventory(item_to_pick)
+		inventory.add_to_inventory(item_to_pick, false)
 		update_grid()
 
 func _on_close_pressed():
