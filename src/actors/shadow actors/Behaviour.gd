@@ -13,6 +13,7 @@ func _physics_process(delta):
 	if player_detected:
 		detect.check()
 		detect.follow()
+		detect.stop = false
 		
 	else:
 		idle.check()

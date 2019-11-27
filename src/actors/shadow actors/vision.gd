@@ -11,10 +11,12 @@ onready var noground = get_node("../ground_check")
 onready var root = get_node('..')
 onready var outofvision = get_node("../move_to_last_seen")
 
+var stop = false
 var detected := false
 var direction := Vector2(0,0)
 
 var last_player_seen = Vector2(0,0)
+var take_location = true
 
 func detect_animation():
 	shadow.velocity = Vector2(0,0)
@@ -35,33 +37,53 @@ func follow():
 		var last_velocity = 0
 		direction = shadow.position.direction_to(player.position)
 		if noground.condition:
-			if is_colliding() and get_collider().is_in_group("player"):
-				shadow.fall = false
-				detect()
-				if shadow.position > player.position and not noground.get_back:
-						sprite.flip_h = true
-				else:
-						sprite.flip_h = false
-						
-				if noground.get_back:
-					noground.go_back()
-				elif detected and not shadow.fall and not noground.get_back:
-					shadow.velocity.x = direction.x * shadow.movement_speed
-					sprite.play("walk")
+			if not stop:
+				if is_colliding() and get_collider().is_in_group("player"):
+					shadow.fall = false
+					detect()
 					if shadow.position > player.position and not noground.get_back:
-						sprite.flip_h = true
+							sprite.flip_h = true
 					else:
-						sprite.flip_h = false
+							sprite.flip_h = false
+							
+					if noground.get_back:
+						noground.go_back()
+					elif detected and not shadow.fall and not noground.get_back:
+						shadow.velocity.x = direction.x * shadow.movement_speed
+						sprite.play("walk")
+						if shadow.position > player.position and not noground.get_back:
+							sprite.flip_h = true
+						else:
+							sprite.flip_h = false
+						
+				else:
+					stop = true
+					if take_location:
+						print("took player location")
+						last_player_seen = player.get_global_position()
+					sprite.play("idle")
+					last_velocity = shadow.velocity.x
+					shadow.velocity.x = lerp(last_velocity,0,0.01)
+					shadow.fall = true
+					detected = false
+					take_location = false
 					
-			else:
-				sprite.play("idle")
-				last_velocity = shadow.velocity.x
-				shadow.velocity.x = lerp(last_velocity,0,0.01)
-				shadow.fall = true
-				detected = false
-				last_player_seen = player.get_global_position()
-				outofvision.move = true
+					if outofvision.again:
+						if last_player_seen < shadow.position:
+							outofvision.move = true
+							outofvision.behind = true
+						elif last_player_seen > shadow.position:
+							outofvision.move = true
+							outofvision.behind = false
+						
+					
+						
+					
+				
 
+
+func movetolastseen():
+ pass
 
 
 func check():

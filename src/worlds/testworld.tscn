@@ -39,7 +39,7 @@ tile_data = PoolIntArray( -589839, 4, 0, -524303, 4, 0, -589804, 1610612740, 0, 
 [node name="player" parent="." groups=[
 "player",
 ] instance=ExtResource( 2 )]
-position = Vector2( 32, 48 )
+position = Vector2( -82.617, -85.5694 )
 
 [node name="pickable" parent="." instance=ExtResource( 3 )]
 position = Vector2( 160, 80 )
@@ -70,7 +70,7 @@ position = Vector2( 32, 0 )
 item = ExtResource( 4 )
 
 [node name="Weird Shadow" parent="." instance=ExtResource( 9 )]
-position = Vector2( -213.49, -72.7617 )
+position = Vector2( 63.5763, -77.2742 )
 
 [node name="Tall Shadow" parent="." instance=ExtResource( 10 )]
 position = Vector2( 261.718, -83.5154 )
