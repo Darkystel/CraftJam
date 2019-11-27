@@ -17,11 +17,12 @@ func idle():
 	if noground.get_back:
 		shadow.velocity.x = 0
 		yield(get_tree().create_timer(0.7), "timeout")
+		print('')
 		if vision.last_player_seen.x < shadow.position.x:
-			shadow.velocity.x = lerp(10,0,0.01)
+			#shadow.velocity.x = lerp(10,0,0.01)
 			sprite.flip_h = false
 		elif vision.last_player_seen.x > shadow.position.x:
-			shadow.velocity.x = lerp(-10,0,0.01)
+			#shadow.velocity.x = lerp(-10,0,0.01)
 			sprite.flip_h = true
 		noground.get_back = false
 		vision.detected = false

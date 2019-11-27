@@ -11,6 +11,7 @@ onready var noground = get_node("../ground_check")
 onready var root = get_node('..')
 onready var outofvision = get_node("../move_to_last_seen")
 
+var exitmove = false
 var stop = false
 var detected := false
 var direction := Vector2(0,0)
@@ -46,7 +47,8 @@ func follow():
 					else:
 							sprite.flip_h = false
 							
-					if noground.get_back:
+					if noground.get_back and not outofvision.move:
+						var exitmove = true
 						noground.go_back()
 					elif detected and not shadow.fall and not noground.get_back:
 						shadow.velocity.x = direction.x * shadow.movement_speed
@@ -63,8 +65,8 @@ func follow():
 						last_player_seen = player.get_global_position()
 					sprite.play("idle")
 					last_velocity = shadow.velocity.x
-					shadow.velocity.x = lerp(last_velocity,0,0.01)
 					shadow.fall = true
+					outofvision.playercollided = false
 					detected = false
 					take_location = false
 					

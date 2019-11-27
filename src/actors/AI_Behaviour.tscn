@@ -20,9 +20,9 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="ground_check" type="RayCast2D" parent="."]
-position = Vector2( -0.253825, -2.73922 )
+position = Vector2( 0.10906, -3.51403 )
 enabled = true
-cast_to = Vector2( 10, 5 )
+cast_to = Vector2( 5, 5 )
 collision_mask = 4
 script = ExtResource( 4 )
 
