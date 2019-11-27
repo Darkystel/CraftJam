@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/actors/shadow actors/Direction.gd" type="Script" id=1]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/idle/idle_Weird Shadow idle_0.png" type="Texture" id=2]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/idle/idle_Weird Shadow idle_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/detect/detect_Player Detected_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/detect/detect_Player Detected_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/detect/detect_Player Detected_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/detect/detect_Player Detected_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/walk/walk_Weird Shadow Walk_0.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/walk/walk_Weird Shadow Walk_1.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/walk/walk_Weird Shadow Walk_2.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/shadow_animation/weird_shadow/walk/walk_Weird Shadow Walk_3.png" type="Texture" id=11]
+[ext_resource path="res://src/actors/shadow actors/lookingdirection.gd" type="Script" id=12]
+[ext_resource path="res://src/actors/shadow actors/collider.tscn" type="PackedScene" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "detect",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk",
+"speed": 4.0
+} ]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends RayCast2D
+
+export var detection_range = 0
+
+onready var sprite = get_node(\"../character\")
+onready var player = get_node(\"../../player\")
+onready var shadow = get_node(\"..\")
+
+var detected := false
+
+func detect_animation():
+	shadow.velocity = Vector2(0,0)
+	sprite.play(\"detect\")
+	
+
+func detect():
+	if detected == false:
+		detect_animation()
+		yield(get_tree().create_timer(0.7), \"timeout\")
+		detected = true
+		sprite.play(\"walk\")
+
+
+
+
+func _physics_process(delta):
+	look_at(Vector2(player.position.x,player.position.y-8))
+	var direction = shadow.position.direction_to(player.position)
+	var last_velocity = 0
+	if sprite.looking_right():
+		if shadow.position > player.position :
+			set_cast_to(Vector2(15,0))
+		else:
+			set_cast_to(Vector2(detection_range,0))
+	elif sprite.looking_left():
+		if shadow.position > player.position :
+			set_cast_to(Vector2(detection_range,0))
+		else:
+			set_cast_to(Vector2(15,0))
+	
+
+
+
+	if is_colliding() and get_collider().is_in_group(\"player\"):
+		detect()
+		if detected:
+			shadow.velocity.x = direction.x * shadow.movement_speed
+			sprite.play(\"walk\")
+		if shadow.position > player.position :
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+	
+		
+	else:
+		sprite.play(\"idle\")
+		last_velocity = shadow.velocity.x
+		shadow.velocity.x = lerp(last_velocity,0,0.01)
+		detected = false
+	
+"
+
+[node name="Weird Shadow" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 1 )
+movement_speed = 30.0
+
+[node name="character" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "detect"
+offset = Vector2( 0, -8 )
+script = ExtResource( 12 )
+
+[node name="collider" parent="." instance=ExtResource( 13 )]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 0.281641, -6.74124 )
+rotation = -0.00135833
+enabled = true
+cast_to = Vector2( 50, 0 )
+script = SubResource( 2 )
+detection_range = 100
