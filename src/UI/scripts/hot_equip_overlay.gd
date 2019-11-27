@@ -19,5 +19,5 @@ func initialize_items():
 func item_pressed(item):
 	get_tree().paused = false
 	$AnimationPlayer.play("disappear")
-	print("Item pressed : " + item.name)
+	get_logic_root().equipments.equip(item)
 	get_UI_controller().pop_overlay()

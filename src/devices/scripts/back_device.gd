@@ -5,6 +5,10 @@ export(Vector2) var cursor_offset = Vector2(0, 10)
 var battery = 100
 var drain = 0.13
 
+func charge_battery():
+	battery = 100
+	$CanvasLayer/device_hud.set_percent(battery)
+
 func _process(delta):
 	look_at(get_global_mouse_position() + cursor_offset)
 	if (global_position.x - get_global_mouse_position().x) > 0:

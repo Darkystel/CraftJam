@@ -3,6 +3,8 @@ class_name Player
 
 export(Resource) var inventory
 
+onready var equipments = $equipments
+
 func _ready(): 
 	assert(inventory != null)
 	inventory.initialize_recipes()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/worlds/testworld.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://src/tools/items_data/Round base.tres" type="Resource" id=5]
 [ext_resource path="res://src/tools/items_data/Small Magnifier.tres" type="Resource" id=6]
 [ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=7]
-[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=8]
+[ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=8]
+[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=9]
+[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=10]
 
 [node name="testworld" type="Node2D"]
 
@@ -54,12 +56,16 @@ position = Vector2( 304, 79 )
 item = ExtResource( 7 )
 
 [node name="pickable3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 176, 32 )
-item = ExtResource( 4 )
+position = Vector2( 96, 80 )
+item = ExtResource( 8 )
+
+[node name="pickable8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 16, 80 )
+item = ExtResource( 9 )
 
 [node name="pickable4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 192, -32 )
-item = ExtResource( 8 )
+item = ExtResource( 10 )
 
 [node name="pickable5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 0 )

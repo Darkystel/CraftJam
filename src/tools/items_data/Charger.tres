@@ -7,5 +7,6 @@
 script = ExtResource( 2 )
 name = "Charger"
 description = "Charges specific items"
-type = 1
+types = [ 1 ]
 item_texture = ExtResource( 1 )
+battery_drain = 0.12

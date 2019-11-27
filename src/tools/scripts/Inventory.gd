@@ -12,12 +12,20 @@ var recipe_list = []
 var available_capacity: int setget , get_available_capacity
 func get_available_capacity() -> int: return capacity - items.size()
 
+var has_charger: bool setget, get_has_charger
+func get_has_charger() -> bool:
+	for item in items:
+		if item.name == "Charger":
+			return true
+	return false
+
 signal inventory_changed
 # This script will handle the inventory system of the player character
 
 func add_to_inventory(item) -> bool:
 	if items.size() < capacity:
-		items.push_back(item)
+		items.push_back(item.duplicate())
+		print(items)
 		emit_signal("inventory_changed")
 		return true
 	else: return false
@@ -83,9 +91,17 @@ func equip_item(item: Item) -> bool:
 func unequip_item(item: Item) -> bool:
 	if hot_equip.has(item) and items.size() < capacity:
 		items.push_back(consume_hot_equip(item))
+		item.emit_signal("unequip")
 		return true
 	else:
 		return false
+
+func consume_charger() -> bool:
+	for item in items:
+		if item.name == "Charger":
+			consume_item(item)
+			return true
+	return false
 
 func try_crafting() -> Message:
 	var msg = Message.new()
@@ -105,6 +121,7 @@ func try_crafting() -> Message:
 	msg.success = false
 	return msg
 
+
 func initialize_recipes():
 	print('before initialization = ' + str(recipe_list))
 	var file_paths = list_files_in_directory("res://src/tools/recipe_data")
@@ -113,7 +130,7 @@ func initialize_recipes():
 		recipe_list.append(recipe)
 	print('after initialization = ' + str(recipe_list))
 
-func list_files_in_directory(path):
+func list_files_in_directory(path): # TODO Move to global
 	var files = []
 	var dir = Directory.new()
 	dir.open(path)

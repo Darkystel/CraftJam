@@ -21,7 +21,7 @@ func update_lists():
 
 func _on_inventory_list_item_activated(index):
 	var item = get_inventory().items[index]
-	if get_inventory().equip_item(get_inventory().items[index]):
+	if get_inventory().equip_item(item):
 		character.frame = 0
 		update_lists()
 		description.text = item.name + " equipped!"
@@ -40,3 +40,20 @@ func _on_hot_equip_list_item_activated(index):
 func _on_tabs_tab_changed(tab):
 	if tab == 2:
 		update_lists()
+
+func _on_charge_pressed():
+	selected_item.emit_signal("charge")
+	get_inventory().consume_charger()
+	update_lists()
+
+func _on_inventory_list_item_selected(index):
+	selected_item = get_inventory().items[index]
+	hot_equip_list.unselect_all()
+	$charge.disabled = (not selected_item.is_chargable() and not get_inventory().has_charger) or not selected_item.is_chargable()
+
+
+func _on_hot_equip_list_item_selected(index):
+	selected_item = get_inventory().hot_equip[index]
+	inventory_list.unselect_all()
+	$charge.disabled = not selected_item.is_chargable() and not get_inventory().has_charger
+	

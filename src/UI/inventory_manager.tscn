@@ -68,7 +68,6 @@ custom_fonts/font = ExtResource( 3 )
 tab_align = 0
 
 [node name="Inventory" type="Tabs" parent="tabs"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -149,21 +148,6 @@ focus_mode = 0
 theme = ExtResource( 2 )
 enabled_focus_mode = 0
 text = "DROP"
-clip_text = true
-
-[node name="equip" type="Button" parent="tabs/Inventory/HBoxContainer/item_info"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -68.0
-margin_top = -20.0
-margin_right = -36.0
-margin_bottom = -4.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-text = "EQUIP"
 clip_text = true
 
 [node name="Crafting" type="Tabs" parent="tabs"]
@@ -272,7 +256,6 @@ theme = ExtResource( 2 )
 text = "RESET"
 
 [node name="Equipment" type="Tabs" parent="tabs"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
@@ -301,7 +284,7 @@ autowrap = true
 [node name="inventory_list" type="ItemList" parent="tabs/Equipment"]
 margin_left = 76.0
 margin_top = 10.0
-margin_right = 228.0
+margin_right = 240.0
 margin_bottom = 62.0
 theme = ExtResource( 2 )
 allow_reselect = true
@@ -314,7 +297,7 @@ fixed_icon_size = Vector2( 16, 16 )
 [node name="hot_equip_list" type="ItemList" parent="tabs/Equipment"]
 margin_left = 76.0
 margin_top = 66.0
-margin_right = 228.0
+margin_right = 196.0
 margin_bottom = 94.0
 theme = ExtResource( 2 )
 allow_reselect = true
@@ -323,12 +306,18 @@ same_column_width = true
 fixed_column_width = 16
 icon_mode = 0
 fixed_icon_size = Vector2( 16, 16 )
+
+[node name="charge" type="Button" parent="tabs/Equipment"]
+margin_left = 200.0
+margin_top = 66.0
+margin_right = 240.0
+margin_bottom = 94.0
+text = "CHARGE"
 [connection signal="tab_changed" from="tabs" to="tabs/Inventory" method="_on_tabs_tab_changed"]
 [connection signal="tab_changed" from="tabs" to="tabs/Crafting" method="_on_tabs_tab_changed"]
 [connection signal="tab_changed" from="tabs" to="tabs/Equipment" method="_on_tabs_tab_changed"]
 [connection signal="item_selected" from="tabs/Inventory/HBoxContainer/inventory_list" to="tabs/Inventory" method="_on_inventory_list_item_selected"]
 [connection signal="pressed" from="tabs/Inventory/HBoxContainer/item_info/drop" to="tabs/Inventory" method="_on_drop_pressed"]
-[connection signal="pressed" from="tabs/Inventory/HBoxContainer/item_info/equip" to="tabs/Inventory" method="_on_equip_pressed"]
 [connection signal="item_activated" from="tabs/Crafting/Panel/inventory_list" to="tabs/Crafting" method="_on_inventory_list_item_activated"]
 [connection signal="item_selected" from="tabs/Crafting/Panel/inventory_list" to="tabs/Crafting" method="_on_inventory_list_item_selected"]
 [connection signal="item_activated" from="tabs/Crafting/Panel/craft_list" to="tabs/Crafting" method="_on_craft_list_item_activated"]
@@ -339,3 +328,4 @@ fixed_icon_size = Vector2( 16, 16 )
 [connection signal="item_selected" from="tabs/Equipment/inventory_list" to="tabs/Equipment" method="_on_inventory_list_item_selected"]
 [connection signal="item_activated" from="tabs/Equipment/hot_equip_list" to="tabs/Equipment" method="_on_hot_equip_list_item_activated"]
 [connection signal="item_selected" from="tabs/Equipment/hot_equip_list" to="tabs/Equipment" method="_on_hot_equip_list_item_selected"]
+[connection signal="pressed" from="tabs/Equipment/charge" to="tabs/Equipment" method="_on_charge_pressed"]

@@ -9,3 +9,4 @@ name = "Metal"
 description = "Looks like this metal is affected by some radiation of a strange kind"
 types = [  ]
 item_texture = ExtResource( 1 )
+battery_drain = 0.12

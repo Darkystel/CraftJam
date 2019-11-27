@@ -9,3 +9,4 @@ name = "Round base"
 description = "???"
 types = [  ]
 item_texture = ExtResource( 1 )
+battery_drain = 0.12
