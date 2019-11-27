@@ -15,6 +15,12 @@ func pick_up_item(item):
 	else:
 		return false
 
+func _unhandled_input(event):
+	if event.is_action_pressed("test_button"):
+		var dialogue_test = Dialogue.new()
+		dialogue_test.dialogue_list = ["This is a test dialogue", "Test is successful btw", "Go finish the code :D"]
+		$UI_controller/dialogue_overlay.startdialogue_test)
+
 func _physics_process(delta):
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if direction < 0: $character.flip_h = true

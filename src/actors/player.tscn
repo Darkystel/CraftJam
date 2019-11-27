@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/tools/inventory_data/4 Capacity Bag.tres" type="Resource" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=4]
 [ext_resource path="res://assets/animations/player_animator.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UI/dialogue_overlay.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -43,10 +44,12 @@ position = Vector2( 0, -7 )
 shape = SubResource( 1 )
 
 [node name="main_camera" type="Camera2D" parent="."]
-offset = Vector2( 0, -32 )
+offset = Vector2( 0, -24 )
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
 [node name="UI_controller" parent="." instance=ExtResource( 6 )]
 pause_mode = 1
+
+[node name="dialogue_overlay" parent="UI_controller" instance=ExtResource( 7 )]
