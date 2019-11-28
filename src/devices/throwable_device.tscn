@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/devices/scripts/throwable_device.gd" type="Script" id=1]
+[ext_resource path="res://src/devices/scripts/bomb.gd" type="Script" id=2]
+[ext_resource path="res://assets/items/LightBomb.png" type="Texture" id=3]
+[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.0
+
+[node name="throwable_device" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="rotator" type="Position2D" parent="."]
+position = Vector2( 0, -6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RigidBody2D" type="RigidBody2D" parent="rotator"]
+position = Vector2( 12, 0 )
+collision_layer = 8
+collision_mask = 6
+mode = 1
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="rotator/RigidBody2D"]
+position = Vector2( 5.96046e-008, 5.96046e-008 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotator/RigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="light" type="Light2D" parent="rotator/RigidBody2D"]
+texture = ExtResource( 4 )
+texture_scale = 2.0
+energy = 0.01
+shadow_enabled = true
+shadow_gradient_length = 0.1
+shadow_filter = 5
+shadow_filter_smooth = 1.5
+
+[node name="timer" type="Timer" parent="rotator/RigidBody2D"]
+one_shot = true
+[connection signal="body_entered" from="rotator/RigidBody2D" to="rotator/RigidBody2D" method="_on_RigidBody2D_body_entered"]
+[connection signal="timeout" from="rotator/RigidBody2D/timer" to="rotator/RigidBody2D" method="_on_timer_timeout"]

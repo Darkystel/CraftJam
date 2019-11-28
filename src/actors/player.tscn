@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/tools/inventory_data/4 Capacity Bag.tres" type="Resource" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=4]
 [ext_resource path="res://assets/animations/player_animator.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/UI/dialogue_overlay.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -18,7 +17,7 @@ script = ExtResource( 1 )
 inventory = ExtResource( 2 )
 
 [node name="equipments" type="Node2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -4 )
 script = ExtResource( 3 )
 
 [node name="light" type="Light2D" parent="."]
@@ -34,8 +33,8 @@ shadow_filter_smooth = 1.4
 
 [node name="character" type="AnimatedSprite" parent="."]
 frames = ExtResource( 5 )
-animation = "jump"
-frame = 1
+animation = "idle"
+frame = 2
 playing = true
 offset = Vector2( 0, -8 )
 
@@ -51,5 +50,3 @@ drag_margin_v_enabled = false
 
 [node name="UI_controller" parent="." instance=ExtResource( 6 )]
 pause_mode = 1
-
-[node name="dialogue_overlay" parent="UI_controller" instance=ExtResource( 7 )]

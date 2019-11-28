@@ -44,7 +44,5 @@ func charge_item() -> Message:
 		return msg
 
 func is_equippable() -> bool: return types.has(types_enum.EQUIPPABLE)
-func is_chargable() -> bool:
-	print('CHARGABLE = ' + str(types_enum.CHARGABLE))
-	print('current types = ' + str(types))
-	return types.has(types_enum.CHARGABLE)
+func is_chargable() -> bool: return types.has(types_enum.CHARGABLE)
+func is_throwable() -> bool: return types.has(types_enum.THROWABLE)

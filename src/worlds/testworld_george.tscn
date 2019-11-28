@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/worlds/testworld.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=8]
 [ext_resource path="res://src/actors/shadow actors/Tall Shadow BT.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=10]
-[ext_resource path="res://src/actors/shadow actors/Weird Shadow BT.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/tools/items_data/Light Bomb.tres" type="Resource" id=11]
+[ext_resource path="res://src/actors/shadow actors/Weird Shadow BT.tscn" type="PackedScene" id=12]
 
 [node name="testworld" type="Node2D"]
 
@@ -71,11 +72,11 @@ item = ExtResource( 10 )
 
 [node name="pickable5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, 0 )
-item = ExtResource( 4 )
+item = ExtResource( 11 )
 
 [node name="Tall Shadow" parent="." instance=ExtResource( 9 )]
 position = Vector2( 18.947, -79.0029 )
 direction = 1
 
-[node name="Weird Shadow" parent="." instance=ExtResource( 11 )]
+[node name="Weird Shadow" parent="." instance=ExtResource( 12 )]
 position = Vector2( 309.915, -67.4361 )

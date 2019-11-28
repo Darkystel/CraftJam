@@ -1,11 +1,11 @@
 extends IMTabs
 
 ##########################################
-onready var dialogue_history_list = $dialogue_history
+onready var dialogue_history = $dialogue_history/history
 ##########################################
 func _ready():
 	for dialogue in Global.dialogue_history:
-		var display_dialogue: String = dialogue.antagonist_name + ":-\n"
+		var display_dialogue: String = ""
 		for sentence in dialogue.dialogue_list:
-			display_dialogue += sentence
-		dialogue_history_list.add_item(display_dialogue)
+			display_dialogue += dialogue.protagonist_name + ": " + sentence + "\n"
+		dialogue_history.text += display_dialogue
