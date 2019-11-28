@@ -1,4 +1,5 @@
 extends Control
+class_name DialogueOverlay
 
 export(float,10,800) var speed = 180
 
@@ -16,6 +17,7 @@ func _ready():
 func start(dialogue: Dialogue):
 	get_tree().paused = true
 	dialogue_stack = dialogue.dialogue_list.duplicate()
+	Global.push_to_history(dialogue)
 	$AnimationPlayer.play("pop_up")
 	yield($AnimationPlayer, "animation_finished")
 	start_dialogue()

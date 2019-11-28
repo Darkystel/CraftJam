@@ -8,3 +8,11 @@ func get_player() -> Player:
 	else:
 		push_error("Player is not added to the level")
 		return null
+
+func get_dialogue_overlay() -> DialogueOverlay:
+	var dialogue_overlay = get_node("overlay/dialogue_overlay")
+	if dialogue_overlay is DialogueOverlay:
+		return dialogue_overlay
+	else:
+		push_error("Dialogue Overlay is not added to the level")
+		return null
