@@ -7,3 +7,8 @@ export(float) var jumping_height := 200.0
 
 var velocity := Vector2(0,0)
 onready var environment = get_parent()
+
+
+func _physics_process(delta):
+	
+	velocity = move_and_slide(velocity,Vector2.UP)
