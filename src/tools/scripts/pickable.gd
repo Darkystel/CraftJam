@@ -2,6 +2,8 @@ extends Area2D
 
 export(Resource) var item = null
 
+onready var rc = $rc
+
 var pickable = false
 var player = null
 
@@ -11,6 +13,17 @@ func _ready():
 #		item = copy_item(item)
 #	else:
 #		push_error("Resource passed to item property is not of type Item")
+
+func _process(delta):
+	var player_pos = get_parent().get_player().position
+	player_pos.y -= 8
+	rc.look_at(player_pos)
+	var collider = rc.get_collider()
+	if collider != null and collider.is_in_group("player"):
+
+		$item.visible = true
+	else:
+		$item.visible = false
 
 func _on_pickable_body_entered(body):
 	if body.is_in_group("player"): 

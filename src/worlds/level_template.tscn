@@ -504,6 +504,16 @@ editor/display_folded = true
 
 [node name="dialogue_overlay" parent="overlay" instance=ExtResource( 2 )]
 
+[node name="limiters" type="Node" parent="."]
+
+[node name="limit_right" type="Position2D" parent="limiters"]
+position = Vector2( 168, -112 )
+scale = Vector2( 5, 5 )
+
+[node name="limit_left" type="Position2D" parent="limiters"]
+position = Vector2( -144, -112 )
+scale = Vector2( 5, 5 )
+
 [node name="background2" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )

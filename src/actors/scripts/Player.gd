@@ -10,10 +10,15 @@ func get_player_process() -> bool: return process
 
 onready var equipments = $equipments
 
+
 func _ready(): 
 	assert(inventory != null)
 	inventory.initialize_recipes()
 	set_physics_process(process)
+
+func set_limits(limit_left, limit_right):
+	$main_camera.limit_left = limit_left
+	$main_camera.limit_right = limit_right
 
 func set_light_energy(value: float):
 	$light.energy = value
@@ -39,6 +44,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() :
+			$character.play("jump")
 			velocity.y = -jumping_height
 	
 	velocity.x = direction * movement_speed
@@ -48,9 +54,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	if abs(velocity.x) > 0 and is_on_floor():
 		$character.play("walk")
-	elif not is_on_floor() and velocity.y < 0:
-		$character.play("jump")
+	
 	elif not is_on_floor() and velocity.y > 0:
 		$character.play("fall")
-	else:
+	elif is_on_floor():
 		$character.play("idle")
