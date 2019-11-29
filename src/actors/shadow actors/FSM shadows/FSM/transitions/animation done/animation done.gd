@@ -11,7 +11,7 @@ extends "res://addons/net.kivano.fsm/content/FSMTransition.gd";
 ##################################################################################
 #####  Variables (Constants, Export Variables, Node Vars, Normal variables)  #####
 ######################### var myvar setget myvar_set,myvar_get ###################
-
+onready var sprite = get_node("../../../character")
 ######################################
 ####### Getters
 func getFSM(): return fsm; #access to owner FSM, defined in parent class
@@ -33,6 +33,6 @@ func transitionCondition(inDeltaTime, inParam0=null, inParam1=null, inParam2=nul
 
 
 func _on_character_animation_finished():
-	if getLogicRoot().sprite().animation == "detect":
+	if sprite.get_animation() == "detect":
 		accomplish()
-	pass
+

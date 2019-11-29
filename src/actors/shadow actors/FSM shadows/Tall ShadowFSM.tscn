@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/actors/shadow actors/Shadow_BT.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=2]
@@ -18,41 +18,24 @@
 [ext_resource path="res://addons/net.kivano.fsm/content/fsm.gd" type="Script" id=16]
 [ext_resource path="res://addons/net.kivano.fsm/assets/ico2d.png" type="Texture" id=17]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/fall/fall.tscn" type="PackedScene" id=18]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/fall/fall.gd" type="Script" id=19]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/idle/idle.tscn" type="PackedScene" id=20]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/idle/idle.gd" type="Script" id=21]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/detect animation/detect animation.tscn" type="PackedScene" id=22]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/detect animation/detect animation.gd" type="Script" id=23]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/follow player/follow player.tscn" type="PackedScene" id=24]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/follow player/follow player.gd" type="Script" id=25]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.tscn" type="PackedScene" id=26]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.gd" type="Script" id=27]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/turn around/turn around.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/turn around/turn around.gd" type="Script" id=29]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/in air/in air.tscn" type="PackedScene" id=30]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/in air/in air.gd" type="Script" id=31]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/detect/detect.tscn" type="PackedScene" id=32]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/detect/detect.gd" type="Script" id=33]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/animation done/animation done.tscn" type="PackedScene" id=34]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/animation done/animation done.gd" type="Script" id=35]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player undetected/player undetected.tscn" type="PackedScene" id=36]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player undetected/player undetected.gd" type="Script" id=37]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground/noground.tscn" type="PackedScene" id=38]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground/noground.gd" type="Script" id=39]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/lost player/lost player.tscn" type="PackedScene" id=40]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/lost player/lost player.gd" type="Script" id=41]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground2/noground2.tscn" type="PackedScene" id=42]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground2/noground2.gd" type="Script" id=43]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.tscn" type="PackedScene" id=44]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.gd" type="Script" id=45]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.tscn" type="PackedScene" id=46]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.gd" type="Script" id=47]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.tscn" type="PackedScene" id=48]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.gd" type="Script" id=49]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.tscn" type="PackedScene" id=50]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.gd" type="Script" id=51]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.tscn" type="PackedScene" id=52]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.gd" type="Script" id=53]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/idle/idle.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/detect animation/detect animation.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/follow player/follow player.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/turn around/turn around.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/in air/in air.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/detect/detect.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/animation done/animation done.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player undetected/player undetected.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground/noground.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/lost player/lost player.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground2/noground2.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.tscn" type="PackedScene" id=31]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.tscn" type="PackedScene" id=33]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.tscn" type="PackedScene" id=34]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/idle no ground/idle no ground.tscn" type="PackedScene" id=36]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -72,7 +55,7 @@ animations = [ {
 "speed": 9.0
 } ]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
 
 onready var vision = get_node(\"vision\")
@@ -100,7 +83,7 @@ func _on_Tall_Shadow_change_direction(direction):
 
 "
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=3]
 script/source = "extends RayCast2D
 
 onready var player = get_node(\"../../../player\")
@@ -112,26 +95,26 @@ func left(): rotation_degrees = 180
 
 "
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=4]
 script/source = "extends RayCast2D
 
 
 func right(): rotation_degrees = 0
 func left(): rotation_degrees = 180"
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=5]
 script/source = "extends RayCast2D
 
 func right(): position.x = 7
 func left(): position.x = -7"
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=6]
 script/source = "extends RayCast2D
 
 func right(): cast_to.x = 10
 func left(): cast_to.x = -10"
 
-[node name="Tall Shadow" type="KinematicBody2D"]
+[node name="Floor Shadow" type="KinematicBody2D"]
 position = Vector2( 0.174824, 0 )
 collision_layer = 2
 collision_mask = 5
@@ -151,172 +134,154 @@ script = ExtResource( 14 )
 position = Vector2( -0.0247879, -7.10397 )
 
 [node name="detectors" type="Node2D" parent="."]
-script = SubResource( 3 )
+editor/display_folded = true
+script = SubResource( 2 )
 
 [node name="vision" type="RayCast2D" parent="detectors"]
 position = Vector2( 0, -11 )
 enabled = true
 cast_to = Vector2( 125, 0 )
 collision_mask = 5
-script = SubResource( 5 )
+script = SubResource( 3 )
 
 [node name="sense" type="RayCast2D" parent="detectors"]
 position = Vector2( 0, -11 )
 enabled = true
 cast_to = Vector2( -55, 0 )
-script = SubResource( 6 )
+script = SubResource( 4 )
 
 [node name="ground" type="RayCast2D" parent="detectors"]
 position = Vector2( 7, -1 )
 enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 4
-script = SubResource( 2 )
+script = SubResource( 5 )
 
 [node name="wall" type="RayCast2D" parent="detectors"]
 position = Vector2( 0, -7 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 collision_mask = 4
-script = SubResource( 4 )
+script = SubResource( 6 )
 
 [node name="FSM2D" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 16 )
 __meta__ = {
 "_editor_icon": ExtResource( 17 )
 }
-path2LogicRoot = NodePath("..")
-onlyActiveStateOnTheScene = false
-initManually = false
-updateMode = 1
-receiceSignalsOnly4ActiveStatesAndTransitions = true
-enableDebug = false
+updateMode = 2
 "Initial state:" = ""
 "Create new:/Subdirectory for FSM nodes:" = "FSM"
 "Create new:/Create state with name:" = null
 "Create new:/Create transition with name:" = null
 GraphData = {
-"animation done": Vector2( 712, 736 ),
-"animation done_": Vector2( 712, 735.75 ),
-"detect": Vector2( 810, 953 ),
-"detect animation": Vector2( 809, 847 ),
-"detect animation_": Vector2( 809, 846.75 ),
-"detect_": Vector2( 810, 952.75 ),
-"fall": Vector2( 120, 953 ),
-"fall_": Vector2( 120, 952.75 ),
-"follow player": Vector2( 712, 473 ),
-"follow player_": Vector2( 712, 472.75 ),
-"idle": Vector2( 564, 957 ),
-"idle_": Vector2( 564, 956.75 ),
-"in air": Vector2( 343, 950 ),
-"in air_": Vector2( 343, 949.75 ),
-"lost player": Vector2( 911, 467 ),
-"lost player_": Vector2( 911, 466.75 ),
-"no player found": Vector2( 218, 685 ),
-"no player found_": Vector2( 218, 684.75 ),
-"noground": Vector2( 435, 469 ),
-"noground2": Vector2( 440, 616 ),
-"noground2_": Vector2( 440, 615.75 ),
-"noground_": Vector2( 435, 468.75 ),
-"obstacle": Vector2( 22, 724 ),
-"obstacle_": Vector2( 22, 723.75 ),
-"player caught": Vector2( 1034, 270 ),
-"player caught_": Vector2( 1034, 269.75 ),
-"player found": Vector2( 459, 809 ),
-"player found_": Vector2( 459, 808.75 ),
-"player not caught": Vector2( 1052, 1126 ),
-"player not caught_": Vector2( 1052, 1125.75 ),
-"player undetected": Vector2( 874, 735 ),
-"player undetected_": Vector2( 874, 734.75 ),
-"search for player": Vector2( 967, 622 ),
-"search for player_": Vector2( 967, 621.75 ),
-"turn around": Vector2( 147, 475 ),
-"turn around_": Vector2( 147, 474.75 )
+"animation done": Vector2( 700, 520.875 ),
+"animation done_": Vector2( 700, 520.875 ),
+"detect": Vector2( 552, 620.875 ),
+"detect animation": Vector2( 781, 620.875 ),
+"detect animation_": Vector2( 781, 620.875 ),
+"detect_": Vector2( 552, 620.875 ),
+"fall": Vector2( 17, 753.875 ),
+"fall_": Vector2( 17, 753.875 ),
+"follow player": Vector2( 716, 409.875 ),
+"follow player_": Vector2( 716, 409.875 ),
+"idle": Vector2( 304, 606.875 ),
+"idle no ground": Vector2( -20, 511.875 ),
+"idle no ground_": Vector2( -20, 511.875 ),
+"idle_": Vector2( 304, 606.875 ),
+"in air": Vector2( 20, 612.875 ),
+"in air_": Vector2( 20, 612.875 ),
+"lost player": Vector2( 1007, 242.875 ),
+"lost player_": Vector2( 1007, 242.875 ),
+"no player found": Vector2( 74, 440.875 ),
+"no player found_": Vector2( 74, 440.875 ),
+"noground": Vector2( 443, 399.875 ),
+"noground2": Vector2( 419, 226.875 ),
+"noground2_": Vector2( 419, 226.875 ),
+"noground_": Vector2( 443, 399.875 ),
+"obstacle": Vector2( 272, 516.875 ),
+"obstacle_": Vector2( 272, 516.875 ),
+"player caught": Vector2( 715, 225.875 ),
+"player caught_": Vector2( 715, 225.875 ),
+"player found": Vector2( 429, 515.875 ),
+"player found_": Vector2( 429, 515.875 ),
+"player not caught": Vector2( 905, 847.875 ),
+"player not caught_": Vector2( 905, 847.875 ),
+"player undetected": Vector2( 888, 534.875 ),
+"player undetected_": Vector2( 888, 534.875 ),
+"search for player": Vector2( 1009, 406.875 ),
+"search for player_": Vector2( 1009, 406.875 ),
+"turn around": Vector2( 160, 243.875 ),
+"turn around_": Vector2( 160, 243.875 )
 }
 
 [node name="States" type="Node2D" parent="FSM2D"]
 
-[node name="fall" type="Node" parent="FSM2D/States" instance=ExtResource( 18 )]
-script = ExtResource( 19 )
+[node name="fall" parent="FSM2D/States" instance=ExtResource( 18 )]
 
-[node name="idle" type="Node" parent="FSM2D/States" instance=ExtResource( 20 )]
-script = ExtResource( 21 )
+[node name="idle" parent="FSM2D/States" instance=ExtResource( 19 )]
 
-[node name="detect animation" type="Node" parent="FSM2D/States" instance=ExtResource( 22 )]
-script = ExtResource( 23 )
+[node name="detect animation" parent="FSM2D/States" instance=ExtResource( 20 )]
 
-[node name="follow player" type="Node" parent="FSM2D/States" instance=ExtResource( 24 )]
-script = ExtResource( 25 )
+[node name="follow player" parent="FSM2D/States" instance=ExtResource( 21 )]
 
-[node name="search for player" type="Node" parent="FSM2D/States" instance=ExtResource( 26 )]
-script = ExtResource( 27 )
+[node name="search for player" parent="FSM2D/States" instance=ExtResource( 22 )]
 
-[node name="turn around" type="Node" parent="FSM2D/States" instance=ExtResource( 28 )]
-script = ExtResource( 29 )
+[node name="turn around" parent="FSM2D/States" instance=ExtResource( 23 )]
 
 [node name="Transitions" type="Node2D" parent="FSM2D"]
 
-[node name="in air" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 30 )]
-script = ExtResource( 31 )
+[node name="in air" parent="FSM2D/Transitions" instance=ExtResource( 24 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/fall") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="detect" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 32 )]
-script = ExtResource( 33 )
+[node name="detect" parent="FSM2D/Transitions" instance=ExtResource( 25 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/detect animation")
 
-[node name="animation done" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
-script = ExtResource( 35 )
+[node name="animation done" parent="FSM2D/Transitions" instance=ExtResource( 26 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/detect animation") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player undetected" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
-script = ExtResource( 37 )
+[node name="player undetected" parent="FSM2D/Transitions" instance=ExtResource( 27 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/detect animation") ]
 path2TargetState = NodePath("../../States/search for player")
 
-[node name="noground" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 38 )]
-script = ExtResource( 39 )
+[node name="noground" parent="FSM2D/Transitions" instance=ExtResource( 28 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/follow player") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="lost player" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 40 )]
-script = ExtResource( 41 )
+[node name="lost player" parent="FSM2D/Transitions" instance=ExtResource( 29 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/follow player") ]
 path2TargetState = NodePath("../../States/search for player")
 
-[node name="noground2" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 42 )]
-script = ExtResource( 43 )
+[node name="noground2" parent="FSM2D/Transitions" instance=ExtResource( 30 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="no player found" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 44 )]
-script = ExtResource( 45 )
+[node name="no player found" parent="FSM2D/Transitions" instance=ExtResource( 31 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/turn around") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="player found" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 46 )]
-script = ExtResource( 47 )
+[node name="player found" parent="FSM2D/Transitions" instance=ExtResource( 32 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/turn around") ]
 path2TargetState = NodePath("../../States/detect animation")
 
-[node name="player caught" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 48 )]
-script = ExtResource( 49 )
+[node name="player caught" parent="FSM2D/Transitions" instance=ExtResource( 33 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player not caught" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 50 )]
-script = ExtResource( 51 )
+[node name="player not caught" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="obstacle" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 52 )]
-script = ExtResource( 53 )
+[node name="obstacle" parent="FSM2D/Transitions" instance=ExtResource( 35 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/turn around")
-intervalBetweenChecks = -1.0
+
+[node name="idle no ground" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
+path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
+path2TargetState = NodePath("../../States/turn around")
 [connection signal="animation_finished" from="character" to="FSM2D/Transitions/animation done" method="_on_character_animation_finished"]
 [connection signal="caught" from="FSM2D/States/search for player" to="FSM2D/Transitions/player caught" method="_on_search_for_player_caught"]
 [connection signal="not_caught" from="FSM2D/States/search for player" to="FSM2D/Transitions/player not caught" method="_on_search_for_player_not_caught"]

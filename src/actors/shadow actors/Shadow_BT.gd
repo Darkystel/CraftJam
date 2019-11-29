@@ -1,4 +1,4 @@
-extends Actor
+extends KinematicBody2D
 
 enum Looking_Direction{
   left,
