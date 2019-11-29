@@ -9,6 +9,10 @@ func _ready():
 	assert(inventory != null)
 	inventory.initialize_recipes()
 
+func _unhandled_input(event):
+	if event.is_action_pressed("test_button"):
+		$main_camera.start_shaking(0.8)
+
 func pick_up_item(item):
 	if inventory.add_to_inventory(item):
 		set_physics_process(false)

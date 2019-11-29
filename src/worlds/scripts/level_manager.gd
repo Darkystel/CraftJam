@@ -1,6 +1,9 @@
 extends Node2D
 class_name LevelManager
 
+func _ready():
+	VisualServer.set_default_clear_color(Color.black)
+
 func get_player() -> Player:
 	var player = get_node("player")
 	if player is Player:
