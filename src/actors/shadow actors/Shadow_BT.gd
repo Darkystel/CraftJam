@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 
 enum Looking_Direction{
   left,
@@ -46,3 +46,6 @@ func _ready():
 	elif looking_direction == Looking_Direction.right:
 		look_right()
 	pass
+
+func _physics_process(delta):
+	velocity = move_and_slide(velocity, Vector2.UP)

@@ -119,13 +119,11 @@ position = Vector2( 0.174824, 0 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
-movement_speed = 30.0
 looking_direction = 1
 
 [node name="character" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 offset = Vector2( 0, -8 )
 script = ExtResource( 14 )
@@ -169,49 +167,54 @@ script = ExtResource( 16 )
 __meta__ = {
 "_editor_icon": ExtResource( 17 )
 }
+path2LogicRoot = NodePath("..")
+onlyActiveStateOnTheScene = false
+initManually = false
 updateMode = 2
+receiceSignalsOnly4ActiveStatesAndTransitions = true
+enableDebug = false
 "Initial state:" = ""
 "Create new:/Subdirectory for FSM nodes:" = "FSM"
 "Create new:/Create state with name:" = null
 "Create new:/Create transition with name:" = null
 GraphData = {
-"animation done": Vector2( 700, 520.875 ),
+"animation done": Vector2( 700, 521 ),
 "animation done_": Vector2( 700, 520.875 ),
-"detect": Vector2( 552, 620.875 ),
-"detect animation": Vector2( 781, 620.875 ),
+"detect": Vector2( 552, 621 ),
+"detect animation": Vector2( 781, 621 ),
 "detect animation_": Vector2( 781, 620.875 ),
 "detect_": Vector2( 552, 620.875 ),
-"fall": Vector2( 17, 753.875 ),
+"fall": Vector2( 17, 754 ),
 "fall_": Vector2( 17, 753.875 ),
-"follow player": Vector2( 716, 409.875 ),
+"follow player": Vector2( 716, 410 ),
 "follow player_": Vector2( 716, 409.875 ),
-"idle": Vector2( 304, 606.875 ),
-"idle no ground": Vector2( -20, 511.875 ),
+"idle": Vector2( 304, 607 ),
+"idle no ground": Vector2( -20, 512 ),
 "idle no ground_": Vector2( -20, 511.875 ),
 "idle_": Vector2( 304, 606.875 ),
-"in air": Vector2( 20, 612.875 ),
+"in air": Vector2( 20, 613 ),
 "in air_": Vector2( 20, 612.875 ),
-"lost player": Vector2( 1007, 242.875 ),
+"lost player": Vector2( 1007, 243 ),
 "lost player_": Vector2( 1007, 242.875 ),
-"no player found": Vector2( 74, 440.875 ),
+"no player found": Vector2( 135, 464 ),
 "no player found_": Vector2( 74, 440.875 ),
-"noground": Vector2( 443, 399.875 ),
-"noground2": Vector2( 419, 226.875 ),
+"noground": Vector2( 443, 400 ),
+"noground2": Vector2( 419, 227 ),
 "noground2_": Vector2( 419, 226.875 ),
 "noground_": Vector2( 443, 399.875 ),
-"obstacle": Vector2( 272, 516.875 ),
+"obstacle": Vector2( 272, 517 ),
 "obstacle_": Vector2( 272, 516.875 ),
-"player caught": Vector2( 715, 225.875 ),
+"player caught": Vector2( 715, 226 ),
 "player caught_": Vector2( 715, 225.875 ),
-"player found": Vector2( 429, 515.875 ),
+"player found": Vector2( 429, 516 ),
 "player found_": Vector2( 429, 515.875 ),
-"player not caught": Vector2( 905, 847.875 ),
+"player not caught": Vector2( 905, 848 ),
 "player not caught_": Vector2( 905, 847.875 ),
-"player undetected": Vector2( 888, 534.875 ),
+"player undetected": Vector2( 888, 535 ),
 "player undetected_": Vector2( 888, 534.875 ),
-"search for player": Vector2( 1009, 406.875 ),
+"search for player": Vector2( 1009, 407 ),
 "search for player_": Vector2( 1009, 406.875 ),
-"turn around": Vector2( 160, 243.875 ),
+"turn around": Vector2( 160, 244 ),
 "turn around_": Vector2( 160, 243.875 )
 }
 
