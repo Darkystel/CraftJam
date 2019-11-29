@@ -1,40 +1,92 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://src/actors/shadow actors/Shadow_BT.gd" type="Script" id=1]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=2]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_2.png" type="Texture" id=6]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_3.png" type="Texture" id=7]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_0.png" type="Texture" id=8]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_2.png" type="Texture" id=10]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_3.png" type="Texture" id=11]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_4.png" type="Texture" id=12]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_5.png" type="Texture" id=13]
-[ext_resource path="res://src/actors/shadow actors/lookingdirection.gd" type="Script" id=14]
-[ext_resource path="res://src/actors/shadow actors/collider.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=1]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_0.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_3.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_0.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_3.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_4.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_5.png" type="Texture" id=12]
+[ext_resource path="res://src/actors/shadow actors/lookingdirection.gd" type="Script" id=13]
+[ext_resource path="res://src/actors/shadow actors/collider.tscn" type="PackedScene" id=14]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Actor
+
+enum Looking_Direction{
+  left,
+  right
+}
+
+export(Looking_Direction) var looking_direction
+
+signal change_direction(direction)
+
+onready var vision = get_node(\"detectors/vision\")
+onready var sense = get_node(\"detectors/sense\")
+onready var ground = get_node(\"detectors/ground\")
+onready var wall = get_node(\"detectors/wall\")
+
+func play_animation(animation):
+	$character.play(animation)
+
+
+func sprite():
+	return $character
+
+func look_left():
+	$character.flip_h = true
+	emit_signal(\"change_direction\", \"left\")
+	pass
+	
+func look_right():
+	$character.flip_h = false
+	emit_signal(\"change_direction\", \"right\")
+	pass
+
+#func _unhandled_input(event):
+	#if event.is_action_pressed(\"ui_left\"):
+		#look_left()
+	#elif event.is_action_pressed(\"ui_right\"):
+		#look_right()
+	#elif event.is_action_pressed(\"test_button\"):
+		#self.disconnect(\"change_direction\",$detectors,\"_on_Tall_Shadow_change_direction\")
+		
+
+func _ready():
+	if looking_direction == Looking_Direction.left:
+		look_left()
+	elif looking_direction == Looking_Direction.right:
+		look_right()
+	pass
+
+func _physics_process(delta):
+	velocity = move_and_slide(velocity, Vector2.UP)"
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "detect",
 "speed": 9.0
 } ]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Node2D
 
 onready var vision = get_node(\"vision\")
@@ -62,7 +114,7 @@ func _on_Tall_Shadow_change_direction(direction):
 
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 script/source = "extends RayCast2D
 
 onready var player = get_node(\"../../../player\")
@@ -74,77 +126,76 @@ func left(): rotation_degrees = 180
 
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=5]
 script/source = "extends RayCast2D
 
 
 func right(): rotation_degrees = 0
 func left(): rotation_degrees = 180"
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=6]
 script/source = "extends RayCast2D
 
 func right(): position.x = 7
 func left(): position.x = -7"
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=7]
 script/source = "extends RayCast2D
 
 func right(): cast_to.x = 10
 func left(): cast_to.x = -10"
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 129.024
 
 [node name="Flying Shadow" type="KinematicBody2D"]
 position = Vector2( 0.174824, 0 )
 collision_layer = 2
 collision_mask = 5
-script = ExtResource( 1 )
-looking_direction = 1
+script = SubResource( 1 )
 
 [node name="character" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "idle"
 playing = true
 offset = Vector2( 0, -8 )
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
-[node name="collider" parent="." instance=ExtResource( 15 )]
+[node name="collider" parent="." instance=ExtResource( 14 )]
 position = Vector2( -0.0247879, -7.10397 )
 
 [node name="detectors" type="Node2D" parent="."]
-script = SubResource( 2 )
+script = SubResource( 3 )
 
 [node name="vision" type="RayCast2D" parent="detectors"]
 position = Vector2( 0, -11 )
 enabled = true
 cast_to = Vector2( 125, 0 )
 collision_mask = 5
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="sense" type="RayCast2D" parent="detectors"]
 position = Vector2( 0, -11 )
 enabled = true
 cast_to = Vector2( -55, 0 )
-script = SubResource( 4 )
+script = SubResource( 5 )
 
 [node name="ground" type="RayCast2D" parent="detectors"]
 position = Vector2( 7, -1 )
 enabled = true
 cast_to = Vector2( 0, 11 )
 collision_mask = 4
-script = SubResource( 5 )
+script = SubResource( 6 )
 
 [node name="wall" type="RayCast2D" parent="detectors"]
 position = Vector2( 0, -7 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 collision_mask = 4
-script = SubResource( 6 )
+script = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.500694, -7.76068 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
