@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+onready var vision = get_node(\"vision\")
+onready var ground = get_node(\"ground\")
+onready var wall = get_node(\"wall\")
+onready var sense = get_node(\"sense\")
+
+
+
+func _ready():
+	get_parent().connect(\"change_direction\",self,\"_on_Tall_Shadow_change_direction\")
+
+
+func _on_Tall_Shadow_change_direction(direction):
+	if direction == \"left\":
+		vision.left()
+		ground.left()
+		wall.left()
+		sense.left()
+	else:
+		vision.right()
+		ground.right()
+		wall.right()
+		sense.right()
+
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends RayCast2D
+
+onready var player = get_node(\"../../../player\")
+
+func right(): rotation_degrees = 0
+func left(): rotation_degrees = 180
+	
+
+
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends RayCast2D
+
+
+func right(): rotation_degrees = 0
+func left(): rotation_degrees = 180"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends RayCast2D
+
+func right(): position.x = 7
+func left(): position.x = -7"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends RayCast2D
+
+func right(): cast_to.x = 10
+func left(): cast_to.x = -10"
+
+[node name="detectors" type="Node2D"]
+editor/display_folded = true
+script = SubResource( 2 )
+
+[node name="vision" type="RayCast2D" parent="."]
+position = Vector2( 0, -11 )
+enabled = true
+cast_to = Vector2( 125, 0 )
+collision_mask = 5
+script = SubResource( 3 )
+
+[node name="sense" type="RayCast2D" parent="."]
+position = Vector2( 0, -11 )
+enabled = true
+cast_to = Vector2( -55, 0 )
+script = SubResource( 4 )
+
+[node name="ground" type="RayCast2D" parent="."]
+position = Vector2( 7, -1 )
+enabled = true
+cast_to = Vector2( 0, 11 )
+collision_mask = 4
+script = SubResource( 5 )
+
+[node name="wall" type="RayCast2D" parent="."]
+position = Vector2( 0, -7 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 4
+script = SubResource( 6 )

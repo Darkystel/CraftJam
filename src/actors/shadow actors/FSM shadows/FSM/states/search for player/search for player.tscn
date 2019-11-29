@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.gd" type="Script" id=1]
+
+[node name="search for player" type="Node"]
+script = ExtResource( 1 )

@@ -122,7 +122,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "notes_tab", "todo" )
+enabled=PoolStringArray( "net.kivano.fsm", "notes_tab", "todo" )
 
 [input]
 
