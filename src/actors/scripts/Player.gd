@@ -2,12 +2,21 @@ extends Actor
 class_name Player
 
 export(Resource) var inventory
+export(bool) var process = true setget set_player_process, get_player_process
+func set_player_process(value: bool):
+	set_physics_process(value)
+	process = value
+func get_player_process() -> bool: return process
 
 onready var equipments = $equipments
 
 func _ready(): 
 	assert(inventory != null)
 	inventory.initialize_recipes()
+	set_physics_process(process)
+
+func set_light_energy(value: float):
+	$light.energy = value
 
 func _unhandled_input(event):
 	if event.is_action_pressed("test_button"):

@@ -1,14 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/worlds/scripts/level_manager.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/dialogue_overlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesets/New Tiles Set.png" type="Texture" id=3]
 [ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=4]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/actors/npc.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=8]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/Tall ShadowFSM.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "New Tiles Set.png 0"
@@ -504,6 +500,7 @@ visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="overlay" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="dialogue_overlay" parent="overlay" instance=ExtResource( 2 )]
 
@@ -513,7 +510,7 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -262149, 536870918, 0, -262148, 536870921, 0, -262147, 6, 0, -262146, 536870920, 0, -262145, 536870920, 0, -327680, 536870920, 0, -327679, 536870920, 0, -327678, 536870920, 0, -327677, 536870920, 0, -327676, 536870920, 0, -327675, 536870920, 0, -327674, 536870918, 0, -327673, 7, 0, -327672, 8, 0, -196613, 536870921, 0, -196612, 536870921, 0, -196610, 536870921, 0, -196609, 536870921, 0, -262144, 536870921, 0, -262143, 536870921, 0, -262142, 536870921, 0, -262141, 536870921, 0, -262140, 536870921, 0, -262139, 536870921, 0, -262138, 536870921, 0, -262137, 536870921, 0, -262136, 9, 0, -262135, 9, 0, -262134, 8, 0, -131077, 536870921, 0, -131074, 536870921, 0, -131073, 536870921, 0, -196608, 536870921, 0, -196607, 536870921, 0, -196606, 536870921, 0, -196605, 536870921, 0, -196604, 536870921, 0, -196603, 9, 0, -196602, 9, 0, -196601, 9, 0, -196600, 9, 0, -196599, 9, 0, -196598, 9, 0, -196597, 8, 0, -65538, 536870921, 0, -65537, 536870921, 0, -131072, 536870921, 0, -131071, 536870921, 0, -131070, 536870921, 0, -131069, 536870921, 0, -131068, 536870921, 0, -131067, 9, 0, -131066, 9, 0, -131065, 9, 0, -131064, 9, 0, -131063, 9, 0, -131062, 9, 0, -131061, 9, 0, -131060, 8, 0, -2, 536870921, 0, -1, 536870921, 0, -65536, 536870921, 0, -65535, 536870921, 0, -65534, 536870921, 0, -65533, 536870921, 0, -65532, 536870921, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 0, -65525, 9, 0, -65524, 9, 0, -65523, 6, 0, -65522, 8, 0, 65534, 536870921, 0, 65535, 536870921, 0, 0, 536870921, 0, 1, 536870921, 0, 2, 536870921, 0, 3, 536870921, 0, 4, 536870921, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 13, 9, 0, 14, 9, 0, 15, 9, 0, 26, 0, 0, 131070, 536870921, 0, 131071, 536870921, 0, 65536, 536870921, 0, 65537, 536870921, 0, 65538, 536870921, 0, 65539, 536870921, 0, 65540, 536870921, 0, 65544, 9, 0, 65545, 9, 0, 65546, 9, 0, 65547, 9, 0, 65548, 9, 0, 65549, 9, 0, 65550, 9, 0, 65551, 9, 0, 131085, 9, 0, 131086, 9, 0, 131087, 9, 0, 536870942, 0, 0 )
+tile_data = PoolIntArray( 26, 0, 0, 536870942, 0, 0 )
 
 [node name="background" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -521,41 +518,14 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -131074, 536870939, 0, -2, 536870942, 0, 131070, 24, 0, 65539, 26, 0, 65540, 27, 0 )
 
 [node name="ground" type="TileMap" parent="."]
+z_index = 11
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( -196612, 0, 0, -196611, 0, 2, -131077, 0, 0, -131076, 0, 131077, -131075, 0, 65539, -196603, 0, 0, -196602, 0, 131076, -196601, 0, 2, -65541, 0, 65541, -65540, 0, 65537, -65539, 0, 262144, -65538, 0, 327684, -65537, 0, 393219, -131067, 0, 65536, -131066, 0, 65537, -131065, 0, 65539, -5, 0, 65541, -4, 0, 65537, -3, 0, 65539, -65531, 0, 65536, -65530, 0, 65537, -65529, 0, 65538, 65531, 0, 65536, 65532, 0, 65537, 65533, 0, 65539, 2, 0, 327680, 3, 0, 327684, 4, 0, 196612, 5, 0, 196609, 6, 0, 65537, 7, 0, 131075, 8, 0, 2, 131067, 0, 65541, 131068, 0, 65537, 131069, 0, 65539, 65541, 0, 65541, 65542, 0, 65537, 65543, 0, 65537, 65544, 0, 131075, 65545, 0, 131076, 65546, 0, 1, 65547, 0, 2, 196603, 0, 131072, 196604, 0, 4, 196605, 0, 393220, 196606, 0, 196612, 196607, 0, 196612, 131072, 0, 196612, 131073, 0, 327684, 131074, 0, 327684, 131075, 0, 196612, 131076, 0, 327684, 131077, 0, 393216, 131078, 0, 131073, 131079, 0, 4, 131080, 0, 4, 131081, 0, 131073, 131082, 0, 4, 131083, 0, 393220, 131084, 0, 327684, 131085, 0, 196612, 131086, 0, 196612, 131087, 0, 393219 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 z_index = 10
-
-[node name="npc" parent="." instance=ExtResource( 6 )]
-position = Vector2( 64, 32 )
-dialogue = {
-"after_item_dialogue": {
-"dialogue_list": [  ]
-},
-"exhausted_dialogue": {
-"dialogue_list": null
-},
-"item_fail_dialogue": {
-"dialogue_list": null
-},
-"start_dialogue": {
-"dialogue_list": [ null ],
-"item_to_give": null
-}
-}
-
-[node name="pickable" parent="." instance=ExtResource( 7 )]
-position = Vector2( -32, 32 )
-item = ExtResource( 8 )
-
-[node name="Floor Shadow" parent="." instance=ExtResource( 9 )]
-position = Vector2( 63, -4 )
-movement_speed = 35.0

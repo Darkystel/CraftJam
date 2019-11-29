@@ -105,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CraftJam"
-run/main_scene="res://src/worlds/level_template.tscn"
+run/main_scene="res://src/worlds/altar.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]

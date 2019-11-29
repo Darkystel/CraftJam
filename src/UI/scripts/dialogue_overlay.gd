@@ -11,6 +11,8 @@ var dialogue_displayed := false
 onready var dialogue_RLT = $Panel2/dialogue
 #######################################
 
+signal dialogue_finished
+
 func _ready():
 	$Timer.wait_time = 1/speed
 
@@ -45,4 +47,5 @@ func _unhandled_input(event):
 			$AnimationPlayer.play("go_down")
 			dialogue_RLT.clear()
 			dialogue_displayed = false
+			emit_signal("dialogue_finished")
 
