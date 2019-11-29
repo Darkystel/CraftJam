@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://src/actors/shadow actors/Shadow_BT.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=2]
@@ -20,24 +20,25 @@
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/fall/fall.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/idle/idle.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/detect animation/detect animation.tscn" type="PackedScene" id=20]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/follow player/follow player.tscn" type="PackedScene" id=21]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.tscn" type="PackedScene" id=22]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/turn around/turn around.tscn" type="PackedScene" id=23]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/in air/in air.tscn" type="PackedScene" id=24]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/detect/detect.tscn" type="PackedScene" id=25]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/animation done/animation done.tscn" type="PackedScene" id=26]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player undetected/player undetected.tscn" type="PackedScene" id=27]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground/noground.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/lost player/lost player.tscn" type="PackedScene" id=29]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground2/noground2.tscn" type="PackedScene" id=30]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.tscn" type="PackedScene" id=31]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.tscn" type="PackedScene" id=32]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.tscn" type="PackedScene" id=33]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.tscn" type="PackedScene" id=34]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.tscn" type="PackedScene" id=35]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/idle no ground/idle no ground.tscn" type="PackedScene" id=36]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.tscn" type="PackedScene" id=37]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.gd" type="Script" id=38]
+[ext_resource path="res://assets/sound_effects/DetectedMixed.wav" type="AudioStream" id=21]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/follow player/follow player.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/turn around/turn around.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/in air/in air.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/detect/detect.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/animation done/animation done.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player undetected/player undetected.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground/noground.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/lost player/lost player.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground2/noground2.tscn" type="PackedScene" id=31]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.tscn" type="PackedScene" id=33]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.tscn" type="PackedScene" id=34]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.tscn" type="PackedScene" id=36]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/idle no ground/idle no ground.tscn" type="PackedScene" id=37]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.tscn" type="PackedScene" id=38]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.gd" type="Script" id=39]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -140,6 +141,7 @@ script = ExtResource( 14 )
 position = Vector2( -0.0247879, -7.10397 )
 
 [node name="detectors" type="Node2D" parent="."]
+editor/display_folded = true
 script = SubResource( 2 )
 
 [node name="vision" type="RayCast2D" parent="detectors"]
@@ -245,66 +247,71 @@ GraphData = {
 
 [node name="detect animation" parent="FSM2D/States" instance=ExtResource( 20 )]
 
-[node name="follow player" parent="FSM2D/States" instance=ExtResource( 21 )]
+[node name="sound" type="AudioStreamPlayer2D" parent="FSM2D/States/detect animation"]
+position = Vector2( 0.174824, 0 )
+stream = ExtResource( 21 )
+attenuation = 5.65685
 
-[node name="search for player" parent="FSM2D/States" instance=ExtResource( 22 )]
+[node name="follow player" parent="FSM2D/States" instance=ExtResource( 22 )]
 
-[node name="turn around" parent="FSM2D/States" instance=ExtResource( 23 )]
+[node name="search for player" parent="FSM2D/States" instance=ExtResource( 23 )]
+
+[node name="turn around" parent="FSM2D/States" instance=ExtResource( 24 )]
 
 [node name="Transitions" type="Node2D" parent="FSM2D"]
 
-[node name="in air" parent="FSM2D/Transitions" instance=ExtResource( 24 )]
+[node name="in air" parent="FSM2D/Transitions" instance=ExtResource( 25 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/fall")
 
-[node name="detect" parent="FSM2D/Transitions" instance=ExtResource( 25 )]
+[node name="detect" parent="FSM2D/Transitions" instance=ExtResource( 26 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/detect animation")
 
-[node name="animation done" parent="FSM2D/Transitions" instance=ExtResource( 26 )]
+[node name="animation done" parent="FSM2D/Transitions" instance=ExtResource( 27 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/detect animation") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player undetected" parent="FSM2D/Transitions" instance=ExtResource( 27 )]
+[node name="player undetected" parent="FSM2D/Transitions" instance=ExtResource( 28 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/detect animation") ]
 path2TargetState = NodePath("../../States/search for player")
 
-[node name="noground" parent="FSM2D/Transitions" instance=ExtResource( 28 )]
+[node name="noground" parent="FSM2D/Transitions" instance=ExtResource( 29 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/follow player") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="lost player" parent="FSM2D/Transitions" instance=ExtResource( 29 )]
+[node name="lost player" parent="FSM2D/Transitions" instance=ExtResource( 30 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/follow player") ]
 path2TargetState = NodePath("../../States/search for player")
 
-[node name="noground2" parent="FSM2D/Transitions" instance=ExtResource( 30 )]
+[node name="noground2" parent="FSM2D/Transitions" instance=ExtResource( 31 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="no player found" parent="FSM2D/Transitions" instance=ExtResource( 31 )]
+[node name="no player found" parent="FSM2D/Transitions" instance=ExtResource( 32 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/turn around") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="player found" parent="FSM2D/Transitions" instance=ExtResource( 32 )]
+[node name="player found" parent="FSM2D/Transitions" instance=ExtResource( 33 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/turn around") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player caught" parent="FSM2D/Transitions" instance=ExtResource( 33 )]
+[node name="player caught" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player not caught" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
+[node name="player not caught" parent="FSM2D/Transitions" instance=ExtResource( 35 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="obstacle" parent="FSM2D/Transitions" instance=ExtResource( 35 )]
+[node name="obstacle" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
 
-[node name="idle no ground" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
+[node name="idle no ground" parent="FSM2D/Transitions" instance=ExtResource( 37 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="on floor" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 37 )]
-script = ExtResource( 38 )
+[node name="on floor" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 38 )]
+script = ExtResource( 39 )
 path2SourceStates = [ NodePath(""), NodePath("../../States/fall") ]
 path2TargetState = NodePath("../../States/idle")
 [connection signal="animation_finished" from="character" to="FSM2D/Transitions/animation done" method="_on_character_animation_finished"]
