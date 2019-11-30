@@ -1,14 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/worlds/scripts/level_manager.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/dialogue_overlay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/tilesets/New Tiles Set.png" type="Texture" id=3]
-[ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=4]
-[ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/tilesets/New Tiles Set.png" type="Texture" id=4]
+[ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=5]
+[ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Position2D
+
+export(int) var entrance_id"
 
 [sub_resource type="TileSet" id=1]
 0/name = "New Tiles Set.png 0"
-0/texture = ExtResource( 3 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 80, 64, 48 )
@@ -24,7 +30,7 @@
 0/shapes = [  ]
 0/z_index = 0
 1/name = "New Tiles Set.png 1"
-1/texture = ExtResource( 3 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 80, 16, 16 )
@@ -34,7 +40,7 @@
 1/shapes = [  ]
 1/z_index = 0
 2/name = "New Tiles Set.png 2"
-2/texture = ExtResource( 3 )
+2/texture = ExtResource( 4 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 16, 80, 16, 16 )
@@ -44,7 +50,7 @@
 2/shapes = [  ]
 2/z_index = 0
 3/name = "New Tiles Set.png 3"
-3/texture = ExtResource( 3 )
+3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 32, 80, 16, 16 )
@@ -54,7 +60,7 @@
 3/shapes = [  ]
 3/z_index = 0
 4/name = "New Tiles Set.png 4"
-4/texture = ExtResource( 3 )
+4/texture = ExtResource( 4 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 16, 96, 16, 16 )
@@ -64,7 +70,7 @@
 4/shapes = [  ]
 4/z_index = 0
 5/name = "New Tiles Set.png 5"
-5/texture = ExtResource( 3 )
+5/texture = ExtResource( 4 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 96, 16, 16 )
@@ -74,7 +80,7 @@
 5/shapes = [  ]
 5/z_index = 0
 6/name = "New Tiles Set.png 6"
-6/texture = ExtResource( 3 )
+6/texture = ExtResource( 4 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 32, 112, 16, 16 )
@@ -84,7 +90,7 @@
 6/shapes = [  ]
 6/z_index = 0
 7/name = "New Tiles Set.png 7"
-7/texture = ExtResource( 3 )
+7/texture = ExtResource( 4 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 32, 112, 16, 16 )
@@ -94,7 +100,7 @@
 7/shapes = [  ]
 7/z_index = 0
 8/name = "New Tiles Set.png 8"
-8/texture = ExtResource( 3 )
+8/texture = ExtResource( 4 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 48, 112, 16, 16 )
@@ -104,7 +110,7 @@
 8/shapes = [  ]
 8/z_index = 0
 9/name = "New Tiles Set.png 9"
-9/texture = ExtResource( 3 )
+9/texture = ExtResource( 4 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 16, 112, 16, 16 )
@@ -114,7 +120,7 @@
 9/shapes = [  ]
 9/z_index = 0
 10/name = "New Tiles Set.png 10"
-10/texture = ExtResource( 3 )
+10/texture = ExtResource( 4 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 112, 16, 16 )
@@ -124,7 +130,7 @@
 10/shapes = [  ]
 10/z_index = 0
 11/name = "New Tiles Set.png 11"
-11/texture = ExtResource( 3 )
+11/texture = ExtResource( 4 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 208, 0, 48, 64 )
@@ -140,7 +146,7 @@
 11/shapes = [  ]
 11/z_index = 0
 12/name = "New Tiles Set.png 12"
-12/texture = ExtResource( 3 )
+12/texture = ExtResource( 4 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 208, 0, 16, 16 )
@@ -150,7 +156,7 @@
 12/shapes = [  ]
 12/z_index = 0
 13/name = "New Tiles Set.png 13"
-13/texture = ExtResource( 3 )
+13/texture = ExtResource( 4 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 208, 16, 16, 16 )
@@ -160,7 +166,7 @@
 13/shapes = [  ]
 13/z_index = 0
 14/name = "New Tiles Set.png 14"
-14/texture = ExtResource( 3 )
+14/texture = ExtResource( 4 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 208, 32, 16, 16 )
@@ -170,7 +176,7 @@
 14/shapes = [  ]
 14/z_index = 0
 15/name = "New Tiles Set.png 15"
-15/texture = ExtResource( 3 )
+15/texture = ExtResource( 4 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 208, 48, 16, 16 )
@@ -180,7 +186,7 @@
 15/shapes = [  ]
 15/z_index = 0
 16/name = "New Tiles Set.png 16"
-16/texture = ExtResource( 3 )
+16/texture = ExtResource( 4 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 224, 48, 16, 16 )
@@ -190,7 +196,7 @@
 16/shapes = [  ]
 16/z_index = 0
 17/name = "New Tiles Set.png 17"
-17/texture = ExtResource( 3 )
+17/texture = ExtResource( 4 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 416, 64, 16, 16 )
@@ -200,7 +206,7 @@
 17/shapes = [  ]
 17/z_index = 0
 18/name = "New Tiles Set.png 18"
-18/texture = ExtResource( 3 )
+18/texture = ExtResource( 4 )
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 240, 32, 16, 16 )
@@ -210,7 +216,7 @@
 18/shapes = [  ]
 18/z_index = 0
 19/name = "New Tiles Set.png 19"
-19/texture = ExtResource( 3 )
+19/texture = ExtResource( 4 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 240, 16, 16, 16 )
@@ -220,7 +226,7 @@
 19/shapes = [  ]
 19/z_index = 0
 20/name = "New Tiles Set.png 20"
-20/texture = ExtResource( 3 )
+20/texture = ExtResource( 4 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 240, 0, 16, 16 )
@@ -230,7 +236,7 @@
 20/shapes = [  ]
 20/z_index = 0
 21/name = "New Tiles Set.png 21"
-21/texture = ExtResource( 3 )
+21/texture = ExtResource( 4 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( 224, 0, 16, 16 )
@@ -240,7 +246,7 @@
 21/shapes = [  ]
 21/z_index = 0
 22/name = "New Tiles Set.png 22"
-22/texture = ExtResource( 3 )
+22/texture = ExtResource( 4 )
 22/tex_offset = Vector2( 0, 0 )
 22/modulate = Color( 1, 1, 1, 1 )
 22/region = Rect2( 432, 48, 16, 16 )
@@ -256,7 +262,7 @@
 22/shapes = [  ]
 22/z_index = 0
 23/name = "New Tiles Set.png 23"
-23/texture = ExtResource( 3 )
+23/texture = ExtResource( 4 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
 23/region = Rect2( 384, 48, 16, 16 )
@@ -266,7 +272,7 @@
 23/shapes = [  ]
 23/z_index = 0
 24/name = "New Tiles Set.png 24"
-24/texture = ExtResource( 3 )
+24/texture = ExtResource( 4 )
 24/tex_offset = Vector2( 0, 0 )
 24/modulate = Color( 1, 1, 1, 1 )
 24/region = Rect2( 384, 64, 16, 16 )
@@ -276,7 +282,7 @@
 24/shapes = [  ]
 24/z_index = 0
 25/name = "New Tiles Set.png 25"
-25/texture = ExtResource( 3 )
+25/texture = ExtResource( 4 )
 25/tex_offset = Vector2( 0, 0 )
 25/modulate = Color( 1, 1, 1, 1 )
 25/region = Rect2( 384, 80, 16, 16 )
@@ -286,7 +292,7 @@
 25/shapes = [  ]
 25/z_index = 0
 26/name = "New Tiles Set.png 26"
-26/texture = ExtResource( 3 )
+26/texture = ExtResource( 4 )
 26/tex_offset = Vector2( 0, 0 )
 26/modulate = Color( 1, 1, 1, 1 )
 26/region = Rect2( 400, 80, 16, 16 )
@@ -296,7 +302,7 @@
 26/shapes = [  ]
 26/z_index = 0
 27/name = "New Tiles Set.png 27"
-27/texture = ExtResource( 3 )
+27/texture = ExtResource( 4 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
 27/region = Rect2( 416, 80, 16, 16 )
@@ -306,7 +312,7 @@
 27/shapes = [  ]
 27/z_index = 0
 28/name = "New Tiles Set.png 28"
-28/texture = ExtResource( 3 )
+28/texture = ExtResource( 4 )
 28/tex_offset = Vector2( 0, 0 )
 28/modulate = Color( 1, 1, 1, 1 )
 28/region = Rect2( 432, 80, 16, 16 )
@@ -316,7 +322,7 @@
 28/shapes = [  ]
 28/z_index = 0
 29/name = "New Tiles Set.png 29"
-29/texture = ExtResource( 3 )
+29/texture = ExtResource( 4 )
 29/tex_offset = Vector2( 0, 0 )
 29/modulate = Color( 1, 1, 1, 1 )
 29/region = Rect2( 432, 64, 16, 16 )
@@ -326,7 +332,7 @@
 29/shapes = [  ]
 29/z_index = 0
 30/name = "New Tiles Set.png 30"
-30/texture = ExtResource( 3 )
+30/texture = ExtResource( 4 )
 30/tex_offset = Vector2( 0, 0 )
 30/modulate = Color( 1, 1, 1, 1 )
 30/region = Rect2( 432, 48, 16, 16 )
@@ -336,7 +342,7 @@
 30/shapes = [  ]
 30/z_index = 0
 31/name = "New Tiles Set.png 31"
-31/texture = ExtResource( 3 )
+31/texture = ExtResource( 4 )
 31/tex_offset = Vector2( 0, 0 )
 31/modulate = Color( 1, 1, 1, 1 )
 31/region = Rect2( 416, 48, 16, 16 )
@@ -346,7 +352,7 @@
 31/shapes = [  ]
 31/z_index = 0
 32/name = "New Tiles Set.png 32"
-32/texture = ExtResource( 3 )
+32/texture = ExtResource( 4 )
 32/tex_offset = Vector2( 0, 0 )
 32/modulate = Color( 1, 1, 1, 1 )
 32/region = Rect2( 400, 48, 16, 16 )
@@ -356,7 +362,7 @@
 32/shapes = [  ]
 32/z_index = 0
 33/name = "New Tiles Set.png 33"
-33/texture = ExtResource( 3 )
+33/texture = ExtResource( 4 )
 33/tex_offset = Vector2( 0, 0 )
 33/modulate = Color( 1, 1, 1, 1 )
 33/region = Rect2( 384, 208, 96, 48 )
@@ -372,7 +378,7 @@
 33/shapes = [  ]
 33/z_index = 0
 34/name = "New Tiles Set.png 34"
-34/texture = ExtResource( 3 )
+34/texture = ExtResource( 4 )
 34/tex_offset = Vector2( 0, 0 )
 34/modulate = Color( 1, 1, 1, 1 )
 34/region = Rect2( 384, 208, 16, 16 )
@@ -382,7 +388,7 @@
 34/shapes = [  ]
 34/z_index = 0
 35/name = "New Tiles Set.png 35"
-35/texture = ExtResource( 3 )
+35/texture = ExtResource( 4 )
 35/tex_offset = Vector2( 0, 0 )
 35/modulate = Color( 1, 1, 1, 1 )
 35/region = Rect2( 400, 208, 16, 16 )
@@ -392,7 +398,7 @@
 35/shapes = [  ]
 35/z_index = 0
 36/name = "New Tiles Set.png 36"
-36/texture = ExtResource( 3 )
+36/texture = ExtResource( 4 )
 36/tex_offset = Vector2( 0, 0 )
 36/modulate = Color( 1, 1, 1, 1 )
 36/region = Rect2( 416, 208, 16, 16 )
@@ -402,7 +408,7 @@
 36/shapes = [  ]
 36/z_index = 0
 37/name = "New Tiles Set.png 37"
-37/texture = ExtResource( 3 )
+37/texture = ExtResource( 4 )
 37/tex_offset = Vector2( 0, 0 )
 37/modulate = Color( 1, 1, 1, 1 )
 37/region = Rect2( 432, 208, 16, 16 )
@@ -412,7 +418,7 @@
 37/shapes = [  ]
 37/z_index = 0
 38/name = "New Tiles Set.png 38"
-38/texture = ExtResource( 3 )
+38/texture = ExtResource( 4 )
 38/tex_offset = Vector2( 0, 0 )
 38/modulate = Color( 1, 1, 1, 1 )
 38/region = Rect2( 432, 224, 16, 16 )
@@ -422,7 +428,7 @@
 38/shapes = [  ]
 38/z_index = 0
 39/name = "New Tiles Set.png 39"
-39/texture = ExtResource( 3 )
+39/texture = ExtResource( 4 )
 39/tex_offset = Vector2( 0, 0 )
 39/modulate = Color( 1, 1, 1, 1 )
 39/region = Rect2( 464, 240, 16, 16 )
@@ -432,7 +438,7 @@
 39/shapes = [  ]
 39/z_index = 0
 40/name = "New Tiles Set.png 40"
-40/texture = ExtResource( 3 )
+40/texture = ExtResource( 4 )
 40/tex_offset = Vector2( 0, 0 )
 40/modulate = Color( 1, 1, 1, 1 )
 40/region = Rect2( 448, 240, 16, 16 )
@@ -442,7 +448,7 @@
 40/shapes = [  ]
 40/z_index = 0
 41/name = "New Tiles Set.png 41"
-41/texture = ExtResource( 3 )
+41/texture = ExtResource( 4 )
 41/tex_offset = Vector2( 0, 0 )
 41/modulate = Color( 1, 1, 1, 1 )
 41/region = Rect2( 432, 240, 16, 16 )
@@ -452,7 +458,7 @@
 41/shapes = [  ]
 41/z_index = 0
 42/name = "New Tiles Set.png 42"
-42/texture = ExtResource( 3 )
+42/texture = ExtResource( 4 )
 42/tex_offset = Vector2( 0, 0 )
 42/modulate = Color( 1, 1, 1, 1 )
 42/region = Rect2( 416, 240, 16, 16 )
@@ -462,7 +468,7 @@
 42/shapes = [  ]
 42/z_index = 0
 43/name = "New Tiles Set.png 43"
-43/texture = ExtResource( 3 )
+43/texture = ExtResource( 4 )
 43/tex_offset = Vector2( 0, 0 )
 43/modulate = Color( 1, 1, 1, 1 )
 43/region = Rect2( 400, 240, 16, 16 )
@@ -472,7 +478,7 @@
 43/shapes = [  ]
 43/z_index = 0
 44/name = "New Tiles Set.png 44"
-44/texture = ExtResource( 3 )
+44/texture = ExtResource( 4 )
 44/tex_offset = Vector2( 0, 0 )
 44/modulate = Color( 1, 1, 1, 1 )
 44/region = Rect2( 384, 240, 16, 16 )
@@ -482,7 +488,7 @@
 44/shapes = [  ]
 44/z_index = 0
 45/name = "New Tiles Set.png 45"
-45/texture = ExtResource( 3 )
+45/texture = ExtResource( 4 )
 45/tex_offset = Vector2( 0, 0 )
 45/modulate = Color( 1, 1, 1, 1 )
 45/region = Rect2( 384, 224, 16, 16 )
@@ -505,6 +511,7 @@ editor/display_folded = true
 [node name="dialogue_overlay" parent="overlay" instance=ExtResource( 2 )]
 
 [node name="limiters" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="limit_right" type="Position2D" parent="limiters"]
 position = Vector2( 168, -112 )
@@ -513,6 +520,20 @@ scale = Vector2( 5, 5 )
 [node name="limit_left" type="Position2D" parent="limiters"]
 position = Vector2( -144, -112 )
 scale = Vector2( 5, 5 )
+
+[node name="entrances" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="entrance_a" type="Position2D" parent="entrances"]
+modulate = Color( 0, 1, 0.0862745, 1 )
+position = Vector2( 0, -176 )
+scale = Vector2( 3, 3 )
+script = SubResource( 2 )
+
+[node name="departures" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="depart" parent="departures" instance=ExtResource( 3 )]
 
 [node name="background2" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -531,11 +552,11 @@ format = 1
 
 [node name="ground" type="TileMap" parent="."]
 z_index = 11
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 3
 format = 1
 
-[node name="player" parent="." instance=ExtResource( 5 )]
+[node name="player" parent="." instance=ExtResource( 6 )]
 z_index = 10

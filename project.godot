@@ -105,12 +105,14 @@ _global_script_class_icons={
 [application]
 
 config/name="CraftJam"
-run/main_scene="res://src/worlds/altar.tscn"
+run/main_scene="res://src/UI/main_screen_ui/main_screen.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]
 
 Global="*res://src/autoloads/Global.gd"
+MapHandler="*res://src/autoloads/MapHandler.gd"
+Loader="*res://src/autoloads/Loader.gd"
 
 [debug]
 

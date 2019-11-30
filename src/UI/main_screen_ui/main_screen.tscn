@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+var screens = {
+	\"main_menu\": preload(\"res://src/UI/main_screen_ui/main_menu.tscn\")
+}
+var screen_stack = []
+
+func _ready():
+	push_screen(\"main_menu\")
+
+func push_screen(screen: String):
+	var instance = screens[screen].instance()
+	add_child(instance)
+	screen_stack.push_back(instance)
+func pop_screen():
+	remove_child(screen_stack.back())
+	screen_stack.pop_back()"
+
+[node name="main_screen" type="CanvasLayer"]
+script = SubResource( 1 )

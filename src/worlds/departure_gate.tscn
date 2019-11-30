@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+export(String) var map
+export(int) var entrance_id
+
+signal player_exited_map(next_map, entrance_id)
+
+func _on_depart_body_entered(body):
+	if body.is_in_group('player'):
+		emit_signal(\"player_exited_map\", map, entrance_id)
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 24 )
+
+[node name="depart" type="Area2D"]
+editor/display_folded = true
+position = Vector2( 128, -216 )
+script = SubResource( 1 )
+
+[node name="area" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_depart_body_entered"]
