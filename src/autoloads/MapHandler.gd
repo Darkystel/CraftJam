@@ -16,6 +16,7 @@ onready var VISITED_MAPS: Dictionary = {}
 
 func start_new_game():
 	spawn = true
+	player = load('res://src/actors/player.tscn').instance()
 	load_map("The Altar") 
 
 func go_to_map(map: String, entrance: int):

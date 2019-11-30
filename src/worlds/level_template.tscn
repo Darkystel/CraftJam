@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/worlds/scripts/level_manager.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/dialogue_overlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesets/New Tiles Set.png" type="Texture" id=3]
 [ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=4]
-[ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=2]
 0/name = "New Tiles Set.png 0"
@@ -541,6 +540,3 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 3
 format = 1
-
-[node name="player" parent="." instance=ExtResource( 5 )]
-z_index = 10

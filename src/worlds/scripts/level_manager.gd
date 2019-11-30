@@ -11,18 +11,20 @@ func _ready():
 		$dark_environment.visible = false
 		if MapHandler.spawn:
 			spawn_player()
-			MapHandler.spawn = false
 	else:
 		$dark_environment.visible = false
 	for departure in $departures.get_children():
 		departure.connect("player_exited_map", self, "player_exited_map")
 
-	if MapHandler.player != null:
+	if MapHandler.player != null and not MapHandler.spawn:
 		put_player(MapHandler.player, MapHandler.entrance_id)
 	set_limiters()
+	if MapHandler.spawn:
+		MapHandler.spawn = false
 	pass
 
 func spawn_player():
+	add_child(MapHandler.player)
 	$animation_controller.play("spawn")
 
 func put_player(player: Player, entrance_id: int):
