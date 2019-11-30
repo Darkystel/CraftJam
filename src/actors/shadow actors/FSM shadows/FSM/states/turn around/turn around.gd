@@ -32,17 +32,14 @@ func stateInit(inParam1=null,inParam2=null,inParam3=null,inParam4=null, inParam5
 func enter(fromStateID=null, fromTransitionID=null, inArg0=null,inArg1=null, inArg2=null):
 
 	print('turn around state')
-	if getLogicRoot().position.y > getLogicRoot().environment.get_player().position.y:
-		getLogicRoot().vision.look_at(Vector2(getLogicRoot().environment.get_player().position.x,getLogicRoot().environment.get_player().position.y-8))
-		turn_around()
-	else:
-		getLogicRoot().velocity.x = 0
-		var timer = Timer.new()
-		timer.connect("timeout",self,"turn_around")
-		timer.set_wait_time(1)
-		timer.set_one_shot(true)
-		add_child(timer)
-		timer.start()
+	
+	getLogicRoot().velocity.x = 0
+	var timer = Timer.new()
+	timer.connect("timeout",self,"turn_around")
+	timer.set_wait_time(1)
+	timer.set_one_shot(true)
+	add_child(timer)
+	timer.start()
 	pass
 
 #when updating state, paramx can be used only if updating fsm manually

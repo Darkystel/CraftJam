@@ -83,6 +83,11 @@ _global_script_classes=[ {
 "class": "UIFlushInfo",
 "language": "GDScript",
 "path": "res://src/tools/scripts/UIFlushInfo.gd"
+}, {
+"base": "Resource",
+"class": "VisionData",
+"language": "GDScript",
+"path": "res://src/actors/shadow actors/FSM shadows/data_models/VisionData.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
@@ -99,7 +104,8 @@ _global_script_class_icons={
 "Player": "",
 "Recipe": "",
 "UIController": "",
-"UIFlushInfo": ""
+"UIFlushInfo": "",
+"VisionData": ""
 }
 
 [application]

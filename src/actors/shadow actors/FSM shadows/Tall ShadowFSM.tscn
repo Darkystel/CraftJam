@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://src/actors/shadow actors/Shadow_BT.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=2]
@@ -30,14 +30,12 @@
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player undetected/player undetected.tscn" type="PackedScene" id=28]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground/noground.tscn" type="PackedScene" id=29]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/lost player/lost player.tscn" type="PackedScene" id=30]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/noground2/noground2.tscn" type="PackedScene" id=31]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.tscn" type="PackedScene" id=32]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.tscn" type="PackedScene" id=33]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.tscn" type="PackedScene" id=34]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.tscn" type="PackedScene" id=35]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.tscn" type="PackedScene" id=36]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/idle no ground/idle no ground.tscn" type="PackedScene" id=37]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.tscn" type="PackedScene" id=38]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/no player found/no player found.tscn" type="PackedScene" id=31]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player found/player found.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player caught/player caught.tscn" type="PackedScene" id=33]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/player not caught/player not caught.tscn" type="PackedScene" id=34]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/idle no ground/idle no ground.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.tscn" type="PackedScene" id=36]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -141,7 +139,6 @@ script = ExtResource( 14 )
 position = Vector2( -0.0247879, -7.10397 )
 
 [node name="detectors" type="Node2D" parent="."]
-editor/display_folded = true
 script = SubResource( 2 )
 
 [node name="vision" type="RayCast2D" parent="detectors"]
@@ -197,55 +194,57 @@ enableDebug = false
 GraphData = {
 "animation done": Vector2( 700, 521 ),
 "animation done_": Vector2( 700, 521 ),
-"detect": Vector2( 552, 621 ),
-"detect animation": Vector2( 781, 621 ),
-"detect animation_": Vector2( 781, 621 ),
-"detect_": Vector2( 552, 621 ),
-"fall": Vector2( 11, 765 ),
-"fall_": Vector2( 11, 765 ),
+"detect": Vector2( 555, 615 ),
+"detect animation": Vector2( 811, 613 ),
+"detect animation_": Vector2( 811, 613 ),
+"detect_": Vector2( 555, 615 ),
+"fall": Vector2( 107, 770 ),
+"fall_": Vector2( 107, 770 ),
 "follow player": Vector2( 716, 410 ),
 "follow player_": Vector2( 716, 410 ),
-"idle": Vector2( 304, 607 ),
-"idle no ground": Vector2( -20, 512 ),
-"idle no ground_": Vector2( -20, 512 ),
-"idle_": Vector2( 304, 607 ),
-"in air": Vector2( 51, 612 ),
-"in air_": Vector2( 51, 612 ),
+"idle": Vector2( 344, 608 ),
+"idle no ground": Vector2( 74, 458 ),
+"idle no ground_": Vector2( 74, 458 ),
+"idle_": Vector2( 344, 608 ),
+"in air": Vector2( 102, 596 ),
+"in air_": Vector2( 102, 596 ),
 "lost player": Vector2( 906, 408 ),
 "lost player_": Vector2( 906, 408 ),
-"no player found": Vector2( 135, 464 ),
-"no player found_": Vector2( 135, 464 ),
-"noground": Vector2( 469, 255 ),
+"no player found": Vector2( 263, 423 ),
+"no player found_": Vector2( 263, 423 ),
+"noground": Vector2( 564, 242 ),
 "noground2": Vector2( 469, 161 ),
 "noground2_": Vector2( 469, 161 ),
-"noground_": Vector2( 469, 255 ),
-"obstacle": Vector2( 45, 106 ),
-"obstacle_": Vector2( 45, 106 ),
-"on floor": Vector2( 337, 749 ),
+"noground_": Vector2( 564, 242 ),
+"obstacle": Vector2( 261.5, 99 ),
+"obstacle_": Vector2( 262, 99 ),
+"on floor": Vector2( 352, 763 ),
 "on floor2": Vector2( 750, 1162 ),
 "on floor2_": Vector2( 750, 1162 ),
-"on floor_": Vector2( 337, 749 ),
-"player caught": Vector2( 722, 68 ),
-"player caught_": Vector2( 722, 68 ),
+"on floor_": Vector2( 352, 763 ),
+"player caught": Vector2( 903, 162 ),
+"player caught_": Vector2( 903, 162 ),
 "player found": Vector2( 457, 468 ),
 "player found_": Vector2( 457, 468 ),
 "player not caught": Vector2( 905, 848 ),
 "player not caught_": Vector2( 905, 848 ),
-"player undetected": Vector2( 888, 535 ),
-"player undetected_": Vector2( 888, 535 ),
+"player undetected": Vector2( 919, 514 ),
+"player undetected_": Vector2( 919, 514 ),
 "search for player": Vector2( 1164, 405 ),
 "search for player_": Vector2( 1164, 405 ),
-"turn around": Vector2( 160, 244 ),
-"turn around_": Vector2( 160, 244 )
+"turn around": Vector2( 275, 133 ),
+"turn around_": Vector2( 275, 133 )
 }
 
 [node name="States" type="Node2D" parent="FSM2D"]
+editor/display_folded = true
 
 [node name="fall" parent="FSM2D/States" instance=ExtResource( 18 )]
 
 [node name="idle" parent="FSM2D/States" instance=ExtResource( 19 )]
 
 [node name="detect animation" parent="FSM2D/States" instance=ExtResource( 20 )]
+editor/display_folded = true
 
 [node name="sound" type="AudioStreamPlayer2D" parent="FSM2D/States/detect animation"]
 position = Vector2( 0.174824, 0 )
@@ -259,6 +258,7 @@ attenuation = 5.65685
 [node name="turn around" parent="FSM2D/States" instance=ExtResource( 24 )]
 
 [node name="Transitions" type="Node2D" parent="FSM2D"]
+editor/display_folded = true
 
 [node name="in air" parent="FSM2D/Transitions" instance=ExtResource( 25 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
@@ -277,40 +277,34 @@ path2SourceStates = [ NodePath(""), NodePath("../../States/detect animation") ]
 path2TargetState = NodePath("../../States/search for player")
 
 [node name="noground" parent="FSM2D/Transitions" instance=ExtResource( 29 )]
-path2SourceStates = [ NodePath(""), NodePath("../../States/follow player") ]
+path2SourceStates = [ NodePath(""), NodePath("../../States/follow player"), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/turn around")
 
 [node name="lost player" parent="FSM2D/Transitions" instance=ExtResource( 30 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/follow player") ]
 path2TargetState = NodePath("../../States/search for player")
 
-[node name="noground2" parent="FSM2D/Transitions" instance=ExtResource( 31 )]
-path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
-path2TargetState = NodePath("../../States/turn around")
-
-[node name="no player found" parent="FSM2D/Transitions" instance=ExtResource( 32 )]
+[node name="no player found" parent="FSM2D/Transitions" instance=ExtResource( 31 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/turn around") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="player found" parent="FSM2D/Transitions" instance=ExtResource( 33 )]
+[node name="player found" parent="FSM2D/Transitions" instance=ExtResource( 32 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/turn around") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player caught" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
+[node name="player caught" parent="FSM2D/Transitions" instance=ExtResource( 33 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/follow player")
 
-[node name="player not caught" parent="FSM2D/Transitions" instance=ExtResource( 35 )]
+[node name="player not caught" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/search for player") ]
 path2TargetState = NodePath("../../States/idle")
 
-[node name="obstacle" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
-
-[node name="idle no ground" parent="FSM2D/Transitions" instance=ExtResource( 37 )]
+[node name="idle no ground" parent="FSM2D/Transitions" instance=ExtResource( 35 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="on floor" parent="FSM2D/Transitions" instance=ExtResource( 38 )]
+[node name="on floor" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/fall") ]
 path2TargetState = NodePath("../../States/idle")
 [connection signal="animation_finished" from="character" to="FSM2D/Transitions/animation done" method="_on_character_animation_finished"]

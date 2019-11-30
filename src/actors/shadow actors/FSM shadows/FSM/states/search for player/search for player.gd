@@ -34,12 +34,7 @@ func stateInit(inParam1=null,inParam2=null,inParam3=null,inParam4=null, inParam5
 func enter(fromStateID=null, fromTransitionID=null, inArg0=null,inArg1=null, inArg2=null):
 	getLogicRoot().play_animation("idle")
 	last_location_seen = getLogicRoot().environment.get_player().position
-	print(last_location_seen)
-	#vision.rotation_degrees = 0
-	#if last_location_seen.x < getLogicRoot().position.x:
-		#vision.left()
-	
-	
+
 	pass
 
 #when updating state, paramx can be used only if updating fsm manually
@@ -76,8 +71,6 @@ func search():
 			emit_signal("caught")
 		elif getLogicRoot().position.x <= last_location_seen.x-1 or wall.is_colliding():
 			emit_signal("not_caught")
-			
-			
 func update_vision():
 	if last_location_seen.x < getLogicRoot().position.x:
 		vision.rotation_degrees = 180

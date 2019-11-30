@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+#################################
+onready var aggro_area = $aggro_area
+onready var  line_of_sight = $line_of_sight
+#################################
+
+var player: Player = null
+var player_in_sight: bool = false
+var position_of_last_seen: Vector2
+
+func _physics_process(delta):
+	var overlapping_bodies = aggro_area.get_overlapping_bodies()
+	player = null
+	for body in overlapping_bodies:
+		if body.is_in_group(\"player\"):
+			player = body
+	if player != null:
+		line_of_sight.look_at(player.position)
+		if line_of_sight.is_colliding() and line_of_sight.get_collider().is_in_group('player'):
+			player_in_sight = true
+			position_of_last_seen = player.position
+		else:
+			player_in_sight = false
+
+func get_vision_info() -> VisionData:
+	var data = VisionData.new()
+	data.player = player
+	data.player_in_sight = player_in_sight
+	data.position_of_last_seen = position_of_last_seen
+	return data"
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 96.0
+
+[node name="vision_system" type="Node2D"]
+script = SubResource( 2 )
+
+[node name="aggro_area" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 0
+
+[node name="sight" type="CollisionShape2D" parent="aggro_area"]
+modulate = Color( 0.388235, 1, 0.282353, 1 )
+shape = SubResource( 1 )
+
+[node name="line_of_sight" type="RayCast2D" parent="."]
+modulate = Color( 0.733333, 0, 1, 1 )
+enabled = true
+cast_to = Vector2( 96, 0 )
+collision_mask = 5
