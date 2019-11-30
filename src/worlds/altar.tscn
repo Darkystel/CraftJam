@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sound_effects/edited/ambient_sound.ogg" type="AudioStream" id=2]
+[ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sound_effects/edited/ambient_sound.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0.835938, 1, 1, 1, 1, 1, 0 )
@@ -67,10 +69,10 @@ position = Vector2( 664, -208 )
 [node name="limit_left" parent="limiters" index="1"]
 position = Vector2( -688, -208 )
 
-[node name="entrance_a" parent="entrances" index="0"]
-position = Vector2( 640, 0 )
+[node name="entrance" parent="entrances" index="0" instance=ExtResource( 2 )]
+position = Vector2( 632, 0 )
 
-[node name="depart" parent="departures" index="0"]
+[node name="depart" parent="departures" index="0" instance=ExtResource( 3 )]
 position = Vector2( 688, -24 )
 map = "The Outskirts"
 
@@ -86,7 +88,7 @@ process_material = SubResource( 3 )
 anims/spawn = SubResource( 4 )
 
 [node name="ambient" type="AudioStreamPlayer" parent="." index="8"]
-stream = ExtResource( 2 )
+stream = ExtResource( 4 )
 volume_db = -8.0
 pitch_scale = 0.6
 autoplay = true

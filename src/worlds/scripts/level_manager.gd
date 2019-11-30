@@ -25,10 +25,18 @@ func _ready():
 func spawn_player():
 	$animation_controller.play("spawn")
 
-func put_player(player: Player, intrance_id: int):
+func put_player(player: Player, entrance_id: int):
 	remove_child(get_node("player"))
 	add_child(player)
-	player.position = entrances[intrance_id].position
+	player.position = get_entrance(entrance_id).position
+
+func get_entrance(entrance_id: int) -> Position2D:
+	for child in $entrances.get_children():
+		if child is Position2D:
+			if child.entrance_id == entrance_id:
+				return child
+	push_error("Failed to find entrance, number of entrances : " + str($entrances.get_child_count()))
+	return null
 
 func set_limiters():
 	get_player().set_limits(limiters[1].position.x, limiters[0].position.x)
