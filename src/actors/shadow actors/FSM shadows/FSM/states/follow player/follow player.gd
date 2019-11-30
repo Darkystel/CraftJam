@@ -7,7 +7,6 @@ extends "res://addons/net.kivano.fsm/content/FSMState.gd";
 ##################################################################################
 #####  Variables (Constants, Export Variables, Node Vars, Normal variables)  #####
 ######################### var myvar setget myvar_set,myvar_get ###################
-onready var player = get_node("../../../../player")
 onready var vision = get_node("../../../detectors/vision")
 onready var ground = get_node("../../../detectors/ground")
 onready var sense = get_node("../../../detectors/sense")
@@ -28,7 +27,7 @@ func stateInit(inParam1=null,inParam2=null,inParam3=null,inParam4=null, inParam5
 
 #when entering state, usually you will want to reset internal state here somehow
 func enter(fromStateID=null, fromTransitionID=null, inArg0=null,inArg1=null, inArg2=null):
-	print(player.position)
+	print(getLogicRoot().environment.get_player().position)
 	getLogicRoot().play_animation("walk")
 	print(getLogicRoot().environment.get_player().position)
 	pass
@@ -54,7 +53,7 @@ func exit(toState=null):
 #########                         Public Methods                         #########
 ##################################################################################
 func follow():
-	vision.look_at(Vector2(player.position.x,player.position.y-8))
+	vision.look_at(Vector2(getLogicRoot().environment.get_player().position.x,getLogicRoot().environment.get_player().position.y-8))
 	if getLogicRoot().environment.get_player().position.x < getLogicRoot().position.x:
 		wall.left()
 		sense.left()

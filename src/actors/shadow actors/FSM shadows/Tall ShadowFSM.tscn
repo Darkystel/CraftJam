@@ -1,18 +1,18 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/actors/shadow actors/Shadow_BT.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_0.png" type="Texture" id=2]
 [ext_resource path="res://assets/animations/shadow_animation/tall_shadow/idle/idle_Tall Shadow_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_2.png" type="Texture" id=6]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_3.png" type="Texture" id=7]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_0.png" type="Texture" id=8]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_2.png" type="Texture" id=10]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_3.png" type="Texture" id=11]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_4.png" type="Texture" id=12]
-[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_5.png" type="Texture" id=13]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_4.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/detect/detect_Tall Shadow Detect_5.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_1.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_2.png" type="Texture" id=12]
+[ext_resource path="res://assets/animations/shadow_animation/tall_shadow/walk/walk_Tall Shadow walk_3.png" type="Texture" id=13]
 [ext_resource path="res://src/actors/shadow actors/lookingdirection.gd" type="Script" id=14]
 [ext_resource path="res://src/actors/shadow actors/collider.tscn" type="PackedScene" id=15]
 [ext_resource path="res://addons/net.kivano.fsm/content/fsm.gd" type="Script" id=16]
@@ -20,7 +20,7 @@
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/fall/fall.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/idle/idle.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/detect animation/detect animation.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/sound_effects/DetectedMixed.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sound_effects/wav/DetectedFinal.wav" type="AudioStream" id=21]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/follow player/follow player.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/search for player/search for player.tscn" type="PackedScene" id=23]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/states/turn around/turn around.tscn" type="PackedScene" id=24]
@@ -38,7 +38,6 @@
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/obstacle/obstacle.tscn" type="PackedScene" id=36]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/idle no ground/idle no ground.tscn" type="PackedScene" id=37]
 [ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.tscn" type="PackedScene" id=38]
-[ext_resource path="res://src/actors/shadow actors/FSM shadows/FSM/transitions/on floor/on floor.gd" type="Script" id=39]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -47,15 +46,15 @@ animations = [ {
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": false,
 "name": "detect",
 "speed": 9.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
 } ]
 
 [sub_resource type="GDScript" id=2]
@@ -311,8 +310,7 @@ path2TargetState = NodePath("../../States/idle")
 path2SourceStates = [ NodePath(""), NodePath("../../States/idle") ]
 path2TargetState = NodePath("../../States/turn around")
 
-[node name="on floor" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 38 )]
-script = ExtResource( 39 )
+[node name="on floor" parent="FSM2D/Transitions" instance=ExtResource( 38 )]
 path2SourceStates = [ NodePath(""), NodePath("../../States/fall") ]
 path2TargetState = NodePath("../../States/idle")
 [connection signal="animation_finished" from="character" to="FSM2D/Transitions/animation done" method="_on_character_animation_finished"]
