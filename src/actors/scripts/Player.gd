@@ -10,6 +10,8 @@ func get_player_process() -> bool: return process
 
 onready var equipments = $equipments
 
+func force_idle():
+	$character.play("idle")
 
 func _ready(): 
 	assert(inventory != null)
