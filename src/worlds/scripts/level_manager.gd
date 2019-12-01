@@ -7,28 +7,16 @@ onready var entrances = $entrances.get_children()
 onready var limiters = $limiters.get_children()
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
-	if area_name == "The Altar":
-		$dark_environment.visible = false
-		if MapHandler.spawn:
-			spawn_player()
-	else:
-		$dark_environment.visible = false
+	put_player(MapHandler.player, MapHandler.entrance_id)
 	for departure in $departures.get_children():
 		departure.connect("player_exited_map", self, "player_exited_map")
 
-	if MapHandler.player != null and not MapHandler.spawn:
-		put_player(MapHandler.player, MapHandler.entrance_id)
-	set_limiters()
-	pass
-
-func spawn_player():
-	remove_child(get_node("player"))
-	add_child(MapHandler.player)
-
-func put_player(player: Player, entrance_id: int):
+func put_player(player: Player, entrance_id: int = -1):
 	remove_child(get_node("player"))
 	add_child(player)
-	player.position = get_entrance(entrance_id).position
+	player.set_limits(limiters[1].position.x, limiters[0].position.x)
+	if entrance_id >= 0:
+		player.position = get_entrance(entrance_id).position
 
 func get_entrance(entrance_id: int) -> Position2D:
 	for child in $entrances.get_children():
@@ -42,7 +30,6 @@ func set_limiters():
 	get_player().set_limits(limiters[1].position.x, limiters[0].position.x)
 
 func player_exited_map(map: String, entrance_id: int):
-	print(map + ' ' + str(entrance_id))
 	MapHandler.go_to_map(map, entrance_id)
 
 func get_player(remove: bool = false) -> Player:

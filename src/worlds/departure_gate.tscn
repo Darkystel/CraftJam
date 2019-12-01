@@ -17,7 +17,6 @@ func _on_depart_body_entered(body):
 extents = Vector2( 24, 24 )
 
 [node name="depart" type="Area2D"]
-editor/display_folded = true
 position = Vector2( 128, -216 )
 script = SubResource( 1 )
 

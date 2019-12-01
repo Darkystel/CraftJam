@@ -4,8 +4,6 @@ var current_map: String
 var entrance_id: int = -1
 var player: Player = null
 
-var spawn: bool = false
-
 onready var MAPS: Dictionary = {
 	"The Altar": 'res://src/worlds/altar.tscn',
 	"The Outskirts": 'res://src/worlds/outskirts.tscn',
@@ -13,9 +11,7 @@ onready var MAPS: Dictionary = {
 }
 onready var VISITED_MAPS: Dictionary = {}
 
-
 func start_new_game():
-	spawn = true
 	player = load('res://src/actors/player.tscn').instance()
 	load_map("The Altar") 
 
