@@ -1,5 +1,6 @@
 extends Node
 
+var disable_dialogue := false
 var dialogue_history = []
 
 func push_to_history(item):

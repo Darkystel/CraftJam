@@ -10,6 +10,8 @@ func _ready():
 	put_player(MapHandler.player, MapHandler.entrance_id)
 	for departure in $departures.get_children():
 		departure.connect("player_exited_map", self, "player_exited_map")
+	for dialogue_node in get_tree().get_nodes_in_group("dialogue"):
+		dialogue_node.queue_free()
 
 func put_player(player: Player, entrance_id: int = -1):
 	remove_child(get_node("player"))
