@@ -12,7 +12,7 @@ func _state_init():
 	$aggro_timer.wait_time = _root.aggro_wait_time
 
 func _enter():
-	print("entered aggro state")
+	print("Entered aggro state")
 	_root.play_animation("idle")
 	print($aggro_timer.wait_time)
 	_root.stop()

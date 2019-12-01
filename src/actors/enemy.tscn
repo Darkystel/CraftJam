@@ -51,9 +51,6 @@
 [ext_resource path="res://src/actors/enemy_data/scripts/states/search.gd" type="Script" id=49]
 [ext_resource path="res://src/actors/enemy_data/scripts/states/walk_away.gd" type="Script" id=50]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "detect"
 length = 1.4
@@ -443,7 +440,7 @@ position = Vector2( 0, -25.8889 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 6 )
 animation = "floating"
-frame = 11
+frame = 15
 playing = true
 
 [node name="eyes" type="Node2D" parent="animator"]
@@ -482,7 +479,6 @@ __meta__ = {
 }
 
 [node name="FSM" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 43 )
 __meta__ = {
 "_editor_icon": ExtResource( 44 )

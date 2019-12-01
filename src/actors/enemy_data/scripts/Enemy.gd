@@ -6,6 +6,8 @@ export(float) var idle_walk_range = 35
 export(float) var idle_walk_range_min = 20
 export(float) var idle_wait_time = 0.8
 export(float) var aggro_wait_time = 1.5
+export(float) var walk_away_time_msec = 70
+export(float) var max_walk_away_distance = 96.0
 
 ####################################
 onready var vision = $vision_system

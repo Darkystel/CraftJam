@@ -16,7 +16,7 @@ func _state_init():
 	initial_position = _root.position
 
 func _enter():
-	print('entered idle state')
+	print('Entered idle state')
 	_root.stop()
 	_root.play_animation("idle")
 	timer.wait_time = _root.idle_wait_time

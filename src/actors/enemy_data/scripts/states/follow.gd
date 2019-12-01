@@ -4,7 +4,7 @@ var _fsm
 var _root
 
 func _enter():
-	print("entered follow state")
+	print("Entered follow state")
 	_root.play_animation("follow")
 
 func _update(delta):

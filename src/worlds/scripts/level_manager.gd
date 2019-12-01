@@ -31,6 +31,8 @@ func set_limiters():
 
 func player_exited_map(map: String, entrance_id: int):
 	MapHandler.go_to_map(map, entrance_id)
+	for node in get_tree().get_nodes_in_group("npcs"):
+		node.queue_free()
 
 func get_player(remove: bool = false) -> Player:
 	var player = get_node("player")

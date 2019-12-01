@@ -4,6 +4,7 @@ var _fsm
 var _root
 
 func _enter():
+	print('Enter detect state')
 	_root.stop()
 	_root.play_animation("detect")
 

@@ -32,9 +32,15 @@ func _look_at_player():
 		$character.flip_h = true
 
 func _start_dialogue():
-	for dialogue in start_dialogue:
-		dialogue_overlay.start(dialogue)
-		yield(dialogue_overlay,"dialogue_finished")
+	if not exhausted:
+		for dialogue in start_dialogue:
+			dialogue_overlay.start(dialogue)
+			yield(dialogue_overlay,"dialogue_finished")
+			if not exhausted: exhausted = true
+	else:
+		for dialogue in exhaust_dialogue:
+			dialogue_overlay.start(dialogue)
+			yield(dialogue_overlay,"dialogue_finished")
 
 
 
