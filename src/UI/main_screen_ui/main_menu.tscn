@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/themes/crafting_menu_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/fonts/main_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/SplashScreen/Splash Screen.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/main_font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -18,10 +19,16 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+margin_left = -3.0
+margin_top = -57.0
+margin_right = 1741.0
+margin_bottom = 1799.0
+rect_scale = Vector2( 0.13, 0.13 )
+texture = ExtResource( 2 )
+stretch_mode = 1
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 1.0
@@ -33,7 +40,7 @@ margin_top = -24.0
 margin_right = -14.0
 margin_bottom = -8.0
 theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "PRESENCE"
 
 [node name="new_game" type="Button" parent="."]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 5.0
-height = 4.0
-
-[node name="collider" type="CollisionShape2D"]
-position = Vector2( 0.405827, -6.86472 )
-shape = SubResource( 2 )

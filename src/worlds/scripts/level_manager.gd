@@ -19,13 +19,11 @@ func _ready():
 	if MapHandler.player != null and not MapHandler.spawn:
 		put_player(MapHandler.player, MapHandler.entrance_id)
 	set_limiters()
-	if MapHandler.spawn:
-		MapHandler.spawn = false
 	pass
 
 func spawn_player():
+	remove_child(get_node("player"))
 	add_child(MapHandler.player)
-	$animation_controller.play("spawn")
 
 func put_player(player: Player, entrance_id: int):
 	remove_child(get_node("player"))

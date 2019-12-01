@@ -38,6 +38,8 @@ func pick_up_item(item):
 		return false
 
 func _physics_process(delta):
+	var snap_vector = Vector2.DOWN * 2
+	
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if direction < 0: $character.flip_h = true
 	elif direction > 0: $character.flip_h = false
@@ -46,12 +48,13 @@ func _physics_process(delta):
 		if is_on_floor() :
 			$character.play("jump")
 			velocity.y = -jumping_height
+			snap_vector = Vector2.ZERO
 	
 	velocity.x = direction * movement_speed
 	
 	velocity.y += gravity
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector2.UP)
 	if abs(velocity.x) > 0 and is_on_floor():
 		$character.play("walk")
 	
