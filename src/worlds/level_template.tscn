@@ -501,7 +501,6 @@ color = Color( 0, 0, 0, 1 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="overlay" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="dialogue_overlay" parent="overlay" instance=ExtResource( 2 )]
 

@@ -1,6 +1,10 @@
 extends Actor
 class_name Player
 
+var presence := 10.0
+var hp := 100.0
+var recover := false
+
 export(Resource) var inventory
 export(bool) var process = true setget set_player_process, get_player_process
 func set_player_process(value: bool):
@@ -10,12 +14,28 @@ func get_player_process() -> bool: return process
 
 onready var equipments = $equipments
 
+signal player_died
+
+func damage_player():
+	recover = false
+	$recovery_time.stop()
+	hp -= 0.5
+	if hp <= 0:
+		kill_player()
+	$recovery_time.start()
+
+func kill_player():
+	set_process(false)
+	set_physics_process(false)
+	emit_signal("player_died")
+
 func force_idle():
 	$character.play("idle")
 
 func _ready(): 
 	assert(inventory != null)
 	inventory.initialize_recipes()
+	set_process(true)
 	set_physics_process(process)
 
 func set_limits(limit_left, limit_right):
@@ -38,6 +58,13 @@ func pick_up_item(item):
 		return true
 	else:
 		return false
+
+func _process(delta):
+	if recover:
+		hp += 2.5
+		if hp >= 100.0:
+			hp = 100.0
+			recover = false
 
 func _physics_process(delta):
 	var snap_vector = Vector2.DOWN * 2
@@ -64,3 +91,7 @@ func _physics_process(delta):
 		$character.play("fall")
 	elif is_on_floor():
 		$character.play("idle")
+
+
+func _on_recovery_time_timeout():
+	recover = true

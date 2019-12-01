@@ -26,9 +26,9 @@ texture = ExtResource( 3 )
 offset = Vector2( 150, 0 )
 energy = 0.01
 shadow_enabled = true
-shadow_gradient_length = 0.1
+shadow_gradient_length = 0.3
 shadow_filter = 3
-shadow_filter_smooth = 10.0
+shadow_filter_smooth = 15.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

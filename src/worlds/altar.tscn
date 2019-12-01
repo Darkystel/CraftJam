@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/buildings/light_dome.png" type="Texture" id=2]
@@ -94,6 +94,7 @@
 [ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_8.tres" type="Resource" id=92]
 [ext_resource path="res://src/actors/dialogue_list/old_man/exhausted_old_man_dialogue.tres" type="Resource" id=93]
 [ext_resource path="res://src/worlds/objects/animation_area.tscn" type="PackedScene" id=94]
+[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=95]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -262,7 +263,7 @@ show_behind_parent = true
 position = Vector2( -1, -35 )
 scale = Vector2( 1.2, 1.2 )
 frames = SubResource( 2 )
-frame = 5
+frame = 3
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -304,7 +305,7 @@ show_behind_parent = true
 position = Vector2( 4.70589, -28.3203 )
 scale = Vector2( 0.976471, 0.976471 )
 frames = SubResource( 2 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Big Ball" type="Sprite" parent="ParallaxBackground/middle" index="3"]
@@ -318,7 +319,7 @@ show_behind_parent = true
 position = Vector2( -6.10352e-005, -98.591 )
 scale = Vector2( 2.68909, 2.68909 )
 frames = SubResource( 2 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="front" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
@@ -596,6 +597,9 @@ start_dialogue = [ ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtR
 exhaust_dialogue = [ ExtResource( 93 ) ]
 
 [node name="animation_area" parent="." index="14" instance=ExtResource( 94 )]
+
+[node name="enemy" parent="." index="15" instance=ExtResource( 95 )]
+position = Vector2( -212, 0 )
 [connection signal="body_entered" from="platform_elevator/liver" to="platform_elevator" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator/liver" to="platform_elevator" method="_on_liver_body_exited"]
 [connection signal="body_entered" from="platform_elevator/liver2" to="platform_elevator" method="_on_liver_body_entered"]

@@ -9,6 +9,7 @@ var dialogue_displayed := false
 
 #######################################
 onready var dialogue_RLT = $Panel2/dialogue
+onready var ppic = $Panel/protagonist
 #######################################
 
 signal dialogue_finished
@@ -22,6 +23,7 @@ func start(dialogue: Dialogue):
 	Global.push_to_history(dialogue)
 	$AnimationPlayer.play("pop_up")
 	yield($AnimationPlayer, "animation_finished")
+	ppic.texture = dialogue.protagonist_texture
 	start_dialogue()
 
 func start_dialogue():

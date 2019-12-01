@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://src/actors/enemy_data/scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/actors/enemy_data/vision_system.tscn" type="PackedScene" id=2]
@@ -50,6 +50,9 @@
 [ext_resource path="res://src/actors/enemy_data/scripts/states/aggro_wait.gd" type="Script" id=48]
 [ext_resource path="res://src/actors/enemy_data/scripts/states/search.gd" type="Script" id=49]
 [ext_resource path="res://src/actors/enemy_data/scripts/states/walk_away.gd" type="Script" id=50]
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 12.1655
 
 [sub_resource type="Animation" id=1]
 resource_name = "detect"
@@ -165,6 +168,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [ ExtResource( 5 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("eyes:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "follow"
@@ -279,6 +294,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [ Vector2( 0, -23 ), Vector2( 0, -22 ), Vector2( 0, -23 ), Vector2( 0, -24 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("eyes:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 loop = true
@@ -318,6 +345,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, -23 ), Vector2( 0, -22 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("eyes:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -360,6 +399,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ Vector2( 0, -23 ), Vector2( 0, -22 ), Vector2( 0, -23 ), Vector2( 0, -24 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("eyes:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -392,6 +443,15 @@ script = ExtResource( 1 )
 movement_speed = 75.0
 idle_wait_time = 1.2
 
+[node name="damage_area" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, -10 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
+modulate = Color( 0.992157, 0, 0, 1 )
+shape = SubResource( 8 )
+
 [node name="vision_system" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1, -11 )
 
@@ -416,7 +476,6 @@ cast_to = Vector2( 12, 0 )
 collision_mask = 4
 
 [node name="animator" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
@@ -429,31 +488,29 @@ anims/idle = SubResource( 3 )
 anims/walk = SubResource( 4 )
 
 [node name="sprite" type="AnimatedSprite" parent="animator"]
-position = Vector2( 0, -2.88889 )
 frames = SubResource( 5 )
 animation = "walk"
 frame = 3
 offset = Vector2( 0, -10 )
 
 [node name="particles" type="AnimatedSprite" parent="animator"]
-position = Vector2( 0, -25.8889 )
+position = Vector2( 0, -23 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 6 )
 animation = "floating"
-frame = 15
+frame = 21
 playing = true
 
 [node name="eyes" type="Node2D" parent="animator"]
 editor/display_folded = true
-position = Vector2( 0, -2.88889 )
 
 [node name="eye_left" type="Sprite" parent="animator/eyes"]
-modulate = Color( 1, 1, 1, 0.313726 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 3, -11 )
 texture = ExtResource( 42 )
 
 [node name="eye_right" type="Sprite" parent="animator/eyes"]
-modulate = Color( 1, 1, 1, 0.313726 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -11 )
 texture = ExtResource( 42 )
 
@@ -461,11 +518,13 @@ texture = ExtResource( 42 )
 position = Vector2( 4, -11 )
 texture = ExtResource( 42 )
 texture_scale = 0.7
+energy = 0.01
 
 [node name="right_glow" type="Light2D" parent="animator/eyes"]
 position = Vector2( -1.2, -11 )
 texture = ExtResource( 42 )
 texture_scale = 0.7
+energy = 0.01
 
 [node name="sounds" type="AudioStreamPlayer2D" parent="animator"]
 position = Vector2( 0, -10 )

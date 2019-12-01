@@ -17,6 +17,9 @@ onready var spawn_position = self.position
 ####################################
 
 func _physics_process(delta):
+	for body in $damage_area.get_overlapping_bodies():
+		if body.is_in_group("player"):
+			body.damage_player()
 	if not is_on_floor():
 		velocity.y += gravity
 	else:
