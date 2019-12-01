@@ -22,7 +22,7 @@ func _process(delta):
 	else:
 		$device.scale.y = 1
 	if Input.is_action_pressed("rmb_click"):
-		$device/sprite/light_origin/light.energy = lerp($device/sprite/light_origin/light.energy, 1.2, 0.2)
+		$device/sprite/light_origin/light.energy = lerp($device/sprite/light_origin/light.energy, item_resource.additional_item_info['light-power'], 0.2)
 		scene_info['battery'] = max(0, scene_info['battery'] - drain)
 	else:
 		$device/sprite/light_origin/light.energy = lerp($device/sprite/light_origin/light.energy, 0, 0.2)
