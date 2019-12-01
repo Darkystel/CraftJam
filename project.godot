@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/tools/scripts/Recipe.gd"
 }, {
+"base": "Resource",
+"class": "SenseData",
+"language": "GDScript",
+"path": "res://src/actors/shadow actors/FSM shadows/sciripts/SenseData.gd"
+}, {
 "base": "CanvasLayer",
 "class": "UIController",
 "language": "GDScript",
@@ -103,6 +108,7 @@ _global_script_class_icons={
 "Overlay": "",
 "Player": "",
 "Recipe": "",
+"SenseData": "",
 "UIController": "",
 "UIFlushInfo": "",
 "VisionData": ""
@@ -136,7 +142,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "net.kivano.fsm", "notes_tab", "todo" )
+enabled=PoolStringArray( "fsm", "notes_tab", "todo" )
 
 [input]
 
@@ -199,6 +205,11 @@ test_button={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="environment"
+
+[physics]
+
+2d/cell_size=16
+2d/large_object_surface_threshold_in_cells=64
 
 [rendering]
 
