@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://src/tools/items_data/Key Fragment (Bottom).tres" type="Resource" id=1]
+[ext_resource path="res://src/tools/items_data/Key Fragment (Top).tres" type="Resource" id=2]
+[ext_resource path="res://src/tools/items_data/Master Key.tres" type="Resource" id=3]
+[ext_resource path="res://src/tools/scripts/Recipe.gd" type="Script" id=4]
+
+[resource]
+script = ExtResource( 4 )
+items = [ ExtResource( 1 ), ExtResource( 2 ) ]
+result = ExtResource( 3 )
