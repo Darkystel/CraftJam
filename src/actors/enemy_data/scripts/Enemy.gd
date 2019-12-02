@@ -19,6 +19,8 @@ onready var animator = $animator
 onready var spawn_position = self.position
 ####################################
 
+signal enemy_died
+
 func _physics_process(delta):
 	for body in $damage_area.get_overlapping_bodies():
 		if body.is_in_group("player"):

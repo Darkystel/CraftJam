@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
@@ -15,6 +15,18 @@
 [ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=13]
 [ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=14]
 [ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=15]
+[ext_resource path="res://src/worlds/scripts/dialogue_aoe.gd" type="Script" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 80 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node
+
+
+func _on_enemy3_enemy_died():
+	get_tree().change_scene(\"res://src/UI/screens/game_finished.tscn\")
+"
 
 [node name="level_template" index="0" instance=ExtResource( 1 )]
 
@@ -186,5 +198,21 @@ texture = ExtResource( 15 )
 position = Vector2( 152, 520 )
 scale = Vector2( 0.606061, 0.546401 )
 texture = ExtResource( 15 )
+
+[node name="dialogue_aoe" type="Area2D" parent="." index="39"]
+position = Vector2( 128, 96 )
+collision_layer = 0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_aoe" index="0"]
+shape = SubResource( 1 )
+
+[node name="game_finished" type="Node" parent="." index="40"]
+script = SubResource( 2 )
+[connection signal="enemy_died" from="enemy3" to="game_finished" method="_on_enemy3_enemy_died"]
+[connection signal="body_entered" from="dialogue_aoe" to="dialogue_aoe" method="_on_dialogue_aoe_body_entered"]
 
 [editable path="platform_elevator"]
