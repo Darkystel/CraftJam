@@ -1,28 +1,238 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sound_effects/edited/ambient_sound.ogg" type="AudioStream" id=4]
-[ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=7]
-[ext_resource path="res://src/actors/npc.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_1.tres" type="Resource" id=9]
-[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_2.tres" type="Resource" id=10]
-[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_3.tres" type="Resource" id=11]
-[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_4.tres" type="Resource" id=12]
-[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_5.tres" type="Resource" id=13]
-[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_6.tres" type="Resource" id=14]
-[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_7.tres" type="Resource" id=15]
-[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_8.tres" type="Resource" id=16]
-[ext_resource path="res://src/actors/dialogue_list/old_man/exhausted_old_man_dialogue.tres" type="Resource" id=17]
-[ext_resource path="res://src/worlds/objects/animation_area.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/buildings/light_dome.png" type="Texture" id=2]
+[ext_resource path="res://assets/buildings/Altar Ball.png" type="Texture" id=3]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_4.png" type="Texture" id=8]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_5.png" type="Texture" id=9]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_6.png" type="Texture" id=10]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_7.png" type="Texture" id=11]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_8.png" type="Texture" id=12]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_9.png" type="Texture" id=13]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_10.png" type="Texture" id=14]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_11.png" type="Texture" id=15]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_12.png" type="Texture" id=16]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_13.png" type="Texture" id=17]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_14.png" type="Texture" id=18]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_15.png" type="Texture" id=19]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_16.png" type="Texture" id=20]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_17.png" type="Texture" id=21]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_18.png" type="Texture" id=22]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_19.png" type="Texture" id=23]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_20.png" type="Texture" id=24]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_21.png" type="Texture" id=25]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_22.png" type="Texture" id=26]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_23.png" type="Texture" id=27]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_24.png" type="Texture" id=28]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_25.png" type="Texture" id=29]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_26.png" type="Texture" id=30]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_27.png" type="Texture" id=31]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_28.png" type="Texture" id=32]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_29.png" type="Texture" id=33]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_30.png" type="Texture" id=34]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_31.png" type="Texture" id=35]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_32.png" type="Texture" id=36]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_33.png" type="Texture" id=37]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_34.png" type="Texture" id=38]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_35.png" type="Texture" id=39]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_36.png" type="Texture" id=40]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_37.png" type="Texture" id=41]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_38.png" type="Texture" id=42]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_39.png" type="Texture" id=43]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_40.png" type="Texture" id=44]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_41.png" type="Texture" id=45]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_42.png" type="Texture" id=46]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_43.png" type="Texture" id=47]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_44.png" type="Texture" id=48]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_45.png" type="Texture" id=49]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_46.png" type="Texture" id=50]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_47.png" type="Texture" id=51]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_48.png" type="Texture" id=52]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_49.png" type="Texture" id=53]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_50.png" type="Texture" id=54]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_51.png" type="Texture" id=55]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_52.png" type="Texture" id=56]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_53.png" type="Texture" id=57]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_54.png" type="Texture" id=58]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_55.png" type="Texture" id=59]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_56.png" type="Texture" id=60]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_57.png" type="Texture" id=61]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_58.png" type="Texture" id=62]
+[ext_resource path="res://assets/buildings/particles/altar-ball-anim/altar-ball_59.png" type="Texture" id=63]
+[ext_resource path="res://assets/buildings/alter.png" type="Texture" id=64]
+[ext_resource path="res://assets/buildings/Building5.png" type="Texture" id=65]
+[ext_resource path="res://assets/buildings/Building7.png" type="Texture" id=66]
+[ext_resource path="res://assets/buildings/Small Ball.png" type="Texture" id=67]
+[ext_resource path="res://assets/buildings/Big Ball.png" type="Texture" id=68]
+[ext_resource path="res://assets/buildings/Building6.png" type="Texture" id=69]
+[ext_resource path="res://assets/buildings/Building4.png" type="Texture" id=70]
+[ext_resource path="res://assets/buildings/Building8.png" type="Texture" id=71]
+[ext_resource path="res://assets/buildings/Building2.png" type="Texture" id=72]
+[ext_resource path="res://assets/buildings/Building3.png" type="Texture" id=73]
+[ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=74]
+[ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=75]
+[ext_resource path="res://assets/sound_effects/edited/ambient_sound.ogg" type="AudioStream" id=76]
+[ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=77]
+[ext_resource path="res://src/worlds/objects/platform_elevator.tscn" type="PackedScene" id=78]
+[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=79]
+[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=80]
+[ext_resource path="res://src/actors/npc.tscn" type="PackedScene" id=81]
+[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_1.tres" type="Resource" id=82]
+[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_2.tres" type="Resource" id=83]
+[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_3.tres" type="Resource" id=84]
+[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_4.tres" type="Resource" id=85]
+[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_5.tres" type="Resource" id=86]
+[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_6.tres" type="Resource" id=87]
+[ext_resource path="res://src/actors/dialogue_list/player/player_and_old_man_7.tres" type="Resource" id=88]
+[ext_resource path="res://src/actors/dialogue_list/old_man/player_and_old_man_8.tres" type="Resource" id=89]
+[ext_resource path="res://src/actors/dialogue_list/old_man/exhausted_old_man_dialogue.tres" type="Resource" id=90]
+[ext_resource path="res://src/worlds/objects/animation_area.tscn" type="PackedScene" id=91]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("back/Altar Ball:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -88 ), Vector2( 0, -94 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("middle/Small Ball:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -50, -99 ), Vector2( -50, -96 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("middle/Big Ball:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 79, -64 ), Vector2( 79, -60 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
 
 [node name="level_template" index="0" instance=ExtResource( 1 )]
 area_name = "The Altar"
 
-[node name="overlay" parent="." index="1"]
+[node name="ParallaxBackground" parent="." index="1"]
+editor/display_folded = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground" index="0"]
+anims/default = SubResource( 1 )
+
+[node name="back" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+editor/display_folded = true
+scale = Vector2( 0.6, 0.6 )
+motion_scale = Vector2( 0.5, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="light_dome" type="Sprite" parent="ParallaxBackground/back" index="0"]
+position = Vector2( -1.66667, -90 )
+scale = Vector2( 2.66276, 2.66276 )
+texture = ExtResource( 2 )
+
+[node name="Altar Ball" type="Sprite" parent="ParallaxBackground/back" index="1"]
+position = Vector2( 0, -88.7485 )
+texture = ExtResource( 3 )
+
+[node name="particles" type="AnimatedSprite" parent="ParallaxBackground/back/Altar Ball" index="0"]
+show_behind_parent = true
+position = Vector2( -1, -35 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 2 )
+frame = 57
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="The Altar" type="Sprite" parent="ParallaxBackground/back" index="2"]
+position = Vector2( -4, -80 )
+texture = ExtResource( 64 )
+
+[node name="middle" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+editor/display_folded = true
+modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
+position = Vector2( 0, 14.79 )
+scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.6, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Building5" type="Sprite" parent="ParallaxBackground/middle" index="0"]
+position = Vector2( -60, -60.75 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 65 )
+
+[node name="Building7" type="Sprite" parent="ParallaxBackground/middle" index="1"]
+position = Vector2( 79, -68 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 66 )
+
+[node name="Small Ball" type="Sprite" parent="ParallaxBackground/middle" index="2"]
+editor/display_folded = true
+position = Vector2( -50, -98.2411 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 67 )
+
+[node name="particles3" type="AnimatedSprite" parent="ParallaxBackground/middle/Small Ball" index="0"]
+show_behind_parent = true
+position = Vector2( 4.70589, -28.3203 )
+scale = Vector2( 0.976471, 0.976471 )
+frames = SubResource( 2 )
+frame = 56
+playing = true
+
+[node name="Big Ball" type="Sprite" parent="ParallaxBackground/middle" index="3"]
+editor/display_folded = true
+position = Vector2( 79, -61.5324 )
+scale = Vector2( 0.258823, 0.258823 )
+texture = ExtResource( 68 )
+
+[node name="particles2" type="AnimatedSprite" parent="ParallaxBackground/middle/Big Ball" index="0"]
+show_behind_parent = true
+position = Vector2( -6.10352e-005, -98.591 )
+scale = Vector2( 2.68909, 2.68909 )
+frames = SubResource( 2 )
+frame = 56
+playing = true
+
+[node name="front" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
 editor/display_folded = true
 
 [node name="dialogue_overlay" parent="overlay" index="0"]
@@ -62,15 +272,17 @@ tile_data = PoolIntArray( -1572915, 0, 0, -1572914, 0, 1, -1572913, 0, 131076, -
 [node name="player" parent="." index="9" instance=ExtResource( 5 )]
 position = Vector2( 0, 0.1475 )
 
-[node name="pickable" parent="." index="10" instance=ExtResource( 6 )]
+[node name="platform_elevator" parent="." index="11" instance=ExtResource( 78 )]
+
+[node name="pickable" parent="." index="12" instance=ExtResource( 79 )]
 position = Vector2( -292, 0 )
-item = ExtResource( 7 )
+item = ExtResource( 80 )
 
 [node name="npc" parent="." index="11" groups=[
 "npcs",
-] instance=ExtResource( 8 )]
+] instance=ExtResource( 81 )]
 position = Vector2( 100, 0.1475 )
-start_dialogue = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
-exhaust_dialogue = [ ExtResource( 17 ) ]
+start_dialogue = [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 89 ) ]
+exhaust_dialogue = [ ExtResource( 90 ) ]
 
-[node name="animation_area" parent="." index="12" instance=ExtResource( 18 )]
+[node name="animation_area" parent="." index="14" instance=ExtResource( 91 )]

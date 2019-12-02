@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=1]
+[ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=2]
+[ext_resource path="res://assets/tilesets/platform.png" type="Texture" id=3]
+[ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 10 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "go_up"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 24 ), Vector2( 0, -504 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("liver_down/Sprite:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.5, 3 ),
+"transitions": PoolRealArray( 1, -2 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("liver_up/Sprite:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "go_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( -23, 8 ), Vector2( -23, -104 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("liver_down/Sprite:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("liver_up/Sprite:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 8 )
+
+[node name="platform_elevator" type="Node2D"]
+script = ExtResource( 1 )
+requires_charger = true
+
+[node name="liver_down" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( -48, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="liver_down"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="liver_down"]
+rotation = -0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
+
+[node name="liver_up" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 48, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="liver_up"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="liver_up"]
+rotation = 0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/go_down = SubResource( 2 )
+anims/go_up = SubResource( 3 )
+
+[node name="platform" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 24 )
+collision_layer = 4
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="vis" type="Sprite" parent="platform"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+shape = SubResource( 4 )
+
+[node name="charge_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -23, 8.25 )
+stream = ExtResource( 4 )
+volume_db = -20.0
+[connection signal="body_entered" from="liver_down" to="." method="_on_liver_body_entered"]
+[connection signal="body_exited" from="liver_down" to="." method="_on_liver_body_exited"]
+[connection signal="body_entered" from="liver_up" to="." method="_on_liver_body_entered"]
+[connection signal="body_exited" from="liver_up" to="." method="_on_liver_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
