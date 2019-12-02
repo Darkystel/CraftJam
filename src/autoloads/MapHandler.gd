@@ -8,7 +8,7 @@ onready var MAPS: Dictionary = {
 	"The Altar": 'res://src/worlds/altar.tscn',
 	"The Outskirts": 'res://src/worlds/outskirts.tscn',
 	"Caves of Sin": 'res://src/worlds/caves_of_sin.tscn',
-	"Chambers of Forgetting": 'res://src/worlds/chambers of forget.tscn'
+	"Chambers of Forgetting": 'res://src/worlds/chambers_of_forgetting.tscn'
 }
 onready var VISITED_MAPS: Dictionary = {}
 

@@ -1,32 +1,8 @@
-[gd_scene load_steps=19 format=2]
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/worlds/objects/platform_elevator.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/tools/items_data/Compressed Light.tres" type="Resource" id=7]
-[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=8]
-[ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=9]
-[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=10]
-[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=11]
-[ext_resource path="res://src/tools/items_data/Long Base.tres" type="Resource" id=12]
-[ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=13]
-[ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=14]
-[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=15]
-[ext_resource path="res://src/worlds/scripts/dialogue_aoe.gd" type="Script" id=16]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 128, 80 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Node
-
-
-func _on_enemy3_enemy_died():
-	get_tree().change_scene(\"res://src/UI/screens/game_finished.tscn\")
 [ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=4]
 [ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=6]
@@ -42,11 +18,14 @@ func _on_enemy3_enemy_died():
 [ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=16]
 [ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=17]
 [ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=18]
+[ext_resource path="res://src/worlds/scripts/dialogue_aoe.gd" type="Script" id=19]
+[ext_resource path="res://src/actors/dialogue_list/player/familiar_sight.tres" type="Resource" id=20]
+[ext_resource path="res://src/worlds/scripts/game_finish.gd" type="Script" id=21]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 10 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "off"
 length = 0.5
 tracks/0/type = "value"
@@ -60,10 +39,26 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "on"
+resource_name = "off"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -75,26 +70,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 30.0, -30.0 ]
+"values": [ -30.0, 30.0 ]
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "off"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -30.0, 30.0 ]
-}
-
-[sub_resource type="Animation" id=6]
 resource_name = "on"
 length = 0.5
 tracks/0/type = "value"
@@ -110,10 +89,10 @@ tracks/0/keys = {
 "values": [ 30.0, -30.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 8 )
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=7]
 script/source = "extends Node2D
 
 var player
@@ -124,10 +103,10 @@ func _physics_process(delta):
 		player.kill_player()
 "
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 20, 10 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "off"
 length = 0.5
 tracks/0/type = "value"
@@ -141,25 +120,25 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
 }
 
 [sub_resource type="Animation" id=11]
-resource_name = "on"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 30.0, -30.0 ]
-}
-
-[sub_resource type="Animation" id=12]
 resource_name = "off"
 length = 0.5
 tracks/0/type = "value"
@@ -175,7 +154,7 @@ tracks/0/keys = {
 "values": [ -30.0, 30.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "on"
 length = 0.5
 tracks/0/type = "value"
@@ -191,10 +170,10 @@ tracks/0/keys = {
 "values": [ 30.0, -30.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 16, 8 )
 
-[sub_resource type="GDScript" id=15]
+[sub_resource type="GDScript" id=14]
 script/source = "extends Node2D
 
 var player
@@ -204,6 +183,9 @@ func _physics_process(delta):
 		player = $detect_player.get_collider()
 		player.kill_player()
 "
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 112, 88 )
 
 [node name="level_template" index="0" instance=ExtResource( 1 )]
 
@@ -260,7 +242,7 @@ editor/display_folded = true
 position = Vector2( -24.32, -5.31 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_down" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="platform_elevator/liver_down" index="1"]
 rotation = -0.523599
@@ -269,15 +251,15 @@ texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator/liver_down" index="2"]
-anims/off = SubResource( 3 )
-anims/on = SubResource( 4 )
+anims/off = SubResource( 2 )
+anims/on = SubResource( 3 )
 
 [node name="liver_up" type="Area2D" parent="platform_elevator" index="3"]
 editor/display_folded = true
 position = Vector2( -23.11, -278.01 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_up" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="platform_elevator/liver_up" index="1"]
 rotation = 0.523599
@@ -286,8 +268,8 @@ texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator/liver_up" index="2"]
-anims/off = SubResource( 5 )
-anims/on = SubResource( 6 )
+anims/off = SubResource( 4 )
+anims/on = SubResource( 5 )
 
 [node name="platform" type="StaticBody2D" parent="platform_elevator" index="4"]
 collision_layer = 4
@@ -300,11 +282,11 @@ __meta__ = {
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/platform" index="1"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="kill_player" type="Node2D" parent="platform_elevator" index="5"]
 position = Vector2( 11.9457, 3.2894 )
-script = SubResource( 8 )
+script = SubResource( 7 )
 
 [node name="detect_player" type="RayCast2D" parent="platform_elevator/kill_player" index="0"]
 enabled = true
@@ -436,12 +418,6 @@ texture = ExtResource( 18 )
 [node name="Light2D10" type="Light2D" parent="." index="38"]
 position = Vector2( 152, 520 )
 scale = Vector2( 0.606061, 0.546401 )
-texture = ExtResource( 15 )
-
-[node name="dialogue_aoe" type="Area2D" parent="." index="39"]
-position = Vector2( 128, 96 )
-collision_layer = 0
-script = ExtResource( 16 )
 texture = ExtResource( 18 )
 
 [node name="platform_elevator2" type="Node2D" parent="." index="39"]
@@ -465,7 +441,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/liver_down" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="platform_elevator2/liver_down" index="1"]
 rotation = -0.523599
@@ -474,8 +450,8 @@ texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator2/liver_down" index="2"]
-anims/off = SubResource( 10 )
-anims/on = SubResource( 11 )
+anims/off = SubResource( 9 )
+anims/on = SubResource( 10 )
 
 [node name="liver_up" type="Area2D" parent="platform_elevator2" index="3"]
 position = Vector2( 24, -217 )
@@ -483,17 +459,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_aoe" index="0"]
-shape = SubResource( 1 )
-
-[node name="game_finished" type="Node" parent="." index="40"]
-script = SubResource( 2 )
-[connection signal="enemy_died" from="enemy3" to="game_finished" method="_on_enemy3_enemy_died"]
-[connection signal="body_entered" from="dialogue_aoe" to="dialogue_aoe" method="_on_dialogue_aoe_body_entered"]
-
-[editable path="platform_elevator"]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/liver_up" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="platform_elevator2/liver_up" index="1"]
 rotation = 0.523599
@@ -502,8 +469,8 @@ texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator2/liver_up" index="2"]
-anims/off = SubResource( 12 )
-anims/on = SubResource( 13 )
+anims/off = SubResource( 11 )
+anims/on = SubResource( 12 )
 
 [node name="platform" type="StaticBody2D" parent="platform_elevator2" index="4"]
 position = Vector2( 0, 16 )
@@ -517,11 +484,11 @@ __meta__ = {
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/platform" index="1"]
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 
 [node name="kill_player" type="Node2D" parent="platform_elevator2" index="5"]
 position = Vector2( 11.9457, 3.2894 )
-script = SubResource( 15 )
+script = SubResource( 14 )
 
 [node name="detect_player" type="RayCast2D" parent="platform_elevator2/kill_player" index="0"]
 enabled = true
@@ -532,10 +499,25 @@ position = Vector2( -21.3988, 0 )
 enabled = true
 cast_to = Vector2( 20, 0 )
 collision_mask = 4
+
+[node name="aoe_dialogue" type="Area2D" parent="." index="40"]
+position = Vector2( 120, 96 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true
+}
+dialogue = ExtResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="aoe_dialogue" index="0"]
+shape = SubResource( 15 )
+
+[node name="game_finish" type="Node" parent="." index="41"]
+script = ExtResource( 21 )
 [connection signal="body_entered" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_exited"]
 [connection signal="body_entered" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_exited"]
+[connection signal="enemy_died" from="enemy3" to="game_finish" method="_on_enemy3_enemy_died"]
 [connection signal="body_entered" from="platform_elevator2/liver_down" to="platform_elevator2" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator2/liver_down" to="platform_elevator2" method="_on_liver_body_exited"]
 [connection signal="body_entered" from="platform_elevator2/liver_up" to="platform_elevator2" method="_on_liver_body_entered"]
