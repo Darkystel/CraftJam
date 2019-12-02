@@ -1,23 +1,107 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=4]
-[ext_resource path="res://src/worlds/objects/platform_elevator.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/worlds/objects/door.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=8]
-[ext_resource path="res://src/tools/items_data/Compressed Light.tres" type="Resource" id=9]
-[ext_resource path="res://src/tools/items_data/Mixture.tres" type="Resource" id=10]
-[ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=11]
-[ext_resource path="res://src/tools/items_data/Round base.tres" type="Resource" id=12]
-[ext_resource path="res://src/tools/items_data/Wire.tres" type="Resource" id=13]
-[ext_resource path="res://src/tools/items_data/Key Fragment (Bottom).tres" type="Resource" id=14]
-[ext_resource path="res://src/tools/items_data/Second Third.tres" type="Resource" id=15]
-[ext_resource path="res://src/tools/items_data/Third Third.tres" type="Resource" id=16]
-[ext_resource path="res://src/tools/items_data/Light Flower.tres" type="Resource" id=17]
-[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=5]
+[ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=7]
+[ext_resource path="res://assets/tilesets/platform.png" type="Texture" id=8]
+[ext_resource path="res://src/worlds/objects/door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=11]
+[ext_resource path="res://src/tools/items_data/Compressed Light.tres" type="Resource" id=12]
+[ext_resource path="res://src/tools/items_data/Mixture.tres" type="Resource" id=13]
+[ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=14]
+[ext_resource path="res://src/tools/items_data/Round base.tres" type="Resource" id=15]
+[ext_resource path="res://src/tools/items_data/Wire.tres" type="Resource" id=16]
+[ext_resource path="res://src/tools/items_data/Key Fragment (Bottom).tres" type="Resource" id=17]
+[ext_resource path="res://src/tools/items_data/Second Third.tres" type="Resource" id=18]
+[ext_resource path="res://src/tools/items_data/Third Third.tres" type="Resource" id=19]
+[ext_resource path="res://src/tools/items_data/Light Flower.tres" type="Resource" id=20]
+[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=21]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Node2D
+
+var player
+
+func _physics_process(delta):
+	if $detect_player.is_colliding() and $detect_elevator.is_colliding():
+		player = $detect_player.get_collider()
+		player.kill_player()
+"
 
 [node name="level_template" index="0" instance=ExtResource( 1 )]
 area_name = "Caves of Sin"
@@ -116,97 +200,233 @@ position = Vector2( 726.785, 307.909 )
 scale = Vector2( 0.725864, 0.725864 )
 texture = ExtResource( 4 )
 
-[node name="platform_elevator2" parent="." index="18" instance=ExtResource( 5 )]
+[node name="platform_elevator2" type="Node2D" parent="." index="18"]
 editor/display_folded = true
 position = Vector2( 480, 248 )
-requires_charger = false
+script = ExtResource( 5 )
 travel_distance = Vector2( 0, -128 )
 travel_time = 1.0
 
-[node name="liver_down" parent="platform_elevator2" index="2"]
+[node name="charge_sound" type="AudioStreamPlayer2D" parent="platform_elevator2" index="0"]
+position = Vector2( -23, 8.25 )
+stream = ExtResource( 6 )
+volume_db = -20.0
+
+[node name="interpolator" type="Tween" parent="platform_elevator2" index="1"]
+
+[node name="liver_down" type="Area2D" parent="platform_elevator2" index="2"]
 position = Vector2( -24, -8 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="liver_up" parent="platform_elevator2" index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/liver_down" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="platform_elevator2/liver_down" index="1"]
+rotation = -0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator2/liver_down" index="2"]
+anims/off = SubResource( 3 )
+anims/on = SubResource( 4 )
+
+[node name="liver_up" type="Area2D" parent="platform_elevator2" index="3"]
 position = Vector2( 24, -136 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="platform_elevator" parent="." index="19" instance=ExtResource( 5 )]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/liver_up" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="platform_elevator2/liver_up" index="1"]
+rotation = 0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator2/liver_up" index="2"]
+anims/off = SubResource( 5 )
+anims/on = SubResource( 6 )
+
+[node name="platform" type="StaticBody2D" parent="platform_elevator2" index="4"]
+collision_layer = 4
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="vis" type="Sprite" parent="platform_elevator2/platform" index="0"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/platform" index="1"]
+shape = SubResource( 7 )
+
+[node name="kill_player" type="Node2D" parent="platform_elevator2" index="5"]
+position = Vector2( 11.9457, 3.2894 )
+script = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="detect_player" type="RayCast2D" parent="platform_elevator2/kill_player" index="0"]
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="detect_elevator" type="RayCast2D" parent="platform_elevator2/kill_player" index="1"]
+position = Vector2( -21.3988, 0 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 4
+
+[node name="platform_elevator" type="Node2D" parent="." index="19"]
 editor/display_folded = true
 position = Vector2( 640, 424 )
-requires_charger = false
+script = ExtResource( 5 )
 travel_distance = Vector2( 0, -96 )
 travel_time = 1.0
 
-[node name="liver_down" parent="platform_elevator" index="2"]
+[node name="charge_sound" type="AudioStreamPlayer2D" parent="platform_elevator" index="0"]
+position = Vector2( -23, 8.25 )
+stream = ExtResource( 6 )
+volume_db = -20.0
+
+[node name="interpolator" type="Tween" parent="platform_elevator" index="1"]
+
+[node name="liver_down" type="Area2D" parent="platform_elevator" index="2"]
 position = Vector2( -23, -8 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="liver_up" parent="platform_elevator" index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_down" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="platform_elevator/liver_down" index="1"]
+rotation = -0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator/liver_down" index="2"]
+anims/off = SubResource( 3 )
+anims/on = SubResource( 4 )
+
+[node name="liver_up" type="Area2D" parent="platform_elevator" index="3"]
 position = Vector2( 24, -104 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="door" parent="." index="20" instance=ExtResource( 6 )]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_up" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="platform_elevator/liver_up" index="1"]
+rotation = 0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator/liver_up" index="2"]
+anims/off = SubResource( 5 )
+anims/on = SubResource( 6 )
+
+[node name="platform" type="StaticBody2D" parent="platform_elevator" index="4"]
+collision_layer = 4
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="vis" type="Sprite" parent="platform_elevator/platform" index="0"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/platform" index="1"]
+shape = SubResource( 7 )
+
+[node name="kill_player" type="Node2D" parent="platform_elevator" index="5"]
+position = Vector2( 11.9457, 3.2894 )
+script = SubResource( 8 )
+
+[node name="detect_player" type="RayCast2D" parent="platform_elevator/kill_player" index="0"]
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="detect_elevator" type="RayCast2D" parent="platform_elevator/kill_player" index="1"]
+position = Vector2( -21.3988, 0 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 4
+
+[node name="door" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 776, 400 )
 requires_special_key = true
 
-[node name="pickable" parent="." index="21" instance=ExtResource( 7 )]
+[node name="pickable" parent="." index="21" instance=ExtResource( 10 )]
 position = Vector2( 96, 185 )
-item = ExtResource( 8 )
-
-[node name="pickable6" parent="." index="22" instance=ExtResource( 7 )]
-position = Vector2( 448, 168 )
-item = ExtResource( 9 )
-
-[node name="pickable9" parent="." index="23" instance=ExtResource( 7 )]
-position = Vector2( 552, 216 )
-item = ExtResource( 10 )
-
-[node name="pickable10" parent="." index="24" instance=ExtResource( 7 )]
-position = Vector2( 248, 408 )
-
-[node name="pickable11" parent="." index="25" instance=ExtResource( 7 )]
-position = Vector2( 248, 408 )
 item = ExtResource( 11 )
 
-[node name="pickable7" parent="." index="26" instance=ExtResource( 7 )]
-position = Vector2( 432, 105 )
+[node name="pickable6" parent="." index="22" instance=ExtResource( 10 )]
+position = Vector2( 448, 168 )
 item = ExtResource( 12 )
 
-[node name="pickable8" parent="." index="27" instance=ExtResource( 7 )]
-position = Vector2( 392, 56 )
+[node name="pickable9" parent="." index="23" instance=ExtResource( 10 )]
+position = Vector2( 552, 216 )
 item = ExtResource( 13 )
 
-[node name="pickable2" parent="." index="28" instance=ExtResource( 7 )]
-position = Vector2( 23.2368, 298 )
+[node name="pickable11" parent="." index="24" instance=ExtResource( 10 )]
+position = Vector2( 248, 410 )
 item = ExtResource( 14 )
 
-[node name="pickable3" parent="." index="29" instance=ExtResource( 7 )]
-position = Vector2( 55, 298 )
+[node name="pickable7" parent="." index="25" instance=ExtResource( 10 )]
+position = Vector2( 432, 105 )
 item = ExtResource( 15 )
 
-[node name="pickable4" parent="." index="30" instance=ExtResource( 7 )]
-position = Vector2( 24.2368, 104 )
+[node name="pickable8" parent="." index="26" instance=ExtResource( 10 )]
+position = Vector2( 392, 56 )
 item = ExtResource( 16 )
 
-[node name="pickable5" parent="." index="31" instance=ExtResource( 7 )]
-position = Vector2( 50, 104 )
+[node name="pickable2" parent="." index="27" instance=ExtResource( 10 )]
+position = Vector2( 23.2368, 298 )
 item = ExtResource( 17 )
 
-[node name="enemy" parent="." index="32" instance=ExtResource( 18 )]
+[node name="pickable3" parent="." index="28" instance=ExtResource( 10 )]
+position = Vector2( 55, 298 )
+item = ExtResource( 18 )
+
+[node name="pickable4" parent="." index="29" instance=ExtResource( 10 )]
+position = Vector2( 24.2368, 104 )
+item = ExtResource( 19 )
+
+[node name="pickable5" parent="." index="30" instance=ExtResource( 10 )]
+position = Vector2( 50, 104 )
+item = ExtResource( 20 )
+
+[node name="enemy" parent="." index="31" instance=ExtResource( 21 )]
 position = Vector2( 32, 304 )
 
-[node name="enemy2" parent="." index="33" instance=ExtResource( 18 )]
+[node name="enemy2" parent="." index="32" instance=ExtResource( 21 )]
 position = Vector2( 35, 413 )
 
-[node name="enemy3" parent="." index="34" instance=ExtResource( 18 )]
+[node name="enemy3" parent="." index="33" instance=ExtResource( 21 )]
 position = Vector2( 280, 232 )
 
-[node name="enemy4" parent="." index="35" instance=ExtResource( 18 )]
+[node name="enemy4" parent="." index="34" instance=ExtResource( 21 )]
 position = Vector2( 160, 102 )
 
-[node name="enemy5" parent="." index="36" instance=ExtResource( 18 )]
+[node name="enemy5" parent="." index="35" instance=ExtResource( 21 )]
 position = Vector2( 600, 217 )
 
-[node name="enemy6" parent="." index="37" instance=ExtResource( 18 )]
+[node name="enemy6" parent="." index="36" instance=ExtResource( 21 )]
 position = Vector2( 702.832, 104 )
-
-[editable path="platform_elevator2"]
-
-[editable path="platform_elevator"]
+[connection signal="body_entered" from="platform_elevator2/liver_down" to="platform_elevator2" method="_on_liver_body_entered"]
+[connection signal="body_exited" from="platform_elevator2/liver_down" to="platform_elevator2" method="_on_liver_body_exited"]
+[connection signal="body_entered" from="platform_elevator2/liver_up" to="platform_elevator2" method="_on_liver_body_entered"]
+[connection signal="body_exited" from="platform_elevator2/liver_up" to="platform_elevator2" method="_on_liver_body_exited"]
+[connection signal="body_entered" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_entered"]
+[connection signal="body_exited" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_exited"]
+[connection signal="body_entered" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_entered"]
+[connection signal="body_exited" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_exited"]
