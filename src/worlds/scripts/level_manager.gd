@@ -24,6 +24,7 @@ func _ready():
 				print("Sprite scale : " + str(sprite) + " " + str(sprite.scale))
 
 func put_player(player: Player, entrance_id: int = -1):
+	print(entrance_id)
 	remove_child(get_node("player"))
 	add_child(player)
 	player.set_limits(limiters[1].position.x, limiters[0].position.x)
@@ -41,6 +42,7 @@ func set_limiters():
 	get_player().set_limits(limiters[1].position.x, limiters[0].position.x)
 
 func player_exited_map(map: String, entrance_id: int):
+	MapHandler.entrance_id = entrance_id
 	MapHandler.go_to_map(map, entrance_id)
 	for node in get_tree().get_nodes_in_group("npcs"):
 		node.queue_free()

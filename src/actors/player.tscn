@@ -50,7 +50,7 @@ scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 5 )
 texture_scale = 1.4
 shadow_enabled = true
-shadow_gradient_length = 35.0
+shadow_gradient_length = 20.0
 shadow_filter = 5
 shadow_filter_smooth = 10.0
 

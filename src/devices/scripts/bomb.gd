@@ -24,7 +24,7 @@ func _on_timer_timeout():
 		tween.start()
 		yield(tween, "tween_all_completed")
 	else:
-		tween.interpolate_property($light, "energy", $light.energy, 100.0, 0.9, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		tween.interpolate_property($light, "energy", $light.energy, 12.0, 0.3, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		tween.start()
 		yield(tween,"tween_all_completed")
 		if damage_enemies:
@@ -35,7 +35,7 @@ func _on_timer_timeout():
 			for enemy in $aoe.get_overlapping_bodies():
 				if enemy.is_in_group("enemy"):
 					enemy.on_light_cast(to_global(position))
-		tween.interpolate_property($light, "energy", $light.energy, 0.01, 0.9, Tween.TRANS_ELASTIC, Tween.EASE_IN)
+		tween.interpolate_property($light, "energy", $light.energy, 0.01, 0.7, Tween.TRANS_ELASTIC, Tween.EASE_IN)
 		tween.start()
 		yield(tween, "tween_all_completed")
 	tween.queue_free()

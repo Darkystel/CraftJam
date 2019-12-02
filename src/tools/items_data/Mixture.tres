@@ -7,5 +7,11 @@
 script = ExtResource( 2 )
 name = "Mixture"
 description = "Mysterious mixture that seems to be glowing"
-type = 1
+types = [  ]
 item_texture = ExtResource( 1 )
+additional_item_info = {
+"battery_drain": 0.12,
+"damage_points": 0.0,
+"damages_enemy": false,
+"light_the_way": false
+}
