@@ -13,7 +13,12 @@ onready var VISITED_MAPS: Dictionary = {}
 
 func start_new_game():
 	player = load('res://src/actors/player.tscn').instance()
+	player.connect("player_died", self, "_on_player_died")
+	player.inventory = Global.inventory
 	load_map("The Altar") 
+
+func _on_player_died():
+	get_tree().change_scene('res://src/UI/screens/death_screen.tscn')
 
 func go_to_map(map: String, entrance: int):
 	entrance_id = entrance

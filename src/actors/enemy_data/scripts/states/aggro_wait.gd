@@ -21,7 +21,7 @@ func _enter():
 func _update(delta):
 	var sense_data = _root.sensors.get_sense_data()
 	var vision_data = _root.vision.get_vision_data()
-	if vision_data.player_in_sight:
+	if vision_data.player_in_sight and vision_data.player != null:
 		var destination = vision_data.player.position
 		if destination.x < _root.position.x:
 			if _root.is_looking_left():

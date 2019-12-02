@@ -498,7 +498,9 @@ script = ExtResource( 1 )
 visible = false
 color = Color( 0, 0, 0, 1 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="parallax_sprites" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="parallax_sprites"]
 
 [node name="overlay" type="CanvasLayer" parent="."]
 

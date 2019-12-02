@@ -137,7 +137,7 @@ window/size/height=144
 window/size/test_width=1280
 window/size/test_height=720
 mouse_cursor/custom_image="res://assets/ui/cursor.png"
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]
@@ -205,11 +205,6 @@ test_button={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="environment"
-
-[physics]
-
-2d/cell_size=16
-2d/large_object_surface_threshold_in_cells=64
 
 [rendering]
 

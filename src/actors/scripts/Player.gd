@@ -24,6 +24,7 @@ func damage_player():
 		kill_player()
 	$recovery_time.start()
 
+
 func kill_player():
 	set_process(false)
 	set_physics_process(false)
