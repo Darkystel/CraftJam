@@ -8,7 +8,7 @@
 [ext_resource path="res://src/actors/scripts/main_camera.gd" type="Script" id=6]
 [ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/shaders/transition.shader" type="Shader" id=8]
-[ext_resource path="res://assets/death_ibrahim_hopeitworks.png" type="Texture" id=9]
+[ext_resource path="res://assets/last.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -16,8 +16,8 @@ height = 4.0
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 8 )
-shader_param/cutoff = 1.0
-shader_param/smooth_size = 0.001
+shader_param/cutoff = 0.417
+shader_param/smooth_size = 0.002
 shader_param/color = Color( 0, 0, 0, 1 )
 shader_param/mask = ExtResource( 9 )
 
