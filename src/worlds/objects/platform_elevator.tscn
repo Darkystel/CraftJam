@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=2]
@@ -75,6 +75,17 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 8 )
 
+[sub_resource type="GDScript" id=7]
+script/source = "extends Node2D
+
+var player
+
+func _physics_process(delta):
+	if $detect_player.is_colliding() and $detect_elevator.is_colliding():
+		player = $detect_player.get_collider()
+		player.kill_player()
+"
+
 [node name="platform_elevator" type="Node2D"]
 script = ExtResource( 1 )
 requires_charger = true
@@ -119,7 +130,6 @@ anims/off = SubResource( 4 )
 anims/on = SubResource( 5 )
 
 [node name="platform" type="StaticBody2D" parent="."]
-editor/display_folded = true
 collision_layer = 4
 collision_mask = 3
 __meta__ = {
@@ -131,6 +141,20 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
 shape = SubResource( 6 )
+
+[node name="kill_player" type="Node2D" parent="."]
+position = Vector2( 11.9457, 3.2894 )
+script = SubResource( 7 )
+
+[node name="detect_player" type="RayCast2D" parent="kill_player"]
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="detect_elevator" type="RayCast2D" parent="kill_player"]
+position = Vector2( -21.3988, 0 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 4
 [connection signal="body_entered" from="liver_down" to="." method="_on_liver_body_entered"]
 [connection signal="body_exited" from="liver_down" to="." method="_on_liver_body_exited"]
 [connection signal="body_entered" from="liver_up" to="." method="_on_liver_body_entered"]
