@@ -5,4 +5,4 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "appear": $AnimationPlayer.play("disappear")
-	else: MapHandler.start_new_game()
+	elif anim_name == "disappear" : MapHandler.start_new_game()

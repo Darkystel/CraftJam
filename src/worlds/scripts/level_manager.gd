@@ -6,6 +6,7 @@ export(String) var area_name = ""
 onready var entrances = $entrances.get_children()
 onready var limiters = $limiters.get_children()
 func _ready():
+	$dark_environment.visible = true
 	VisualServer.set_default_clear_color(Color.black)
 	put_player(MapHandler.player, MapHandler.entrance_id)
 	for departure in $departures.get_children():

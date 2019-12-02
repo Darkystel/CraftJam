@@ -1,11 +1,19 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://assets/items/FlashBomb.png" type="Texture" id=1]
-[ext_resource path="res://src/tools/scripts/Item.gd" type="Script" id=2]
+[ext_resource path="res://src/devices/throwable_device.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/items/FlashBomb.png" type="Texture" id=2]
+[ext_resource path="res://src/tools/scripts/Item.gd" type="Script" id=3]
 
 [resource]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 name = "Flash Bomb"
 description = "A throwable square that has light inside of it that banishes the enemy when the compressed power is released"
 types = [ 0, 2, 3 ]
-item_texture = ExtResource( 1 )
+item_texture = ExtResource( 2 )
+item_scene = ExtResource( 1 )
+additional_item_info = {
+"battery_drain": 0.12,
+"damage_points": 100.0,
+"damages_enemy": true,
+"light_the_way": false
+}

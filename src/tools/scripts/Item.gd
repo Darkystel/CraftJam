@@ -17,6 +17,9 @@ export(Texture) var item_texture = null
 export(PackedScene) var item_scene
 export(Dictionary) var additional_item_info = {
 	"battery_drain": 0.12,
+	"damages_enemy": false,
+	"damage_points": 0.0,
+	"light_the_way": false,
 	}
 var scene_params = {}
 signal unequip
@@ -46,3 +49,4 @@ func charge_item() -> Message:
 func is_equippable() -> bool: return types.has(types_enum.EQUIPPABLE)
 func is_chargable() -> bool: return types.has(types_enum.CHARGABLE)
 func is_throwable() -> bool: return types.has(types_enum.THROWABLE)
+func is_droppable() -> bool: return types.has(types_enum.DROPPABLE)

@@ -6,11 +6,9 @@ var hp := 100.0
 var recover := false
 
 export(Resource) var inventory
-export(bool) var process = true setget set_player_process, get_player_process
-func set_player_process(value: bool):
-	set_physics_process(value)
-	process = value
-func get_player_process() -> bool: return process
+
+export(float) var hp_drain = 3.1
+export(float) var recovery_rate = 0.45
 
 onready var equipments = $equipments
 
@@ -22,12 +20,11 @@ func turn_on_light(): $light.visible = true
 func damage_player():
 	recover = false
 	$recovery_time.stop()
-	hp -= 0.5
+	hp -= hp_drain
 	if hp <= 0:
 		kill_player()
 	$recovery_time.start()
 	$main_camera.start_shaking()
-
 
 func kill_player():
 	set_process(false)
@@ -41,7 +38,6 @@ func _ready():
 	assert(inventory != null)
 	inventory.initialize_recipes()
 	set_process(true)
-	set_physics_process(process)
 
 func set_limits(limit_left, limit_right):
 	$main_camera.limit_left = limit_left
@@ -66,7 +62,7 @@ func pick_up_item(item):
 
 func _process(delta):
 	if recover:
-		hp += 2.5
+		hp += recovery_rate
 		if hp >= 100.0:
 			hp = 100.0
 			recover = false

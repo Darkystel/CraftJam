@@ -76,7 +76,6 @@ layer = 20
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 light_mask = 0
 material = SubResource( 2 )
 anchor_right = 1.0

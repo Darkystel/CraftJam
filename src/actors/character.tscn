@@ -266,4 +266,5 @@ anims/walk = SubResource( 6 )
 
 [node name="sound_fx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = 7.5
 [connection signal="animation_finished" from="animator" to="." method="_on_animation_finished"]

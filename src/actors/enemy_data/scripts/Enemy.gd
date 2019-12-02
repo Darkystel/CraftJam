@@ -8,6 +8,9 @@ export(float) var idle_wait_time = 0.8
 export(float) var aggro_wait_time = 1.5
 export(float) var walk_away_time_msec = 70
 export(float) var max_walk_away_distance = 96.0
+export(float) var run_away_speed = 55
+
+var health = 100.0
 
 ####################################
 onready var vision = $vision_system
@@ -40,6 +43,18 @@ func walk_right(speed: float):
 	$animator.look_right()
 func is_looking_right() -> bool:
 	return $animator.looking_right
+
+func on_light_cast(position: Vector2):
+	print("Aaaa, light is on me help, position is " + str(position))
+	if $FSM.active_state != "run_away":
+		$FSM.change_state("run_away")
+	else:
+		$FSM.get_node_by_state($FSM.active_state).generate_walk_direction(position)
+
+func damage(hit_points: float):
+	health -= hit_points
+	if health <= 0:
+		$FSM.change_state("die")
 
 func stop():
 	velocity.x = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/devices/scripts/throwable_device.gd" type="Script" id=1]
 [ext_resource path="res://src/devices/scripts/bomb.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 36.0
 
 [node name="throwable_device" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,7 +26,7 @@ __meta__ = {
 [node name="RigidBody2D" type="RigidBody2D" parent="rotator"]
 position = Vector2( 12, 0 )
 collision_layer = 8
-collision_mask = 6
+collision_mask = 4
 mode = 1
 contacts_reported = 1
 contact_monitor = true
@@ -41,13 +44,21 @@ shape = SubResource( 1 )
 [node name="light" type="Light2D" parent="rotator/RigidBody2D"]
 texture = ExtResource( 4 )
 texture_scale = 2.0
-energy = 0.01
+energy = 0.4
 shadow_enabled = true
 shadow_gradient_length = 0.1
 shadow_filter = 5
 shadow_filter_smooth = 1.5
 
 [node name="timer" type="Timer" parent="rotator/RigidBody2D"]
+wait_time = 0.4
 one_shot = true
+
+[node name="aoe" type="Area2D" parent="rotator/RigidBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotator/RigidBody2D/aoe"]
+shape = SubResource( 2 )
 [connection signal="body_entered" from="rotator/RigidBody2D" to="rotator/RigidBody2D" method="_on_RigidBody2D_body_entered"]
 [connection signal="timeout" from="rotator/RigidBody2D/timer" to="rotator/RigidBody2D" method="_on_timer_timeout"]

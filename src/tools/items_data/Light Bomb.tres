@@ -12,5 +12,8 @@ types = [ 2, 3 ]
 item_texture = ExtResource( 2 )
 item_scene = ExtResource( 1 )
 additional_item_info = {
-"battery_drain": 0.12
+"battery_drain": 0.12,
+"damage_points": 0.0,
+"damages_enemy": false,
+"light_the_way": false
 }

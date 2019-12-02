@@ -113,7 +113,7 @@ func try_crafting() -> Message:
 		msg.description = "No items to craft"
 	else:
 		for recipe in recipe_list:
-			if recipe.check_components(craft):
+			if recipe != null and recipe.check_components(craft):
 				add_to_inventory(recipe.result)
 				craft.clear()
 				msg.description = str(recipe.result.name) + " Crafted!"

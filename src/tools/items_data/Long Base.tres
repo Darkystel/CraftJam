@@ -7,5 +7,9 @@
 script = ExtResource( 2 )
 name = "Long Base"
 description = "???"
-type = 1
+types = [  ]
 item_texture = ExtResource( 1 )
+additional_item_info = {
+"battery_drain": 0.12,
+"damages_enemy": false
+}
