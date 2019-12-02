@@ -22,7 +22,7 @@
 [ext_resource path="res://src/tools/items_data/Light Bomb.tres" type="Resource" id=20]
 [ext_resource path="res://src/worlds/objects/door.tscn" type="PackedScene" id=21]
 
-[node name="level_template" index="0" instance=ExtResource( 1 )]
+[node name="level_template" instance=ExtResource( 1 )]
 area_name = "The Altar"
 
 [node name="background3" type="Node" parent="." index="0"]
@@ -240,7 +240,7 @@ position = Vector2( 496, -32 )
 entrance_id = 2
 
 [node name="depart" parent="departures" index="0" instance=ExtResource( 12 )]
-position = Vector2( 544, 104.95 )
+position = Vector2( 544, 104 )
 map = "The Outskirts"
 entrance_id = 1
 

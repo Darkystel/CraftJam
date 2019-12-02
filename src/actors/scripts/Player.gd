@@ -5,7 +5,9 @@ var presence := 10.0
 var hp := 100.0
 var recover := false
 
-export(Resource) var inventory
+export(int) var inventory_capacity = 8
+export(int) var equip_capacity
+var inventory: Inventory
 
 export(float) var hp_drain = 3.1
 export(float) var recovery_rate = 0.45
@@ -35,7 +37,9 @@ func force_idle():
 	$character.play("idle")
 
 func _ready(): 
-	assert(inventory != null)
+	inventory = Inventory.new()
+	inventory.capacity = inventory_capacity
+	inventory.equip_capacity = equip_capacity
 	inventory.initialize_recipes()
 	set_process(true)
 
