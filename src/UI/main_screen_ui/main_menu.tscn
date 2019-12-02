@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/themes/crafting_menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/SplashScreen/Splash Screen.png" type="Texture" id=2]
@@ -13,19 +13,11 @@ func _on_new_game_pressed():
 
 func _on_CheckButton_toggled(button_pressed):
 	Global.disable_dialogue = button_pressed
+
+
+func _on_exit_pressed():
+	get_tree().quit()
 "
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
 
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
@@ -71,52 +63,18 @@ enabled_focus_mode = 0
 text = "NEW GAME"
 flat = true
 
-[node name="credits" type="Button" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 8.0
-margin_top = -44.0
-margin_right = 48.0
-margin_bottom = -24.0
-focus_mode = 0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-enabled_focus_mode = 0
-text = "CREDITS"
-flat = true
-
 [node name="exit" type="Button" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 8.0
-margin_top = -24.0
+margin_top = -44.0
 margin_right = 33.0
-margin_bottom = -4.0
+margin_bottom = -24.0
 focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "EXIT"
 flat = true
-
-[node name="CheckButton" type="CheckButton" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -24.0
-margin_top = -80.0
-margin_right = 124.0
-margin_bottom = -40.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/hover_pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_constants/hseparation = 53
-text = "DISABLE DIALOGUE"
-flat = true
 [connection signal="pressed" from="new_game" to="." method="_on_new_game_pressed"]
-[connection signal="toggled" from="CheckButton" to="." method="_on_CheckButton_toggled"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

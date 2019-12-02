@@ -1,8 +1,32 @@
+[gd_scene load_steps=19 format=2]
 [gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/worlds/objects/platform_elevator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/tools/items_data/Compressed Light.tres" type="Resource" id=7]
+[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=8]
+[ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=9]
+[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=10]
+[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=11]
+[ext_resource path="res://src/tools/items_data/Long Base.tres" type="Resource" id=12]
+[ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=13]
+[ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=14]
+[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=15]
+[ext_resource path="res://src/worlds/scripts/dialogue_aoe.gd" type="Script" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 80 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node
+
+
+func _on_enemy3_enemy_died():
+	get_tree().change_scene(\"res://src/UI/screens/game_finished.tscn\")
 [ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=4]
 [ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=6]
@@ -412,6 +436,12 @@ texture = ExtResource( 18 )
 [node name="Light2D10" type="Light2D" parent="." index="38"]
 position = Vector2( 152, 520 )
 scale = Vector2( 0.606061, 0.546401 )
+texture = ExtResource( 15 )
+
+[node name="dialogue_aoe" type="Area2D" parent="." index="39"]
+position = Vector2( 128, 96 )
+collision_layer = 0
+script = ExtResource( 16 )
 texture = ExtResource( 18 )
 
 [node name="platform_elevator2" type="Node2D" parent="." index="39"]
@@ -453,6 +483,15 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_aoe" index="0"]
+shape = SubResource( 1 )
+
+[node name="game_finished" type="Node" parent="." index="40"]
+script = SubResource( 2 )
+[connection signal="enemy_died" from="enemy3" to="game_finished" method="_on_enemy3_enemy_died"]
+[connection signal="body_entered" from="dialogue_aoe" to="dialogue_aoe" method="_on_dialogue_aoe_body_entered"]
+
+[editable path="platform_elevator"]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator2/liver_up" index="0"]
 shape = SubResource( 9 )
 
