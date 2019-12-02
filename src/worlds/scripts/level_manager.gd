@@ -18,8 +18,7 @@ func put_player(player: Player, entrance_id: int = -1):
 	remove_child(get_node("player"))
 	add_child(player)
 	player.set_limits(limiters[1].position.x, limiters[0].position.x)
-	if entrance_id >= 0:
-		player.position = get_entrance(entrance_id).position
+	player.position = get_entrance(entrance_id).position
 
 func get_entrance(entrance_id: int) -> Position2D:
 	for child in $entrances.get_children():
