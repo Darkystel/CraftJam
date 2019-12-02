@@ -53,6 +53,20 @@ func set_light_energy(value: float):
 func _unhandled_input(event):
 	if event.is_action_pressed("test_button"):
 		$main_camera.start_shaking(0.8)
+	elif event.is_action_pressed("search"):
+		call_out_enemies()
+
+func call_out_enemies():
+	if $call_recover.is_stopped():
+		var rand = rand_range(0,1)
+		if rand > 0.75: $call_sound_1.play()
+		else: $call_sound_2.play()
+		for enemy in get_tree().get_nodes_in_group("enemy"):
+			if position.distance_to(enemy.position) <= 96.0:
+				enemy.force_detect()
+		$call_recover.start()
+	else:
+		get_parent().get_dialogue_overlay().start(load("res://src/actors/dialogue_list/player/catching_breath.tres"))
 
 func pick_up_item(item):
 	if inventory.add_to_inventory(item):

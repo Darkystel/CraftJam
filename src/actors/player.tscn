@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/tools/scripts/Equipments.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/shaders/transition.shader" type="Shader" id=7]
 [ext_resource path="res://assets/death_ibrahim_hopeitworks.png" type="Texture" id=8]
+[ext_resource path="res://assets/sound_effects/Scream.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound_effects/Scream_2.ogg" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -80,5 +82,15 @@ material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 3 )
+
+[node name="call_sound_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="call_sound_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="call_recover" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 [connection signal="timeout" from="recovery_time" to="." method="_on_recovery_time_timeout"]
 [connection signal="timeout" from="main_camera/duration" to="main_camera" method="_on_duration_timeout"]

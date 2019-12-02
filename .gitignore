@@ -8,3 +8,6 @@ addons/*/*.ini
 
 # Mono-specific ignores
 .mono/
+todo.cache.ini
+todo.cache.ini
+todo.cache.ini

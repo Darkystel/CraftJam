@@ -44,6 +44,9 @@ func walk_right(speed: float):
 func is_looking_right() -> bool:
 	return $animator.looking_right
 
+func force_detect():
+	$FSM.change_state("detection")
+
 func on_light_cast(position: Vector2):
 	print("Aaaa, light is on me help, position is " + str(position))
 	if $FSM.active_state != "run_away":
