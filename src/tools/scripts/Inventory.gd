@@ -22,6 +22,13 @@ func get_has_charger() -> bool:
 signal inventory_changed
 # This script will handle the inventory system of the player character
 
+func consume_key(special: bool = false) -> bool:
+	for item in items:
+		if item.is_key(special):
+			consume_item(item)
+			return true
+	return false
+
 func add_to_inventory(item, duplicate: bool = true) -> bool:
 	if items.size() < capacity:
 		if duplicate:

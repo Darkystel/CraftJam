@@ -7,7 +7,9 @@ enum types_enum {
 	EQUIPPABLE,
 	THROWABLE,
 	DROPPABLE,
-	CHARGABLE
+	CHARGABLE,
+	KEY,
+	SPECIAL_KEY
 	}
 
 export(String) var name = ""
@@ -50,3 +52,8 @@ func is_equippable() -> bool: return types.has(types_enum.EQUIPPABLE)
 func is_chargable() -> bool: return types.has(types_enum.CHARGABLE)
 func is_throwable() -> bool: return types.has(types_enum.THROWABLE)
 func is_droppable() -> bool: return types.has(types_enum.DROPPABLE)
+func is_key(special: bool = false) -> bool:
+	if special:
+		return types.has(types_enum.SPECIAL_KEY)
+	else:
+		return types.has(types_enum.KEY)

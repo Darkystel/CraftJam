@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/buildings/alter.png" type="Texture" id=2]
@@ -18,8 +18,9 @@
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=17]
 [ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=18]
-[ext_resource path="res://src/tools/items_data/Light Flower.tres" type="Resource" id=19]
+[ext_resource path="res://src/tools/items_data/Master Key.tres" type="Resource" id=19]
 [ext_resource path="res://src/tools/items_data/Light Bomb.tres" type="Resource" id=20]
+[ext_resource path="res://src/worlds/objects/door.tscn" type="PackedScene" id=21]
 
 [node name="level_template" index="0" instance=ExtResource( 1 )]
 area_name = "The Altar"
@@ -291,5 +292,8 @@ item = ExtResource( 19 )
 [node name="pickable4" parent="." index="15" instance=ExtResource( 16 )]
 position = Vector2( 302, 127 )
 item = ExtResource( 20 )
+
+[node name="door" parent="." index="16" instance=ExtResource( 21 )]
+position = Vector2( 319, 112 )
 
 [editable path="platform_elevator"]
