@@ -772,7 +772,6 @@ position = Vector2( 0, -23 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 8 )
 animation = "floating"
-frame = 2
 playing = true
 
 [node name="eyes" type="Node2D" parent="animator"]
