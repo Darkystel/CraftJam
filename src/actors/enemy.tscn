@@ -51,11 +51,10 @@
 [ext_resource path="res://src/actors/enemy_data/scripts/states/search.gd" type="Script" id=49]
 [ext_resource path="res://src/actors/enemy_data/scripts/states/walk_away.gd" type="Script" id=50]
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=1]
 radius = 12.1655
 
-[sub_resource type="Animation" id=1]
-resource_name = "detect"
+[sub_resource type="Animation" id=2]
 length = 1.4
 step = 0.05
 tracks/0/type = "value"
@@ -181,8 +180,7 @@ tracks/9/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "follow"
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 step = 0.15
@@ -307,7 +305,7 @@ tracks/9/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.5
 tracks/0/type = "value"
@@ -359,7 +357,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 step = 0.2
@@ -412,7 +410,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -425,7 +423,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
@@ -433,7 +431,7 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 4, 8 )
 
 [node name="enemy" type="KinematicBody2D"]
@@ -450,7 +448,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
 modulate = Color( 0.992157, 0, 0, 1 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="vision_system" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1, -11 )
@@ -482,13 +480,13 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="animator"]
-anims/detect = SubResource( 1 )
-anims/follow = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/detect = SubResource( 2 )
+anims/follow = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="sprite" type="AnimatedSprite" parent="animator"]
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 animation = "walk"
 frame = 3
 offset = Vector2( 0, -10 )
@@ -496,9 +494,9 @@ offset = Vector2( 0, -10 )
 [node name="particles" type="AnimatedSprite" parent="animator"]
 position = Vector2( 0, -23 )
 scale = Vector2( 0.16, 0.16 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 animation = "floating"
-frame = 21
+frame = 28
 playing = true
 
 [node name="eyes" type="Node2D" parent="animator"]
@@ -532,7 +530,7 @@ stream = ExtResource( 5 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -8 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }

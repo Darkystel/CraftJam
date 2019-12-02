@@ -16,6 +16,9 @@ onready var equipments = $equipments
 
 signal player_died
 
+func turn_off_light(): $light.visible = false
+func turn_on_light(): $light.visible = true
+
 func damage_player():
 	recover = false
 	$recovery_time.stop()

@@ -498,15 +498,12 @@ script = ExtResource( 1 )
 visible = false
 color = Color( 0, 0, 0, 1 )
 
-[node name="parallax_sprites" type="CanvasLayer" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="parallax_sprites"]
-
 [node name="overlay" type="CanvasLayer" parent="."]
 
 [node name="dialogue_overlay" parent="overlay" instance=ExtResource( 2 )]
 
 [node name="limiters" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="limit_right" type="Position2D" parent="limiters"]
 position = Vector2( 168, -112 )
@@ -540,5 +537,5 @@ z_index = 11
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
-collision_mask = 3
+collision_mask = 11
 format = 1
