@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
@@ -20,16 +20,20 @@
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=19]
 [ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=20]
-[ext_resource path="res://src/worlds/objects/platform_elevator.tscn" type="PackedScene" id=21]
-[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=22]
-[ext_resource path="res://src/tools/items_data/Small Magnifier.tres" type="Resource" id=23]
-[ext_resource path="res://src/tools/items_data/Wire.tres" type="Resource" id=24]
-[ext_resource path="res://src/tools/items_data/Key Fragment (Top).tres" type="Resource" id=25]
-[ext_resource path="res://src/tools/items_data/Mixture.tres" type="Resource" id=26]
-[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=27]
-[ext_resource path="res://src/tools/items_data/Round base.tres" type="Resource" id=28]
-[ext_resource path="res://src/tools/items_data/First Third.tres" type="Resource" id=29]
-[ext_resource path="res://src/worlds/objects/door.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=21]
+[ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=23]
+[ext_resource path="res://assets/tilesets/platform.png" type="Texture" id=24]
+[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=25]
+[ext_resource path="res://src/tools/items_data/Small Magnifier.tres" type="Resource" id=26]
+[ext_resource path="res://src/tools/items_data/Wire.tres" type="Resource" id=27]
+[ext_resource path="res://src/tools/items_data/Key Fragment (Top).tres" type="Resource" id=28]
+[ext_resource path="res://src/tools/items_data/Mixture.tres" type="Resource" id=29]
+[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=30]
+[ext_resource path="res://src/tools/items_data/Round base.tres" type="Resource" id=31]
+[ext_resource path="res://src/tools/items_data/First Third.tres" type="Resource" id=32]
+[ext_resource path="res://src/worlds/objects/door.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=34]
 
 [sub_resource type="TileSet" id=1]
 0/name = "New Tiles Set.png 0"
@@ -75,7 +79,88 @@
 2/shapes = [  ]
 2/z_index = 0
 
-[node name="level_template" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Node2D
+
+var player
+
+func _physics_process(delta):
+	if $detect_player.is_colliding() and $detect_elevator.is_colliding():
+		player = $detect_player.get_collider()
+		player.kill_player()
+"
+
+[node name="level_template" index="0" instance=ExtResource( 1 )]
 area_name = "The Outskirts"
 
 [node name="limit_right" parent="limiters" index="0"]
@@ -131,7 +216,7 @@ map = "The Altar"
 entrance_id = 1
 
 [node name="background2" parent="." index="5"]
-tile_data = PoolIntArray( 536870942, 0, 0 )
+tile_data = PoolIntArray( 524328, 8, 65538, 1835041, 8, 65539, 1835064, 8, 65538, 2228248, 8, 65538, 536870942, 0, 0 )
 
 [node name="Node2D" type="Node2D" parent="." index="7"]
 
@@ -287,20 +372,79 @@ position = Vector2( 344, 280 )
 [node name="enemy7" parent="." index="16" instance=ExtResource( 20 )]
 position = Vector2( 104, 278 )
 
-[node name="platform_elevator" parent="." index="17" instance=ExtResource( 21 )]
-editor/display_folded = true
+[node name="platform_elevator" type="Node2D" parent="." index="17"]
 position = Vector2( 496, 648 )
-requires_charger = false
+script = ExtResource( 21 )
 travel_distance = Vector2( 0, -528 )
 travel_time = 5.0
 
-[node name="liver_down" parent="platform_elevator" index="2"]
+[node name="charge_sound" type="AudioStreamPlayer2D" parent="platform_elevator" index="0"]
+position = Vector2( -23, 8.25 )
+stream = ExtResource( 22 )
+volume_db = -20.0
+
+[node name="interpolator" type="Tween" parent="platform_elevator" index="1"]
+
+[node name="liver_down" type="Area2D" parent="platform_elevator" index="2"]
 editor/display_folded = true
 position = Vector2( -24, -7 )
 
-[node name="liver_up" parent="platform_elevator" index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_down" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="platform_elevator/liver_down" index="1"]
+rotation = -0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 23 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator/liver_down" index="2"]
+anims/off = SubResource( 3 )
+anims/on = SubResource( 4 )
+
+[node name="liver_up" type="Area2D" parent="platform_elevator" index="3"]
 editor/display_folded = true
 position = Vector2( 24, -533 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_up" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="platform_elevator/liver_up" index="1"]
+rotation = 0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 23 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform_elevator/liver_up" index="2"]
+anims/off = SubResource( 5 )
+anims/on = SubResource( 6 )
+
+[node name="platform" type="StaticBody2D" parent="platform_elevator" index="4"]
+collision_layer = 4
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="vis" type="Sprite" parent="platform_elevator/platform" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/platform" index="1"]
+shape = SubResource( 7 )
+
+[node name="kill_player" type="Node2D" parent="platform_elevator" index="5"]
+position = Vector2( 11.9457, 3.2894 )
+script = SubResource( 8 )
+
+[node name="detect_player" type="RayCast2D" parent="platform_elevator/kill_player" index="0"]
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="detect_elevator" type="RayCast2D" parent="platform_elevator/kill_player" index="1"]
+position = Vector2( -21.3988, 0 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 4
 
 [node name="bg sky" type="Sprite" parent="." index="18"]
 visible = false
@@ -312,27 +456,27 @@ region_rect = Rect2( 0, 0, 1500, 1000 )
 
 [node name="pickable2" parent="." index="19" instance=ExtResource( 18 )]
 position = Vector2( 36, 362 )
-item = ExtResource( 22 )
+item = ExtResource( 25 )
 
 [node name="pickable3" parent="." index="20" instance=ExtResource( 18 )]
 position = Vector2( 24, 249 )
-item = ExtResource( 23 )
+item = ExtResource( 26 )
 
 [node name="pickable4" parent="." index="21" instance=ExtResource( 18 )]
 position = Vector2( 96, 152 )
-item = ExtResource( 24 )
+item = ExtResource( 27 )
 
 [node name="pickable5" parent="." index="22" instance=ExtResource( 18 )]
 position = Vector2( 696, 141 )
-item = ExtResource( 25 )
+item = ExtResource( 28 )
 
 [node name="pickable6" parent="." index="23" instance=ExtResource( 18 )]
 position = Vector2( 1048, 456 )
-item = ExtResource( 26 )
+item = ExtResource( 29 )
 
 [node name="pickable7" parent="." index="24" instance=ExtResource( 18 )]
 position = Vector2( 701, 617 )
-item = ExtResource( 27 )
+item = ExtResource( 30 )
 
 [node name="pickable9" parent="." index="25" instance=ExtResource( 18 )]
 position = Vector2( 320, 556.5 )
@@ -340,13 +484,35 @@ item = ExtResource( 19 )
 
 [node name="pickable8" parent="." index="26" instance=ExtResource( 18 )]
 position = Vector2( 598, 552 )
-item = ExtResource( 28 )
+item = ExtResource( 31 )
 
 [node name="pickable10" parent="." index="27" instance=ExtResource( 18 )]
 position = Vector2( 768, 56 )
-item = ExtResource( 29 )
+item = ExtResource( 32 )
 
-[node name="door" parent="." index="28" instance=ExtResource( 30 )]
+[node name="door" parent="." index="28" instance=ExtResource( 33 )]
 position = Vector2( 744, 128 )
 
-[editable path="platform_elevator"]
+[node name="Light2D" type="Light2D" parent="." index="29"]
+position = Vector2( 536, 456 )
+scale = Vector2( 0.700758, 0.700758 )
+texture = ExtResource( 34 )
+
+[node name="Light2D2" type="Light2D" parent="." index="30"]
+position = Vector2( 904, 453 )
+scale = Vector2( 0.700758, 0.700758 )
+texture = ExtResource( 34 )
+
+[node name="Light2D3" type="Light2D" parent="." index="31"]
+position = Vector2( 648, 132.75 )
+scale = Vector2( 0.700758, 0.700758 )
+texture = ExtResource( 34 )
+
+[node name="Light2D4" type="Light2D" parent="." index="32"]
+position = Vector2( 389, 549 )
+scale = Vector2( 0.700758, 0.700758 )
+texture = ExtResource( 34 )
+[connection signal="body_entered" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_entered"]
+[connection signal="body_exited" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_exited"]
+[connection signal="body_entered" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_entered"]
+[connection signal="body_exited" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_exited"]
