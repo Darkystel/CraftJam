@@ -14,7 +14,7 @@ area_name = "The Outskirts"
 position = Vector2( 1152, 624 )
 
 [node name="limit_left" parent="limiters" index="1"]
-position = Vector2( 0.298522, 106.19 )
+position = Vector2( 0.298522, 424 )
 
 [node name="entrance" parent="entrances" index="0" instance=ExtResource( 2 )]
 position = Vector2( 24.0001, 448 )
