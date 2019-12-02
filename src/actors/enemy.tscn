@@ -474,6 +474,7 @@ cast_to = Vector2( 12, 0 )
 collision_mask = 4
 
 [node name="animator" type="Node2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
@@ -496,7 +497,7 @@ position = Vector2( 0, -23 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 7 )
 animation = "floating"
-frame = 28
+frame = 22
 playing = true
 
 [node name="eyes" type="Node2D" parent="animator"]

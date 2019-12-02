@@ -62,6 +62,7 @@ tracks/1/keys = {
 [node name="dialogue_overlay" type="Control"]
 pause_mode = 2
 modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 48.0
@@ -75,12 +76,14 @@ anims/go_down = SubResource( 1 )
 anims/pop_up = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
+light_mask = 0
 margin_top = 96.0
 margin_right = 48.0
 margin_bottom = 144.0
 theme = ExtResource( 2 )
 
 [node name="protagonist" type="TextureRect" parent="Panel"]
+light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -91,6 +94,7 @@ expand = true
 stretch_mode = 1
 
 [node name="Panel2" type="Panel" parent="."]
+light_mask = 0
 margin_left = 56.0
 margin_top = 96.0
 margin_right = 256.0
@@ -98,6 +102,7 @@ margin_bottom = 144.0
 theme = ExtResource( 2 )
 
 [node name="dialogue" type="RichTextLabel" parent="Panel2"]
+light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0

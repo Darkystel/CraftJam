@@ -26,6 +26,7 @@ func damage_player():
 	if hp <= 0:
 		kill_player()
 	$recovery_time.start()
+	$main_camera.start_shaking()
 
 
 func kill_player():
@@ -99,3 +100,7 @@ func _physics_process(delta):
 
 func _on_recovery_time_timeout():
 	recover = true
+
+
+func _on_CheckBox_toggled(button_pressed):
+	$main_camera.current = button_pressed

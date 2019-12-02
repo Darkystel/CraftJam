@@ -119,6 +119,7 @@ _global_script_class_icons={
 config/name="CraftJam"
 run/main_scene="res://src/UI/main_screen_ui/main_screen.tscn"
 config/icon="res://assets/icon.png"
+config/version="0.1.0"
 
 [autoload]
 

@@ -37,6 +37,7 @@ tracks/0/keys = {
 
 [node name="hot_equip_overlay" type="Control"]
 pause_mode = 2
+light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 128, 100 )
@@ -48,5 +49,6 @@ anims/appear = SubResource( 1 )
 anims/disappear = SubResource( 2 )
 
 [node name="inventory" parent="." instance=ExtResource( 2 )]
+light_mask = 0
 
 [editable path="inventory"]

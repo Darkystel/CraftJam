@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/temp_assets/Inventory Frame.png" type="Texture" id=2]
 
 [node name="item" type="TextureButton"]
+light_mask = 0
 anchor_right = 0.062
 anchor_bottom = 0.111
 margin_right = 0.127999
@@ -12,12 +13,14 @@ rect_min_size = Vector2( 16, 16 )
 script = ExtResource( 1 )
 
 [node name="frame" type="TextureRect" parent="."]
+light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="item_texture" type="TextureRect" parent="."]
+light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch_mode = 4

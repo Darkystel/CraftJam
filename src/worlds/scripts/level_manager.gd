@@ -13,6 +13,14 @@ func _ready():
 	if Global.disable_dialogue:
 		for dialogue_node in get_tree().get_nodes_in_group("dialogue"):
 			dialogue_node.queue_free()
+	if area_name == "The Altar":
+		print("The Altar map loaded:-")
+		for layer in $ParallaxBackground.get_children():
+			print("Layer position : " + str(layer) + " " + str(layer.position))
+			print("Layer scale : " + str(layer) + " " + str(layer.scale))
+			for sprite in layer.get_children():
+				print("Sprite position : " + str(sprite) + " " + str(sprite.position))
+				print("Sprite scale : " + str(sprite) + " " + str(sprite.scale))
 
 func put_player(player: Player, entrance_id: int = -1):
 	remove_child(get_node("player"))

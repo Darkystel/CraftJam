@@ -7,14 +7,17 @@
 [ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=5]
 [ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=6]
 
-[node name="level_template" index="0" instance=ExtResource( 1 )]
+[node name="level_template" instance=ExtResource( 1 )]
 area_name = "The Outskirts"
+
+[node name="dark_environment" parent="." index="0"]
+visible = true
 
 [node name="limit_right" parent="limiters" index="0"]
 position = Vector2( 1152, 624 )
 
 [node name="limit_left" parent="limiters" index="1"]
-position = Vector2( 0.298522, 424 )
+position = Vector2( 0.298522, 106.19 )
 
 [node name="entrance" parent="entrances" index="0" instance=ExtResource( 2 )]
 position = Vector2( 24.0001, 448 )
