@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=31 format=2]
-
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/buildings/alter.png" type="Texture" id=2]
@@ -15,17 +13,17 @@
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/tilesets/more_grass.tres" type="TileSet" id=13]
-
 [ext_resource path="res://src/worlds/objects/platform_elevator.gd" type="Script" id=14]
 [ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=16]
 [ext_resource path="res://assets/tilesets/platform.png" type="Texture" id=17]
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=19]
-[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=20]
-[ext_resource path="res://src/tools/items_data/Light Bomb.tres" type="Resource" id=21]
+[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=20]
+[ext_resource path="res://src/tools/items_data/Wire.tres" type="Resource" id=21]
 [ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=22]
 [ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=23]
+[ext_resource path="res://src/tools/items_data/Light Bomb.tres" type="Resource" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 10 )
@@ -109,7 +107,6 @@ func _physics_process(delta):
 "
 
 [node name="level_template" index="0" instance=ExtResource( 1 )]
-
 area_name = "The Altar"
 
 [node name="background3" type="Node" parent="." index="0"]
@@ -380,7 +377,6 @@ anims/on = SubResource( 3 )
 editor/display_folded = true
 position = Vector2( -24, -136 )
 
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform_elevator/liver_up" index="0"]
 shape = SubResource( 1 )
 
@@ -429,23 +425,26 @@ item = ExtResource( 19 )
 position = Vector2( 266.208, -37.4092 )
 item = ExtResource( 20 )
 
-[node name="pickable3" parent="." index="13" instance=ExtResource( 18 )]
+[node name="pickable7" parent="." index="13" instance=ExtResource( 18 )]
+position = Vector2( 211, -37.4092 )
+item = ExtResource( 21 )
+
+[node name="pickable3" parent="." index="14" instance=ExtResource( 18 )]
 position = Vector2( 127.799, -36.2078 )
 item = ExtResource( 21 )
 
-[node name="pickable5" parent="." index="14" instance=ExtResource( 18 )]
+[node name="pickable5" parent="." index="15" instance=ExtResource( 18 )]
 position = Vector2( 24.1035, -133.743 )
 item = ExtResource( 22 )
 
-[node name="pickable6" parent="." index="15" instance=ExtResource( 18 )]
+[node name="pickable6" parent="." index="16" instance=ExtResource( 18 )]
 position = Vector2( 498.682, -134.373 )
 item = ExtResource( 23 )
 
-[node name="pickable4" parent="." index="16" instance=ExtResource( 18 )]
+[node name="pickable4" parent="." index="17" instance=ExtResource( 18 )]
 position = Vector2( 358.083, -38.2611 )
-item = ExtResource( 21 )
+item = ExtResource( 24 )
 [connection signal="body_entered" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_exited"]
 [connection signal="body_entered" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_exited"]
-

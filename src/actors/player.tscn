@@ -1,26 +1,27 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://src/tools/scripts/Equipments.gd" type="Script" id=2]
-[ext_resource path="res://src/actors/character.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=4]
-[ext_resource path="res://src/actors/scripts/main_camera.gd" type="Script" id=5]
-[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/shaders/transition.shader" type="Shader" id=7]
-[ext_resource path="res://assets/death_ibrahim_hopeitworks.png" type="Texture" id=8]
-[ext_resource path="res://assets/sound_effects/Scream.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/sound_effects/Scream_2.ogg" type="AudioStream" id=10]
+[ext_resource path="res://src/tools/inventory_data/4 Capacity Bag.tres" type="Resource" id=2]
+[ext_resource path="res://src/tools/scripts/Equipments.gd" type="Script" id=3]
+[ext_resource path="res://src/actors/character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=5]
+[ext_resource path="res://src/actors/scripts/main_camera.gd" type="Script" id=6]
+[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/shaders/transition.shader" type="Shader" id=8]
+[ext_resource path="res://assets/death_ibrahim_hopeitworks.png" type="Texture" id=9]
+[ext_resource path="res://assets/sound_effects/Scream.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound_effects/Scream_2.ogg" type="AudioStream" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
 height = 4.0
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 7 )
+shader = ExtResource( 8 )
 shader_param/cutoff = 1.0
 shader_param/smooth_size = 0.026
 shader_param/color = Color( 0, 0, 0, 1 )
-shader_param/mask = ExtResource( 8 )
+shader_param/mask = ExtResource( 9 )
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends ColorRect
@@ -34,20 +35,21 @@ func _process(delta):
 ]]
 z_index = 1
 script = ExtResource( 1 )
+inventory = ExtResource( 2 )
 
 [node name="recovery_time" type="Timer" parent="."]
 one_shot = true
 
 [node name="equipments" type="Node2D" parent="."]
 position = Vector2( 0, -4 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
-[node name="character" parent="." instance=ExtResource( 3 )]
+[node name="character" parent="." instance=ExtResource( 4 )]
 
 [node name="light" type="Light2D" parent="."]
 position = Vector2( 0, -6.43903 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 texture_scale = 1.4
 shadow_enabled = true
 shadow_gradient_length = 20.0
@@ -64,13 +66,13 @@ offset = Vector2( 0, -24 )
 current = true
 zoom = Vector2( 1.25, 1.25 )
 limit_smoothed = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="offsetter" type="Tween" parent="main_camera"]
 
 [node name="duration" type="Timer" parent="main_camera"]
 
-[node name="UI_controller" parent="." instance=ExtResource( 6 )]
+[node name="UI_controller" parent="." instance=ExtResource( 7 )]
 pause_mode = 1
 layer = 20
 
@@ -84,10 +86,10 @@ anchor_bottom = 1.0
 script = SubResource( 3 )
 
 [node name="call_sound_1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 
 [node name="call_sound_2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 
 [node name="call_recover" type="Timer" parent="."]
 wait_time = 10.0
