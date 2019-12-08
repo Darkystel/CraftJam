@@ -1,0 +1,15 @@
+{
+  "Starting Items": {
+    "COLLECTION_NAME": "Starting Items",
+    "MIN_ITEM_COUNT": 2,
+    "MAX_ITEM_COUNT": 5,
+    "ITEM_1": "Signal Flare",
+    "ITEM_1_CHANCE": 0.15,
+    "ITEM_2": "Flower",
+    "ITEM_2_CHANCE": 0.3,
+    "ITEM_3": "Long Rod",
+    "ITEM_3_CHANCE": 1,
+    "ITEM_4": "Compressed Light",
+    "ITEM_4_CHANCE": 0.7
+  }
+}

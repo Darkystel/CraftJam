@@ -1,0 +1,154 @@
+{
+  "Compressed Light": {
+    "ITEM_NAME": "Compressed Light",
+    "DROP_CHANCE": 0.7,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Compressed Light.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "Almost weighless, light compressed in a small volume of void. This compression can be embedded in some sort of container and a releasing mechanism to produce an explosive object."
+  },
+  "Compressed Power": {
+    "ITEM_NAME": "Compressed Power",
+    "DROP_CHANCE": 0.6,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Compressed Power.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A large amount of atoms compressed and constrained in a small volume of void, the power stored inside somehow have almost no leakage. This sort of compression can be embedded in a container and a releasing mechanism to produce a powerful explosive object."
+  },
+  "Flare Base": {
+    "ITEM_NAME": "Flare Base",
+    "DROP_CHANCE": 0.6,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Flare Base.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A flare base that seems to have some mesh left in it, filling this with the material required for ignition can prove useful."
+  },
+  "Flower": {
+    "ITEM_NAME": "Flower",
+    "DROP_CHANCE": 0.4,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Flower.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A pretty flower."
+  },
+  "Lead": {
+    "ITEM_NAME": "Lead",
+    "DROP_CHANCE": 0.2,
+    "ITEM_TYPE": "CONSUMABLE",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Lead.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "Useful only in inventory extension, consume to extend inventory capacity."
+  },
+  "Long Rod": {
+    "ITEM_NAME": "Long Rod",
+    "DROP_CHANCE": 0.6,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Lead.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A long rod with a connection on one of the ends, if I had two of those I could perfectly fit them together into a rod with a contraption in the middle."
+  },
+  "Magnifier": {
+    "ITEM_NAME": "Magnifier",
+    "DROP_CHANCE": 0.6,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Magnifier.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A thick magnifying glass."
+  },
+  "Mixture": {
+    "ITEM_NAME": "Mixture",
+    "DROP_CHANCE": 0.5,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Mxiture.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A glowing mixture."
+  },
+  "Releaser": {
+    "ITEM_NAME": "Releaser",
+    "DROP_CHANCE": 0.6,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Releaser.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A simple releasing mechanism."
+  },
+  "Round Base": {
+    "ITEM_NAME": "Round Base",
+    "DROP_CHANCE": 0.7,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Round Base.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A round hollow container."
+  },
+  "Small Magnifier": {
+    "ITEM_NAME": "Small Magnifier",
+    "DROP_CHANCE": 0.8,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Small Magnifier.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A think magnifying glass."
+  },
+  "Wire": {
+    "ITEM_NAME": "Wire",
+    "DROP_CHANCE": 0.9,
+    "ITEM_TYPE": "COMPONENT",
+    "TEXTURE_PATH": "res://assets/items/crafting_items/Wire.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "A wire useful for charging battery dependant devices and mechanisms. Must have a power source to charge with."
+  },
+  "Beam Light": {
+    "ITEM_NAME": "Beam Light",
+    "DROP_CHANCE": 0.2,
+    "ITEM_TYPE": "EQUIPMENT",
+    "TEXTURE_PATH": "res://assets/items/BeamLight.png",
+    "ITEM_PATH": "NOT_DEFINED",
+    "ITEM_DESCRIPTION": "A beam light strong enough to keep the creatures away, but it heats up very fast, and the battery drain increases the longer it stays overheated"
+  },
+  "Charger": {
+    "ITEM_NAME": "Charger",
+    "DROP_CHANCE": 0.4,
+    "ITEM_TYPE": "CONSUMABLE",
+    "TEXTURE_PATH": "res://assets/items/Charger.png",
+    "ITEM_PATH": "NONE",
+    "ITEM_DESCRIPTION": "Useful for charging battery dependent equipment and platforms."
+  },
+  "Flash Bomb": {
+    "ITEM_NAME": "Flash Bomb",
+    "DROP_CHANCE": 0.1,
+    "ITEM_TYPE": "EQUIPMENT",
+    "TEXTURE_PATH": "res://assets/items/FlashBomb.png",
+    "ITEM_PATH": "NOT_DEFINED",
+    "ITEM_DESCRIPTION": "A bomb that has a chance to eliminate the creatures or keep them away."
+  },
+  "Light Bomb": {
+    "ITEM_NAME": "Light Bomb",
+    "DROP_CHANCE": 0.2,
+    "ITEM_TYPE": "EQUIPMENT",
+    "TEXTURE_PATH": "res://assets/items/LightBomb.png",
+    "ITEM_PATH": "NOT_DEFINED",
+    "ITEM_DESCRIPTION": "A bomb that is guaranteed to eliminate the creatures upon contact with its strong light."
+  },
+  "Light Flower": {
+    "ITEM_NAME": "Light Flower",
+    "DROP_CHANCE": 0.1,
+    "ITEM_TYPE": "EQUIPMENT",
+    "TEXTURE_PATH": "res://assets/items/LightFlower.png",
+    "ITEM_PATH": "NOT_DEFINED",
+    "ITEM_DESCRIPTION": "A flower that creates a light for a duration, keeps the creatures away, picking this up after planting has a chance of restoring a flower with no light."
+  },
+  "Shockwave Beam": {
+    "ITEM_NAME": "Shockwave Beam",
+    "DROP_CHANCE": 0.1,
+    "ITEM_TYPE": "EQUIPMENT",
+    "TEXTURE_PATH": "res://assets/items/ShockWaveBeam.png",
+    "ITEM_PATH": "NOT_DEFINED",
+    "ITEM_DESCRIPTION": "A shockwave of light with low range that is strong enough to eliminate any shadows that come in contact with its light."
+  },
+  "Signal Flare": {
+    "ITEM_NAME": "Signal Flare",
+    "DROP_CHANCE": 0.3,
+    "ITEM_TYPE": "EQUIPMENT",
+    "TEXTURE_PATH": "res://assets/items/SignalFlare.png",
+    "ITEM_PATH": "NOT_DEFINED",
+    "ITEM_DESCRIPTION": "Lights the way in dark areas."
+  }
+}

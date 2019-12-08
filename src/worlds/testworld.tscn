@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=1]
+[ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/worlds/objects/chest.tscn" type="PackedScene" id=3]
+
+[node name="testworld" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 524287, 1, 0, 458752, 1, 131076, 458753, 1, 1, 458754, 1, 1, 458755, 1, 1, 458756, 1, 131076, 458757, 1, 131076, 458758, 1, 1, 458759, 1, 1, 458760, 1, 131076, 458761, 1, 1, 458762, 1, 131076, 458763, 1, 1, 458764, 1, 131076, 458765, 1, 131076, 458766, 1, 1, 458767, 1, 131076, 458768, 1, 2, 589823, 1, 131072, 524288, 1, 4, 524289, 1, 4, 524290, 1, 4, 524291, 1, 4, 524292, 1, 131073, 524293, 1, 131073, 524294, 1, 131073, 524295, 1, 4, 524296, 1, 4, 524297, 1, 131073, 524298, 1, 4, 524299, 1, 131073, 524300, 1, 131073, 524301, 1, 4, 524302, 1, 4, 524303, 1, 131073, 524304, 1, 131074 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 121, 97 )
+
+[node name="chest" parent="." instance=ExtResource( 3 )]
+position = Vector2( 208, 112 )
+collection = "Starting Items"

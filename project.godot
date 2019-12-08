@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/tools/scripts/Message.gd"
 }, {
-"base": "Area2D",
-"class": "NPC",
-"language": "GDScript",
-"path": "res://src/actors/scripts/NPC.gd"
-}, {
 "base": "Control",
 "class": "Overlay",
 "language": "GDScript",
@@ -104,7 +99,6 @@ _global_script_class_icons={
 "Item": "",
 "LevelManager": "",
 "Message": "",
-"NPC": "",
 "Overlay": "",
 "Player": "",
 "Recipe": "",
@@ -116,16 +110,16 @@ _global_script_class_icons={
 
 [application]
 
-config/name="CraftJam"
-run/main_scene="res://src/UI/main_screen_ui/main_screen.tscn"
+config/name="Presence"
+run/main_scene="res://src/worlds/testworld.tscn"
 config/icon="res://assets/icon.png"
+config/quit_on_go_back=false
 config/version="0.1.0"
 
 [autoload]
 
-Global="*res://src/autoloads/Global.gd"
-MapHandler="*res://src/autoloads/MapHandler.gd"
-Loader="*res://src/autoloads/Loader.gd"
+Constants="*res://src/autoloads/Constants.gd"
+DataImporter="*res://src/autoloads/DataImporter.gd"
 
 [debug]
 

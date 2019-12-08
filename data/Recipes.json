@@ -1,0 +1,18 @@
+{
+  "Flash Bomb": {
+    "RECIPE_RESULT": "Flash Bomb",
+    "ITEM_COUNT": 4,
+    "ITEM_1": "Round Base",
+    "ITEM_2": "Compressed Power",
+    "ITEM_3": "Compressed Light",
+    "ITEM_4": "Releaser"
+  },
+  "Light Bomb": {
+    "RECIPE_RESULT": "Light Bomb",
+    "ITEM_COUNT": 3,
+    "ITEM_1": "Round Base",
+    "ITEM_2": "Compressed Light",
+    "ITEM_3": "Releaser",
+    "ITEM_4": null
+  }
+}
