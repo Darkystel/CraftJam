@@ -206,6 +206,7 @@ test_button={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="environment"
+2d_physics/layer_4="platform"
 
 [rendering]
 
