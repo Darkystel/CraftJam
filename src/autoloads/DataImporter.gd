@@ -55,6 +55,21 @@ func get_items_from_collection(collection: String) -> Array:
 				break;
 	return selected_items
 
+func get_random_item(search_limit_ms: int = 25) -> String:
+	randomize()
+	var keys = items.keys()
+	var time_0 = search_limit_ms
+	var last_selected = ""
+	while time_0 > 0:
+		var selector = randi() % keys.size()
+		last_selected = keys[selector]
+		randomize()
+		if items[last_selected][Constants.ITEM_DROP_CHANCE] > rand_range(0,1):
+			return keys[selector]
+		time_0 -= 1
+	return last_selected
+
+func validate_item(item: String) -> bool: return items.has(item)
 func validate_collection(collection: String)-> bool: return collections.has(collection)
 
 func validate_recipe(items: Array) -> String:

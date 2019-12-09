@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/crafting_menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/UI/scripts/inventoryUI.gd" type="Script" id=2]
+[ext_resource path="res://src/UI/scripts/inventory_tab.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/scripts/item_description.gd" type="Script" id=4]
+
+[node name="inventory" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="INVENTORY" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 18.0
+rect_min_size = Vector2( 256, 126 )
+script = ExtResource( 3 )
+
+[node name="item_description" type="Panel" parent="TabContainer/INVENTORY"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = -61.0
+margin_right = -8.0
+margin_bottom = 55.0
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="TabContainer/INVENTORY/item_description"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 28.0
+margin_bottom = 28.0
+
+[node name="item_texture" type="TextureRect" parent="TabContainer/INVENTORY/item_description/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+stretch_mode = 1
+
+[node name="Panel2" type="Panel" parent="TabContainer/INVENTORY/item_description"]
+margin_left = 32.0
+margin_top = 4.0
+margin_right = 92.0
+margin_bottom = 28.0
+
+[node name="item_name" type="Label" parent="TabContainer/INVENTORY/item_description/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+valign = 1
+autowrap = true
+
+[node name="Panel3" type="Panel" parent="TabContainer/INVENTORY/item_description"]
+margin_left = 4.0
+margin_top = 32.0
+margin_right = 92.0
+margin_bottom = 112.0
+
+[node name="item_description" type="RichTextLabel" parent="TabContainer/INVENTORY/item_description/Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="item_list" type="ItemList" parent="TabContainer/INVENTORY"]
+margin_left = 8.0
+margin_top = 14.0
+margin_right = 140.0
+margin_bottom = 118.0
+allow_reselect = true
+fixed_icon_size = Vector2( 16, 16 )
+
+[node name="Label" type="Label" parent="TabContainer/INVENTORY"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 140.0
+margin_bottom = 10.0
+text = "ITEMS"
+
+[node name="CRAFT" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 18.0
+rect_min_size = Vector2( 256, 126 )
+[connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY" method="_on_inventory_list_item_selected"]

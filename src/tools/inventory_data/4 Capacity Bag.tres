@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://src/tools/scripts/Inventory.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-capacity = 8
-equip_capacity = 4

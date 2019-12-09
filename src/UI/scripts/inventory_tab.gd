@@ -1,40 +1,27 @@
 extends IMTabs
 
 #####################################
-var selected_item: Item
-var items_to_drop = []
-var items_to_equip = []
+var selected_item
 #####################################
-onready var inventory_list = $HBoxContainer/inventory_list
-onready var item_info = $HBoxContainer/item_info
+onready var item_list = $item_list
+onready var item_description = $item_description
 #####################################
 
 func _ready():
 	update_inventory_list()
 
 func update_inventory_list():
-	inventory_list.clear()
+	item_list.clear()
 	for item in get_inventory().items:
-		inventory_list.add_icon_item(item.item_texture)
+		var item_texture = load(DataImporter.items[item][Constants.ITEM_TEXTURE_PATH])
+		item_list.add_item(item, item_texture)
 
 func _on_inventory_list_item_selected(index): #Display item info
 	selected_item = get_inventory().items[index]
-	var equippable = selected_item.types.has(selected_item.types_enum.EQUIPPABLE)
-	item_info.update_item(selected_item, false)
-
-func _on_drop_pressed():
-	if selected_item != null:
-		items_to_drop.push_back(get_inventory().consume_item(selected_item))
-		update_inventory_list()
-		item_info.clear()
+	item_description.update_item(selected_item)
 
 func flush_leftovers():
-	var flush_info = UIFlushInfo.new()
-	var pouch = DroppedPouch.new()
-	pouch.items = items_to_drop.duplicate()
-	items_to_drop.clear()
-	flush_info.dropped_pouch = pouch
-	return flush_info
+	pass
 
 func _on_tabs_tab_changed(tab):
 	if tab == 0:

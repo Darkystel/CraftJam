@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/actors/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/actors/scripts/inventory.gd" type="Script" id=2]
 [ext_resource path="res://src/actors/character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -29,3 +30,8 @@ offset = Vector2( 0, -24 )
 current = true
 zoom = Vector2( 1.25, 1.25 )
 limit_smoothed = true
+drag_margin_v_enabled = false
+drag_margin_left = 0.06
+drag_margin_right = 0.06
+
+[node name="UI_controller" parent="." instance=ExtResource( 4 )]

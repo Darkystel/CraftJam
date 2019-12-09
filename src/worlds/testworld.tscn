@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/worlds/objects/chest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=4]
 
 [node name="testworld" type="Node2D"]
 
@@ -18,3 +19,6 @@ position = Vector2( 121, 97 )
 [node name="chest" parent="." instance=ExtResource( 3 )]
 position = Vector2( 208, 112 )
 collection = "Starting Items"
+
+[node name="pickable" parent="." instance=ExtResource( 4 )]
+position = Vector2( 57, 112 )

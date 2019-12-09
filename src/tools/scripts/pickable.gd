@@ -1,50 +1,29 @@
 extends Area2D
+const _TAG = "PickableItem : "
 
-export(Resource) var item = null
+export(String) var item = ""
 
-onready var rc = $rc
-
-var pickable = false
 var player = null
 
 func _ready():
-	assert(item != null)
-#	if item is Item:
-#		item = copy_item(item)
-#	else:
-#		push_error("Resource passed to item property is not of type Item")
-
-func _process(delta):
-	var player_pos = get_parent().get_player().position
-	player_pos.y -= 8
-	rc.look_at(player_pos)
-	var collider = rc.get_collider()
-	if collider != null and collider.is_in_group("player"):
-
-		$item.visible = true
-	else:
-		$item.visible = false
+	$animator.play("glow")
+	if item.empty():
+		print(_TAG, "Item not specified, generating random item..")
+		item = DataImporter.get_random_item()
+	elif not DataImporter.validate_item(item):
+		push_warning(_TAG + "Failed to validate item, [" + item + "] is not in the items data dictionary.")
+		print(_TAG, "Generating random item due to validation failure..")
+		item = DataImporter.get_random_item()
 
 func _on_pickable_body_entered(body):
-	if body.is_in_group("player"): 
-		pickable = true
+	if body.is_in_group("player"):
 		player = body
 
 func _on_pickable_body_exited(body):
-	if body.is_in_group("player"): 
-		pickable = false
-		player = body
+	if body.is_in_group("player"):
+		player = null
 
 func _unhandled_input(event):
-	if event.is_action_pressed("interact") and pickable:
-		if player.pick_up_item(item):
+	if event.is_action_pressed("interact") and player != null:
+		if player.inventory.add_item(item):
 			queue_free()
-
-func copy_item(to_be_coppied: Item) -> Item:
-	var item = Item.new()
-	item.name = to_be_coppied.name
-	item.description = to_be_coppied.description
-	item.types = to_be_coppied.types
-	item.item_texture = to_be_coppied.item_texture
-	item.item_scene = to_be_coppied.item_scene
-	return item

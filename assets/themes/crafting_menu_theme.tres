@@ -130,9 +130,7 @@ anti_aliasing = false
 content_margin_left = 3.0
 content_margin_right = 3.0
 
-[sub_resource type="StyleBoxEmpty" id=12]
-content_margin_left = 3.0
-content_margin_right = 3.0
+[sub_resource type="StyleBoxEmpty" id=15]
 
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0, 0, 0, 1 )
@@ -222,9 +220,9 @@ RichTextLabel/fonts/mono_font = null
 RichTextLabel/fonts/normal_font = null
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-TabContainer/colors/font_color_bg = Color( 0.690196, 0.690196, 0.690196, 1 )
-TabContainer/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-TabContainer/colors/font_color_fg = Color( 0.941176, 0.941176, 0.941176, 1 )
+TabContainer/colors/font_color_bg = Color( 1, 1, 1, 0.215686 )
+TabContainer/colors/font_color_disabled = Color( 1, 0, 0, 0.2 )
+TabContainer/colors/font_color_fg = Color( 1, 1, 1, 1 )
 TabContainer/constants/hseparation = 4
 TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/label_valign_fg = 0
@@ -240,10 +238,10 @@ TabContainer/icons/menu_highlight = null
 TabContainer/styles/panel = SubResource( 10 )
 TabContainer/styles/tab_bg = SubResource( 11 )
 TabContainer/styles/tab_disabled = null
-TabContainer/styles/tab_fg = SubResource( 12 )
-Tabs/colors/font_color_bg = Color( 0.690196, 0.690196, 0.690196, 1 )
-Tabs/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Tabs/colors/font_color_fg = Color( 0.941176, 0.941176, 0.941176, 1 )
+TabContainer/styles/tab_fg = SubResource( 15 )
+Tabs/colors/font_color_bg = Color( 1, 1, 1, 0.427451 )
+Tabs/colors/font_color_disabled = Color( 1, 1, 1, 0.141176 )
+Tabs/colors/font_color_fg = Color( 1, 1, 1, 1 )
 Tabs/constants/hseparation = 4
 Tabs/constants/label_valign_bg = 2
 Tabs/constants/label_valign_fg = 0
