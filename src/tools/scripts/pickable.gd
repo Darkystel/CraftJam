@@ -5,6 +5,8 @@ export(String) var item = ""
 
 var player = null
 
+signal picked(name)
+
 func _ready():
 	$animator.play("glow")
 	if item.empty():
@@ -26,4 +28,5 @@ func _on_pickable_body_exited(body):
 func _unhandled_input(event):
 	if event.is_action_pressed("interact") and player != null:
 		if player.inventory.add_item(item):
+			emit_signal("picked", self.name)
 			queue_free()

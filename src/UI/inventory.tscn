@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/themes/crafting_menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/UI/scripts/inventoryUI.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/scripts/inventory_tab.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/scripts/item_description.gd" type="Script" id=4]
+[ext_resource path="res://src/UI/scripts/crafting_tab.gd" type="Script" id=5]
 
 [node name="inventory" type="Control"]
 pause_mode = 2
@@ -28,6 +29,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="INVENTORY" type="Tabs" parent="TabContainer"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
@@ -35,6 +38,7 @@ rect_min_size = Vector2( 256, 126 )
 script = ExtResource( 3 )
 
 [node name="item_description" type="Panel" parent="TabContainer/INVENTORY"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -94,7 +98,7 @@ margin_bottom = -4.0
 margin_left = 8.0
 margin_top = 14.0
 margin_right = 140.0
-margin_bottom = 118.0
+margin_bottom = 98.0
 allow_reselect = true
 fixed_icon_size = Vector2( 16, 16 )
 
@@ -105,10 +109,104 @@ margin_right = 140.0
 margin_bottom = 10.0
 text = "ITEMS"
 
+[node name="equip" type="Button" parent="TabContainer/INVENTORY"]
+margin_left = 8.0
+margin_top = 102.0
+margin_right = 44.0
+margin_bottom = 118.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "EQUIP"
+
+[node name="use" type="Button" parent="TabContainer/INVENTORY"]
+margin_left = 52.0
+margin_top = 102.0
+margin_right = 92.0
+margin_bottom = 118.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "USE"
+
+[node name="drop" type="Button" parent="TabContainer/INVENTORY"]
+margin_left = 100.0
+margin_top = 102.0
+margin_right = 140.0
+margin_bottom = 118.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "DROP"
+
 [node name="CRAFT" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
 rect_min_size = Vector2( 256, 126 )
+script = ExtResource( 5 )
+
+[node name="items_list" type="ItemList" parent="TabContainer/CRAFT"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -108.0
+margin_top = -33.0
+margin_right = -8.0
+margin_bottom = 35.0
+fixed_icon_size = Vector2( 16, 16 )
+
+[node name="Label" type="Label" parent="TabContainer/CRAFT"]
+margin_left = 20.0
+margin_top = 18.0
+margin_right = 120.0
+margin_bottom = 26.0
+text = "ITEMS"
+valign = 1
+
+[node name="Label2" type="Label" parent="TabContainer/CRAFT"]
+margin_left = 128.0
+margin_top = 18.0
+margin_right = 228.0
+margin_bottom = 26.0
+text = "CRAFTING"
+valign = 1
+
+[node name="crafting_list" type="ItemList" parent="TabContainer/CRAFT"]
+margin_left = 128.0
+margin_top = 30.0
+margin_right = 236.0
+margin_bottom = 54.0
+max_columns = 4
+same_column_width = true
+fixed_column_width = 16
+fixed_icon_size = Vector2( 16, 16 )
+
+[node name="item_count" type="Label" parent="TabContainer/CRAFT"]
+margin_left = 128.0
+margin_top = 58.0
+margin_right = 236.0
+margin_bottom = 66.0
+text = "0/4"
+align = 2
+valign = 1
+
+[node name="craft" type="Button" parent="TabContainer/CRAFT"]
+margin_left = 200.0
+margin_top = 82.0
+margin_right = 236.0
+margin_bottom = 98.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "CRAFT"
+
+[node name="reset" type="Button" parent="TabContainer/CRAFT"]
+margin_left = 160.0
+margin_top = 82.0
+margin_right = 196.0
+margin_bottom = 98.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "RESET"
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY" method="_on_inventory_list_item_selected"]
+[connection signal="item_activated" from="TabContainer/CRAFT/items_list" to="TabContainer/CRAFT" method="_on_items_list_item_activated"]

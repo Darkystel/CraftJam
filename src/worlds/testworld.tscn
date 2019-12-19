@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/worlds/objects/chest.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/worlds/scripts/pickables.gd" type="Script" id=4]
+[ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=5]
 
 [node name="testworld" type="Node2D"]
 
@@ -20,5 +21,26 @@ position = Vector2( 121, 97 )
 position = Vector2( 208, 112 )
 collection = "Starting Items"
 
-[node name="pickable" parent="." instance=ExtResource( 4 )]
+[node name="pickables" type="Node" parent="." groups=[
+"map_save",
+]]
+editor/display_folded = true
+script = ExtResource( 4 )
+
+[node name="pickable" parent="pickables" instance=ExtResource( 5 )]
 position = Vector2( 57, 112 )
+
+[node name="pickable2" parent="pickables" instance=ExtResource( 5 )]
+position = Vector2( 77, 112 )
+
+[node name="pickable3" parent="pickables" instance=ExtResource( 5 )]
+position = Vector2( 38, 112 )
+
+[node name="pickable4" parent="pickables" instance=ExtResource( 5 )]
+position = Vector2( 21, 112 )
+
+[node name="pickable5" parent="pickables" instance=ExtResource( 5 )]
+position = Vector2( 92, 112 )
+
+[node name="pickable6" parent="pickables" instance=ExtResource( 5 )]
+position = Vector2( 107, 112 )

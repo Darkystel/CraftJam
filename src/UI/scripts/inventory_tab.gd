@@ -23,7 +23,6 @@ func _on_inventory_list_item_selected(index): #Display item info
 func flush_leftovers():
 	pass
 
-func _on_tabs_tab_changed(tab):
-	if tab == 0:
-		if get_inventory().return_all_from_craft():
-			update_inventory_list()
+
+func _on_TabContainer_tab_changed(tab):
+	update_inventory_list()
