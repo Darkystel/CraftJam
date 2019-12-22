@@ -1,0 +1,191 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/worlds/objects/fixed_platform_elevator.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound_effects/wav/charge.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/tilesets/liver.png" type="Texture" id=3]
+[ext_resource path="res://assets/tilesets/platform.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 10 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Node2D
+
+var player
+
+func _physics_process(delta):
+	if $detect_player.is_colliding() and $detect_elevator.is_colliding():
+		player = $detect_player.get_collider()
+		player.kill_player()
+"
+
+[sub_resource type="RectangleShape2D" id=8]
+
+[sub_resource type="RectangleShape2D" id=9]
+
+[node name="platform_elevator" type="Node2D"]
+script = ExtResource( 1 )
+travel_time = 2.0
+position_of_elevator = 0
+
+[node name="charge_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -23, 8.25 )
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[node name="interpolator" type="Tween" parent="."]
+
+[node name="liver_down" type="Area2D" parent="."]
+position = Vector2( -48, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="liver_down"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="liver_down"]
+rotation = -0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="liver_down"]
+anims/off = SubResource( 2 )
+anims/on = SubResource( 3 )
+
+[node name="liver_up" type="Area2D" parent="."]
+position = Vector2( 48, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="liver_up"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="liver_up"]
+rotation = 0.523599
+scale = Vector2( 0.5, 1 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="liver_up"]
+anims/off = SubResource( 4 )
+anims/on = SubResource( 5 )
+
+[node name="platform" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 11
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="vis" type="Sprite" parent="platform"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+shape = SubResource( 6 )
+
+[node name="kill_player" type="Node2D" parent="."]
+position = Vector2( 11.9457, 3.2894 )
+script = SubResource( 7 )
+
+[node name="detect_player" type="RayCast2D" parent="kill_player"]
+position = Vector2( 3.75093, 0.133961 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+
+[node name="detect_elevator" type="RayCast2D" parent="kill_player"]
+position = Vector2( -27.695, 0 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+collision_mask = 8
+
+[node name="Up" type="Area2D" parent="."]
+position = Vector2( 0, -24 )
+collision_layer = 9
+collision_mask = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
+modulate = Color( 1, 0, 0, 1 )
+shape = SubResource( 8 )
+
+[node name="Down" type="Area2D" parent="."]
+position = Vector2( 0, 25 )
+collision_layer = 9
+collision_mask = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down"]
+modulate = Color( 0.0313726, 0, 1, 1 )
+shape = SubResource( 9 )
+[connection signal="body_entered" from="liver_down" to="." method="_on_liver_body_entered"]
+[connection signal="body_exited" from="liver_down" to="." method="_on_liver_body_exited"]
+[connection signal="body_entered" from="liver_up" to="." method="_on_liver_body_entered"]
+[connection signal="body_exited" from="liver_up" to="." method="_on_liver_body_exited"]
