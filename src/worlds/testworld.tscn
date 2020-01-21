@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/worlds/objects/fixed_platform_elevator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/worlds/objects/Teleporter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=8]
 
 [node name="testworld" type="Node2D"]
 
@@ -75,12 +76,36 @@ position = Vector2( 50, 112 )
 [node name="From" parent="Node2D" index="0"]
 position = Vector2( -18, -30.3903 )
 
-[node name="CollisionShape2D" parent="Node2D/From" index="0"]
+[node name="FromS" parent="Node2D/From" index="0"]
+frame = 3
+
+[node name="CollisionShape2D" parent="Node2D/From" index="1"]
 position = Vector2( -0.65435, -0.191347 )
 
 [node name="To" parent="Node2D" index="1"]
 position = Vector2( 100, -12 )
 
+[node name="ToS" parent="Node2D/To" index="0"]
+frame = 0
+
+[node name="Teleporter" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 180, 100 )
+
+[node name="FromS" parent="Teleporter/From" index="0"]
+frame = 5
+
+[node name="To" parent="Teleporter" index="1"]
+position = Vector2( -110, 7.62939e-006 )
+
+[node name="ToS" parent="Teleporter/To" index="0"]
+frame = 2
+
+[node name="enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 240, 63.2 )
+
 [editable path="platform_elevator"]
 
 [editable path="Node2D"]
+
+[editable path="Teleporter"]

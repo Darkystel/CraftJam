@@ -42,3 +42,6 @@ func _save() -> Dictionary:
 func _load(data: Dictionary):
 	if data.has(_INVENTORY): inventory._load(data[_INVENTORY])
 	else: push_error(_TAG + "Failed to load " + _INVENTORY + " data from data dictionary.")
+
+func damage_player():
+	print("player damaged")

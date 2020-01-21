@@ -31,7 +31,7 @@
 [ext_resource path="res://assets/animations/teleporter/player_done/player_done_Player going out_6.png" type="Texture" id=29]
 [ext_resource path="res://assets/animations/teleporter/player_done/player_done_Player going out_7.png" type="Texture" id=30]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
@@ -54,9 +54,9 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
-
 [sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
 
 [node name="Teleporter" type="Node2D"]
 script = ExtResource( 1 )
@@ -66,12 +66,13 @@ position = Vector2( -7.62939e-006, 3.8147e-006 )
 collision_layer = 0
 
 [node name="FromS" type="AnimatedSprite" parent="From"]
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "idle"
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="From"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="To" type="Area2D" parent="."]
 position = Vector2( 0, -28 )
@@ -80,13 +81,13 @@ __meta__ = {
 }
 
 [node name="ToS" type="AnimatedSprite" parent="To"]
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "idle"
-frame = 7
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="To"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="body_entered" from="From" to="." method="_on_From_body_entered"]

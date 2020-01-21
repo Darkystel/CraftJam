@@ -35,8 +35,9 @@ func set_random_destination() -> Vector2:
 func _update(delta):
 	if not waiting:
 		var sensor_data = _root.sensors.get_sense_data()
-		if sensor_data.wall_sense or not sensor_data.ground_sense:
-			turn_around()
+		#ERROR under this comment (errors commented out)
+		#if sensor_data.wall_sense or not sensor_data.ground_sense:
+			#turn_around()
 		if left_of:
 			if _root.position.x > destination.x:
 				_root.walk_left(_root.idle_walk_speed)
