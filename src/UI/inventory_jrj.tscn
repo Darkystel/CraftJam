@@ -18,8 +18,8 @@ func _ready():
 	
 func _unhandled_input(event):
 	if event.is_action_pressed(\"escape\") or event.is_action_pressed(\"inventory\"):
-		hide()
 		get_tree().paused = false
+		get_UI_controller().pop_overlay()
 		
 		
 
@@ -400,8 +400,8 @@ margin_bottom = 119.809
 focus_mode = 0
 enabled_focus_mode = 0
 text = "RESET"
-[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
 [connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY/item_description" method="_on_item_list_item_selected"]
 [connection signal="item_activated" from="TabContainer/CRAFT/items_list" to="TabContainer/CRAFT" method="_on_items_list_item_activated"]
 [connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item1" to="TabContainer/CRAFT/Panel" method="_on_item1_mouse_entered"]

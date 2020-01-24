@@ -77,7 +77,7 @@ export var capacity = 10
 var items_collected = 0
 var inventory = []
 
-onready var overlay = get_node(\"inventory\")
+onready var overlay = get_node(\"/root/inventory\")
 #onready var item_list = overlay.get_itemlist()
 #onready var craft_list = overlay.get_craftlist()
 
