@@ -79,7 +79,7 @@ script/source = "extends Node
 export var capacity = 10
 var items_collected = 0
 var inventory = []
-var craft_inventory = [null,null,null,null,null,null,null,null,null]
+var craft_inventory = []
 
 var overlay
 var item_list

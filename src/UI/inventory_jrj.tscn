@@ -75,8 +75,8 @@ var row33
 onready var inventory = get_node(\"../../../../inventory\")
 
 func _physics_process(delta):
-	pass
-	#update()
+	if Input.is_action_just_pressed(\"inventory\") or Input.is_action_just_pressed(\"escape\"):
+		update()
 
 func _on_items_list_item_activated(index):
 	item_selected = inventory.inventory[index]
@@ -89,47 +89,47 @@ func _on_items_list_item_activated(index):
 func add_to_craft(item):
 	if $Panel/item1.get_item_count() == 0:
 		row11 = item
-		inventory.craft_inventory[0] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item1.add_item(\"\",item.icon)
 		
 	elif $Panel/item2.get_item_count() == 0:
 		row12 = item
-		inventory.craft_inventory[1] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item2.add_item(\"\",item.icon)
 		
 	elif $Panel/item3.get_item_count() == 0:
 		row13 = item
-		inventory.craft_inventory[2] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item3.add_item(\"\",item.icon)
 		
 	elif $Panel/item4.get_item_count() == 0:
 		row21 = item
-		inventory.craft_inventory[3] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item4.add_item(\"\",item.icon)
 		
 	elif $Panel/item5.get_item_count() == 0:
 		row22 = item
-		inventory.craft_inventory[4] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item5.add_item(\"\",item.icon)
 	
 	elif $Panel/item6.get_item_count() == 0:
 		row23 = item
-		inventory.craft_inventory[5] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item6.add_item(\"\",item.icon)
 	
 	elif $Panel/item7.get_item_count() == 0:
 		row31 = item
-		inventory.craft_inventory[6] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item7.add_item(\"\",item.icon)
 		
 	elif $Panel/item8.get_item_count() == 0:
 		row32 = item
-		inventory.craft_inventory[7] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item8.add_item(\"\",item.icon)
 		
 	elif $Panel/item9.get_item_count() == 0:
 		row33 = item
-		inventory.craft_inventory[8] = item
+		inventory.craft_inventory.push_back(item)
 		$Panel/item9.add_item(\"\",item.icon)
 	else:
 		print(\"full capacity\")
@@ -157,34 +157,38 @@ func row(item,index):
 		
 func update():
 	for i in range(0,9):
-		if inventory.craft_inventory[i] != null:
+		if not inventory.craft_inventory.empty():
 			if i == 0:
-				$Panel/item1.clear()
-				$Panel/item1.add_item(\"\",inventory.craft_inventory[0].icon)
+				if row11 != null:
+					inventory.inventory.push_back(row11)
 			elif i == 1:
-				$Panel/item2.clear()
-				$Panel/item2.add_item(\"\",inventory.craft_inventory[1].icon)
+				if row12 != null:
+					inventory.inventory.push_back(row12)
 			elif i == 2:
-				$Panel/item3.clear()
-				$Panel/item3.add_item(\"\",inventory.craft_inventory[2].icon)
+				if row13 != null:
+					inventory.inventory.push_back(row13)
 			elif i == 3:
-				$Panel/item4.clear()
-				$Panel/item4.add_item(\"\",inventory.craft_inventory[3].icon)
+				if row21 != null:
+					inventory.inventory.push_back(row21)
 			elif i == 4:
-				$Panel/item5.clear()
-				$Panel/item5.add_item(\"\",inventory.craft_inventory[4].icon)
+				if row22 != null:
+					inventory.inventory.push_back(row22)
 			elif i == 5:
-				$Panel/item6.clear()
-				$Panel/item6.add_item(\"\",inventory.craft_inventory[5].icon)
+				if row23 != null:
+					inventory.inventory.push_back(row23)
 			elif i == 6:
-				$Panel/item7.clear()
-				$Panel/item7.add_item(\"\",inventory.craft_inventory[6].icon)
+				if row31 != null:
+					inventory.inventory.push_back(row31)
 			elif i == 7:
-				$Panel/item8.clear()
-				$Panel/item8.add_item(\"\",inventory.craft_inventory[7].icon)
+				if row32 != null:
+					inventory.inventory.push_back(row32)
 			elif i == 8:
-				$Panel/item9.clear()
-				$Panel/item9.add_item(\"\",inventory.craft_inventory[8].icon)
+				if row33 != null:
+					inventory.inventory.push_back(row33)
+					
+	for i in range(0,9):
+		if not inventory.craft_inventory.empty():
+			inventory.craft_inventory.remove(0)
 "
 
 [node name="inventory" type="Control"]
@@ -451,8 +455,8 @@ margin_bottom = 119.809
 focus_mode = 0
 enabled_focus_mode = 0
 text = "RESET"
-[connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
 [connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY/item_description" method="_on_item_list_item_selected"]
 [connection signal="item_activated" from="TabContainer/CRAFT/items_list" to="TabContainer/CRAFT" method="_on_items_list_item_activated"]
 [connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item1" to="TabContainer/CRAFT/Panel" method="_on_item1_mouse_entered"]
