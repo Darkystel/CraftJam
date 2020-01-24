@@ -67,6 +67,9 @@ func detected_eyes():
 func add_to_inventory(item):
 	$inventory.add_to_inventory(item)
 	
+func add_to_craft_inventory(item):
+	$inventory.add_to_craft_inventory(item)
+	
 	
 	"
 
@@ -76,24 +79,16 @@ script/source = "extends Node
 export var capacity = 10
 var items_collected = 0
 var inventory = []
+var craft_inventory = [null,null,null,null,null,null,null,null,null]
 
-onready var overlay = get_node(\"/root/inventory\")
-#onready var item_list = overlay.get_itemlist()
-#onready var craft_list = overlay.get_craftlist()
+var overlay
+var item_list
+var craft_list 
 
-
-onready var item_list = get_node(\"../inventory/TabContainer/INVENTORY/item_list\")
-onready var craft_list = get_node(\"../inventory/TabContainer/CRAFT/items_list\")
 
 func _physics_process(delta):
-	pass
-	if Input.is_action_just_pressed(\"inventory\"):
-		print(overlay)
-		#item_list.clear()
-		#craft_list.clear()
-		#for item in inventory:
-			#item_list.add_item(item.name,item.icon)
-			#craft_list.add_item(item.name,item.icon)
+	overlay = get_node(\"../UI_controller/inventory\")
+	update()
 
 func add_to_inventory(item):
 	if items_collected != capacity:
@@ -103,10 +98,30 @@ func add_to_inventory(item):
 	else:
 		print(\"Not Enough Space\")
 		
+func add_to_craft_inventory(item):
+	craft_inventory.push_back(item)
+	print(item.name +\" has been added to the crafting table\")
+
+
+func remove_from_inventory(index):
+	inventory.remove(index)
+	
+func remove_from_craft_inventory(index):
+	craft_inventory.remove(index)
+
+
+
 func update():
-	for item in inventory:
+	if overlay != null:
+		item_list = overlay.get_itemlist()
+		craft_list = overlay.get_craftlist()
+		item_list.clear()
+		craft_list.clear()
+		for item in inventory:
 			item_list.add_item(item.name,item.icon)
 			craft_list.add_item(item.name,item.icon)
+		
+
 
 "
 
