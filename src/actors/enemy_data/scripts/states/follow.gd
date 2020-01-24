@@ -4,6 +4,7 @@ var _fsm
 var _root
 
 func _enter():
+	
 	print("Entered follow state")
 	_root.play_animation("follow")
 

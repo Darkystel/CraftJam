@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/buildings/alter.png" type="Texture" id=2]
@@ -14,13 +14,7 @@
 [ext_resource path="res://src/worlds/departure_gate.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/tilesets/more_grass.tres" type="TileSet" id=13]
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=15]
-[ext_resource path="res://src/tools/items_data/Compressed Power.tres" type="Resource" id=16]
-[ext_resource path="res://src/tools/items_data/Wire.tres" type="Resource" id=17]
-[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=18]
-[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=19]
-[ext_resource path="res://src/tools/items_data/Light Bomb.tres" type="Resource" id=20]
-[ext_resource path="res://src/worlds/objects/fixed_platform_elevator.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/worlds/objects/fixed_platform_elevator.tscn" type="PackedScene" id=15]
 
 [node name="level_template" instance=ExtResource( 1 )]
 area_name = "The Altar"
@@ -258,33 +252,26 @@ tile_data = PoolIntArray( -1114118, 0, 0, -1114117, 0, 1, -1114116, 0, 131076, -
 
 [node name="pickable" parent="." index="10" instance=ExtResource( 14 )]
 position = Vector2( 422.866, -35.9015 )
-item = ExtResource( 15 )
 
 [node name="pickable2" parent="." index="11" instance=ExtResource( 14 )]
 position = Vector2( 266.208, -37.4092 )
-item = ExtResource( 16 )
 
 [node name="pickable7" parent="." index="12" instance=ExtResource( 14 )]
 position = Vector2( 211, -37.4092 )
-item = ExtResource( 17 )
 
 [node name="pickable3" parent="." index="13" instance=ExtResource( 14 )]
 position = Vector2( 127.799, -36.2078 )
-item = ExtResource( 17 )
 
 [node name="pickable5" parent="." index="14" instance=ExtResource( 14 )]
 position = Vector2( 24.1035, -133.743 )
-item = ExtResource( 18 )
 
 [node name="pickable6" parent="." index="15" instance=ExtResource( 14 )]
 position = Vector2( 498.682, -134.373 )
-item = ExtResource( 19 )
 
 [node name="pickable4" parent="." index="16" instance=ExtResource( 14 )]
 position = Vector2( 358.083, -38.2611 )
-item = ExtResource( 20 )
 
-[node name="platform_elevator" parent="." index="17" instance=ExtResource( 21 )]
+[node name="platform_elevator" parent="." index="17" instance=ExtResource( 15 )]
 position = Vector2( 96, 94 )
 
 [node name="liver_down" parent="platform_elevator" index="2"]

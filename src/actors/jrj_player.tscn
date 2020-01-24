@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/actors/player_data/DetectedByEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/actors/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Actor
+class_name JrjPlayer
+const _TAG = \"Player : \"
+
+#####################################
+#            CONSTANTS              #
+#####################################
+const _INVENTORY = \"INV\"
+#####################################
+
+#####################################
+#          PUBLIC VARIABLES         #
+#####################################
+onready var inventory = $inventory
+#####################################
+
+
+onready var env = get_parent()
+
+func _physics_process(delta):
+	var snap_vector = Vector2.DOWN * 2
+	var direction = Input.get_action_strength(\"move_right\") - Input.get_action_strength(\"move_left\")
+	if direction < 0: $character.flip_h = true
+	elif direction > 0: $character.flip_h = false
+	if Input.is_action_just_pressed(\"jump\"):
+		if is_on_floor() :
+			$character.play(\"jump\")
+			velocity.y = -jumping_height
+			snap_vector = Vector2.ZERO
+	velocity.x = direction * movement_speed
+	velocity.y += gravity
+	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector2.UP)
+	if abs(velocity.x) > 0 and is_on_floor():
+		$character.play(\"walk\")
+	elif not is_on_floor() and velocity.y > 0:
+		$character.play(\"fall\")
+	elif is_on_floor():
+		$character.play(\"idle\")
+
+func _save() -> Dictionary:
+	return {
+		_INVENTORY: inventory._save(),
+		
+	}
+func _load(data: Dictionary):
+	if data.has(_INVENTORY): inventory._load(data[_INVENTORY])
+	else: push_error(_TAG + \"Failed to load \" + _INVENTORY + \" data from data dictionary.\")
+
+func damage_player():
+	print(\"player damaged\")
+	
+func detected_eyes():
+	$DetectedByEnemy.position = Vector2(-128,-128)
+	$DetectedByEnemy.show()
+	$eyes.interpolate_property($DetectedByEnemy,\"scale\",Vector2(1,1),Vector2(0,0),2,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT)
+	$eyes.start()
+	yield($eyes,\"tween_all_completed\")
+	$DetectedByEnemy.hide()
+	
+func add_to_inventory(item):
+	$inventory.add_to_inventory(item)
+	
+	
+	"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node
+
+export var capacity = 10
+var items_collected = 0
+var inventory = []
+
+onready var overlay = get_node(\"inventory\")
+#onready var item_list = overlay.get_itemlist()
+#onready var craft_list = overlay.get_craftlist()
+
+
+onready var item_list = get_node(\"../inventory/TabContainer/INVENTORY/item_list\")
+onready var craft_list = get_node(\"../inventory/TabContainer/CRAFT/items_list\")
+
+func _physics_process(delta):
+	pass
+	if Input.is_action_just_pressed(\"inventory\"):
+		print(overlay)
+		#item_list.clear()
+		#craft_list.clear()
+		#for item in inventory:
+			#item_list.add_item(item.name,item.icon)
+			#craft_list.add_item(item.name,item.icon)
+
+func add_to_inventory(item):
+	if items_collected != capacity:
+		items_collected = items_collected + 1
+		inventory.push_back(item)
+		print(item.name +\" has been added\")
+	else:
+		print(\"Not Enough Space\")
+		
+func update():
+	for item in inventory:
+			item_list.add_item(item.name,item.icon)
+			craft_list.add_item(item.name,item.icon)
+
+"
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.0
+height = 4.0
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+z_index = 1
+script = SubResource( 1 )
+
+[node name="eyes" type="Tween" parent="."]
+
+[node name="DetectedByEnemy" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="inventory" type="Node" parent="."]
+pause_mode = 2
+script = SubResource( 2 )
+
+[node name="character" parent="." instance=ExtResource( 2 )]
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7 )
+shape = SubResource( 3 )
+
+[node name="main_camera" type="Camera2D" parent="."]
+offset = Vector2( 0, -24 )
+current = true
+zoom = Vector2( 1.25, 1.25 )
+limit_smoothed = true
+drag_margin_v_enabled = false
+drag_margin_left = 0.06
+drag_margin_right = 0.06
+
+[node name="UI_controller" parent="." instance=ExtResource( 3 )]

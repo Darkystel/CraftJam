@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/worlds/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/worlds/entrance.tscn" type="PackedScene" id=2]
@@ -9,18 +9,9 @@
 [ext_resource path="res://assets/tilesets/platform.png" type="Texture" id=7]
 [ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/tools/pickable.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/tools/items_data/Compressed Light.tres" type="Resource" id=10]
-[ext_resource path="res://src/tools/items_data/Flash Bomb.tres" type="Resource" id=11]
-[ext_resource path="res://src/tools/items_data/Beam Light.tres" type="Resource" id=12]
-[ext_resource path="res://src/tools/items_data/Signal Flare.tres" type="Resource" id=13]
-[ext_resource path="res://src/tools/items_data/Charger.tres" type="Resource" id=14]
-[ext_resource path="res://src/tools/items_data/Long Base.tres" type="Resource" id=15]
-[ext_resource path="res://src/tools/items_data/Magnifier.tres" type="Resource" id=16]
-[ext_resource path="res://src/tools/items_data/Releaser.tres" type="Resource" id=17]
-[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=18]
-[ext_resource path="res://src/worlds/scripts/dialogue_aoe.gd" type="Script" id=19]
-[ext_resource path="res://src/actors/dialogue_list/player/familiar_sight.tres" type="Resource" id=20]
-[ext_resource path="res://src/worlds/scripts/game_finish.gd" type="Script" id=21]
+[ext_resource path="res://assets/temp_assets/Light shade 2.png" type="Texture" id=10]
+[ext_resource path="res://src/worlds/scripts/dialogue_aoe.gd" type="Script" id=11]
+[ext_resource path="res://src/worlds/scripts/game_finish.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 10 )
@@ -327,98 +318,88 @@ position = Vector2( 264, 512 )
 
 [node name="pickable" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 496, 696 )
-item = ExtResource( 10 )
 
 [node name="pickable10" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 512, 488 )
-item = ExtResource( 11 )
 
 [node name="pickable2" parent="." index="20" instance=ExtResource( 9 )]
 position = Vector2( 464, 568 )
-item = ExtResource( 12 )
 
 [node name="pickable3" parent="." index="21" instance=ExtResource( 9 )]
 position = Vector2( 848, 696 )
-item = ExtResource( 13 )
 
 [node name="pickable9" parent="." index="22" instance=ExtResource( 9 )]
 position = Vector2( 760, 520 )
-item = ExtResource( 14 )
 
 [node name="pickable4" parent="." index="23" instance=ExtResource( 9 )]
 position = Vector2( 1112, 472 )
-item = ExtResource( 15 )
 
 [node name="pickable5" parent="." index="24" instance=ExtResource( 9 )]
 position = Vector2( 1000, 248 )
-item = ExtResource( 15 )
 
 [node name="pickable6" parent="." index="25" instance=ExtResource( 9 )]
 position = Vector2( 480, 168 )
-item = ExtResource( 16 )
 
 [node name="pickable7" parent="." index="26" instance=ExtResource( 9 )]
 position = Vector2( 496, 168 )
-item = ExtResource( 17 )
 
 [node name="pickable8" parent="." index="27" instance=ExtResource( 9 )]
 position = Vector2( 24, 40 )
-item = ExtResource( 11 )
 
 [node name="Light2D" type="Light2D" parent="." index="28"]
 position = Vector2( 139.125, 83.125 )
 scale = Vector2( 0.579545, 0.579545 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D2" type="Light2D" parent="." index="29"]
 position = Vector2( 582.438, 132.938 )
 scale = Vector2( 0.532197, 0.486742 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D11" type="Light2D" parent="." index="30"]
 position = Vector2( 520.25, 280 )
 scale = Vector2( 0.532197, 0.486742 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D3" type="Light2D" parent="." index="31"]
 position = Vector2( 728, 184 )
 scale = Vector2( 0.532197, 0.486742 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D4" type="Light2D" parent="." index="32"]
 position = Vector2( 1254, 324.828 )
 scale = Vector2( 0.532197, 0.486742 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D5" type="Light2D" parent="." index="33"]
 position = Vector2( 1271.56, 392 )
 scale = Vector2( 0.532197, 0.486742 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D6" type="Light2D" parent="." index="34"]
 position = Vector2( 999, 424 )
 scale = Vector2( 0.532197, 0.486742 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D7" type="Light2D" parent="." index="35"]
 position = Vector2( 792, 515 )
 scale = Vector2( 0.606061, 0.546401 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D8" type="Light2D" parent="." index="36"]
 position = Vector2( 552, 504 )
 scale = Vector2( 0.606061, 0.546401 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D9" type="Light2D" parent="." index="37"]
 position = Vector2( 455.75, 472 )
 scale = Vector2( 0.606061, 0.546401 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="Light2D10" type="Light2D" parent="." index="38"]
 position = Vector2( 152, 520 )
 scale = Vector2( 0.606061, 0.546401 )
-texture = ExtResource( 18 )
+texture = ExtResource( 10 )
 
 [node name="platform_elevator2" type="Node2D" parent="." index="39"]
 position = Vector2( 272, 360 )
@@ -502,17 +483,16 @@ collision_mask = 4
 
 [node name="aoe_dialogue" type="Area2D" parent="." index="40"]
 position = Vector2( 120, 96 )
-script = ExtResource( 19 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
-dialogue = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aoe_dialogue" index="0"]
 shape = SubResource( 15 )
 
 [node name="game_finish" type="Node" parent="." index="41"]
-script = ExtResource( 21 )
+script = ExtResource( 12 )
 [connection signal="body_entered" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_entered"]
 [connection signal="body_exited" from="platform_elevator/liver_down" to="platform_elevator" method="_on_liver_body_exited"]
 [connection signal="body_entered" from="platform_elevator/liver_up" to="platform_elevator" method="_on_liver_body_entered"]

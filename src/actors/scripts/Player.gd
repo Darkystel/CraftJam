@@ -45,3 +45,13 @@ func _load(data: Dictionary):
 
 func damage_player():
 	print("player damaged")
+	
+func detected_eyes():
+	$DetectedByEnemy.position = Vector2(-128,-128)
+	$DetectedByEnemy.show()
+	$eyes.interpolate_property($DetectedByEnemy,"scale",Vector2(1,1),Vector2(0,0),2,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT)
+	$eyes.start()
+	yield($eyes,"tween_all_completed")
+	$DetectedByEnemy.hide()
+	
+	

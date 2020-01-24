@@ -20,7 +20,7 @@ func _ready():
 func start(dialogue: Dialogue):
 	get_tree().paused = true
 	dialogue_stack = dialogue.dialogue_list.duplicate()
-	Global.push_to_history(dialogue)
+	#Global.push_to_history(dialogue)
 	$AnimationPlayer.play("pop_up")
 	yield($AnimationPlayer, "animation_finished")
 	ppic.texture = dialogue.protagonist_texture
