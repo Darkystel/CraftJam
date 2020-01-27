@@ -62,6 +62,7 @@ func _on_item_list_item_selected(index):
 script/source = "extends IMTabs
 
 var item_selected
+var crafted
 var row11
 var row12
 var row13
@@ -72,67 +73,158 @@ var row31
 var row32
 var row33
 
+
+
+var rows_id = 0
+
+var items = [null,null,null,null,null,null,null,null,null]
+var recipes = []
+
+var add_to_table = 0
+
 onready var inventory = get_node(\"../../../../inventory\")
+
+
+func _ready():
+	recipes()
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed(\"inventory\") or Input.is_action_just_pressed(\"escape\"):
 		update()
 
 func _on_items_list_item_activated(index):
-	item_selected = inventory.inventory[index]
-	add_to_craft(item_selected)
-	inventory.inventory.remove(index)
-	inventory.item_list.clear()
-	inventory.craft_list.clear()
-	inventory.update()
+	if add_to_table < 9:
+		item_selected = inventory.inventory[index]
+		add_to_craft(item_selected)
+		inventory.inventory.remove(index)
+		inventory.item_list.clear()
+		inventory.craft_list.clear()
+		inventory.update()
+	else:
+		$message_panel/message.text = \"Can not add more items to the table\"
 
 func add_to_craft(item):
 	if $Panel/item1.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row11 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item1.add_item(\"\",item.icon)
 		
 	elif $Panel/item2.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row12 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item2.add_item(\"\",item.icon)
 		
 	elif $Panel/item3.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row13 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item3.add_item(\"\",item.icon)
 		
 	elif $Panel/item4.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row21 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item4.add_item(\"\",item.icon)
 		
 	elif $Panel/item5.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row22 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item5.add_item(\"\",item.icon)
 	
 	elif $Panel/item6.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row23 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item6.add_item(\"\",item.icon)
 	
 	elif $Panel/item7.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row31 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item7.add_item(\"\",item.icon)
 		
 	elif $Panel/item8.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row32 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item8.add_item(\"\",item.icon)
 		
 	elif $Panel/item9.get_item_count() == 0:
+		add_to_table = add_to_table + 1
 		row33 = item
 		inventory.craft_inventory.push_back(item)
 		$Panel/item9.add_item(\"\",item.icon)
+
+
+
+
+func check_for_item():
+	for i in range(0,9):
+		items.remove(0)
+	rows_id = 0
+	if row11 != null:
+		rows_id = rows_id + 0
+		items.push_back(row11)
 	else:
-		print(\"full capacity\")
+		items.push_back(null)
+		
+	if row12 != null:
+		rows_id = rows_id + 1
+		items.push_back(row12)
+	else:
+		items.push_back(null)
+		
+	if row13 != null:
+		rows_id = rows_id + 2
+		items.push_back(row13)
+	else:
+		items.push_back(null)
+		
+	if row21 != null:
+		rows_id = rows_id + 3
+		items.push_back(row21)
+	else:
+		items.push_back(null)
+		
+	if row22 != null:
+		rows_id = rows_id + 4
+		items.push_back(row22)
+	else:
+		items.push_back(null)
+		
+	if row23 != null:
+		rows_id = rows_id + 5
+		items.push_back(row23)
+	else:
+		items.push_back(null)
+		
+	if row31 != null:
+		rows_id = rows_id + 6
+		items.push_back(row31)
+	else:
+		items.push_back(null)
+		
+	if row32 != null:
+		rows_id = rows_id + 7
+		items.push_back(row32)
+	else:
+		items.push_back(null)
+		
+	if row33 != null:
+		rows_id = rows_id + 8
+		items.push_back(row33)
+	else:
+		items.push_back(null)
+	pass
+
+
+
+
+
+
 
 func row(item,index):
 	if index == 0:
@@ -154,42 +246,173 @@ func row(item,index):
 	elif index == 8:
 		row33 = item
 		
+func craft():
+	var result
+	for i in recipes:
+		result = i.check(rows_id,items)
+	if result != null:
+		crafted = result
+		$Panel/item10.add_item(\"\",crafted.icon)
+		$message_panel/message.text = crafted.name + \" crafted and added to the inventory\"
+	else:
+		crafted = null
+		$Panel/item10.remove_item(0)
 		
 func update():
+	add_to_table = 0
 	for i in range(0,9):
 		if not inventory.craft_inventory.empty():
 			if i == 0:
 				if row11 != null:
+					$Panel/item1.remove_item(0)
 					inventory.inventory.push_back(row11)
+					row11 = null
 			elif i == 1:
 				if row12 != null:
+					$Panel/item2.remove_item(0)
 					inventory.inventory.push_back(row12)
+					row12 = null
 			elif i == 2:
 				if row13 != null:
+					$Panel/item3.remove_item(0)
 					inventory.inventory.push_back(row13)
+					row13 = null
 			elif i == 3:
 				if row21 != null:
+					$Panel/item4.remove_item(0)
 					inventory.inventory.push_back(row21)
+					row21 = null
 			elif i == 4:
 				if row22 != null:
+					$Panel/item5.remove_item(0)
 					inventory.inventory.push_back(row22)
+					row22 = null
 			elif i == 5:
 				if row23 != null:
+					$Panel/item6.remove_item(0)
 					inventory.inventory.push_back(row23)
+					row23 = null
 			elif i == 6:
 				if row31 != null:
+					$Panel/item7.remove_item(0)
 					inventory.inventory.push_back(row31)
+					row31 = null
 			elif i == 7:
 				if row32 != null:
+					$Panel/item8.remove_item(0)
 					inventory.inventory.push_back(row32)
+					row32 = null
 			elif i == 8:
 				if row33 != null:
+					$Panel/item9.remove_item(0)
 					inventory.inventory.push_back(row33)
+					row33 = null
+	$message_panel/message.text = \"Please insert items to be crafted into the table\"
 					
 	for i in range(0,9):
 		if not inventory.craft_inventory.empty():
 			inventory.craft_inventory.remove(0)
-"
+
+
+
+
+func _on_craft_pressed():
+	if row11 != null or row12 != null or row13 != null or row21 != null or row22 != null or row23 != null or row31 != null or row32 != null or row33 != null:
+			check_for_item()
+			craft()
+			if crafted != null:
+				add_crafted_to_inventory()
+			else:
+				$message_panel/message.text = \"Wrong Combination of Items\"
+	else:
+		$Panel/item10.remove_item(0)
+		$message_panel/message.text = \"Please Enter Items\"
+			
+			
+			
+func add_crafted_to_inventory():
+	for i in range(0,9):
+		if not inventory.craft_inventory.empty():
+			if i == 0:
+				if row11 != null:
+					$Panel/item1.remove_item(0)
+					row11 = null
+			elif i == 1:
+				if row12 != null:
+					$Panel/item2.remove_item(0)
+					row12 = null
+			elif i == 2:
+				if row13 != null:
+					$Panel/item3.remove_item(0)
+					row13 = null
+			elif i == 3:
+				if row21 != null:
+					$Panel/item4.remove_item(0)
+					row21 = null
+			elif i == 4:
+				if row22 != null:
+					$Panel/item5.remove_item(0)
+					row22 = null
+			elif i == 5:
+				if row23 != null:
+					$Panel/item6.remove_item(0)
+					row23 = null
+			elif i == 6:
+				if row31 != null:
+					$Panel/item7.remove_item(0)
+					row31 = null
+			elif i == 7:
+				if row32 != null:
+					$Panel/item8.remove_item(0)
+					row32 = null
+			elif i == 8:
+				if row33 != null:
+					$Panel/item9.remove_item(0)
+					row33 = null
+					
+	for i in range(0,9):
+		if not inventory.craft_inventory.empty():
+			inventory.craft_inventory.remove(0)
+	
+	if crafted != null:
+		inventory.inventory.push_back(crafted)
+		crafted = null
+	
+
+
+func _on_reset_pressed():
+	update()
+	
+	
+	
+	
+#####################################
+####       load recipes           ###
+#####################################
+
+func recipes():
+	var file_paths = list_files_in_directory(\"res://src/devices/items/test/recipes/\")
+	for path in file_paths:
+		var recipe = load(\"res://src/devices/items/test/recipes/\" + path)
+		recipes.append(recipe)
+		print(recipe)
+	
+func list_files_in_directory(path):
+    var files = []
+    var dir = Directory.new()
+    dir.open(path)
+    dir.list_dir_begin()
+
+    while true:
+        var file = dir.get_next()
+        if file == \"\":
+            break
+        elif not file.begins_with(\".\"):
+            files.append(file)
+
+    dir.list_dir_end()
+
+    return files"
 
 [node name="inventory" type="Control"]
 pause_mode = 2
@@ -333,23 +556,23 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -108.0
-margin_top = -33.0
+margin_top = -49.0
 margin_right = -8.0
-margin_bottom = 35.0
+margin_bottom = 37.0
 fixed_icon_size = Vector2( 16, 16 )
 
 [node name="Label" type="Label" parent="TabContainer/CRAFT"]
-margin_left = 20.0
-margin_top = 18.0
-margin_right = 120.0
-margin_bottom = 26.0
+margin_left = 21.3059
+margin_top = 6.54207
+margin_right = 121.306
+margin_bottom = 14.5421
 text = "ITEMS"
 valign = 1
 
 [node name="Label2" type="Label" parent="TabContainer/CRAFT"]
-margin_left = 133.581
+margin_left = 132.581
 margin_top = 6.06156
-margin_right = 233.581
+margin_right = 232.581
 margin_bottom = 14.0616
 text = "CRAFTING"
 valign = 1
@@ -438,25 +661,48 @@ margin_bottom = 81.0
 icon_mode = 0
 fixed_icon_size = Vector2( 16, 16 )
 
+[node name="item10" type="ItemList" parent="TabContainer/CRAFT/Panel"]
+margin_left = 92.3315
+margin_top = 1.8662
+margin_right = 116.331
+margin_bottom = 25.8662
+icon_mode = 0
+fixed_icon_size = Vector2( 16, 16 )
+
 [node name="craft" type="Button" parent="TabContainer/CRAFT"]
-margin_left = 178.786
-margin_top = 104.22
-margin_right = 214.786
-margin_bottom = 120.22
+margin_left = 220.628
+margin_top = 45.0
+margin_right = 252.628
+margin_bottom = 61.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "CRAFT"
 
 [node name="reset" type="Button" parent="TabContainer/CRAFT"]
-margin_left = 132.752
-margin_top = 103.809
-margin_right = 168.752
-margin_bottom = 119.809
+margin_left = 220.976
+margin_top = 63.0
+margin_right = 252.976
+margin_bottom = 79.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "RESET"
-[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
+
+[node name="message_panel" type="Panel" parent="TabContainer/CRAFT"]
+margin_left = 20.0
+margin_top = 103.0
+margin_right = 248.0
+margin_bottom = 124.0
+
+[node name="message" type="Label" parent="TabContainer/CRAFT/message_panel"]
+margin_left = 3.0
+margin_top = 1.0
+margin_right = 226.0
+margin_bottom = 20.0
+text = "Please insert items to be crafted into the table"
+autowrap = true
+clip_text = true
 [connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY/item_description" method="_on_item_list_item_selected"]
 [connection signal="item_activated" from="TabContainer/CRAFT/items_list" to="TabContainer/CRAFT" method="_on_items_list_item_activated"]
 [connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item1" to="TabContainer/CRAFT/Panel" method="_on_item1_mouse_entered"]
@@ -477,3 +723,7 @@ text = "RESET"
 [connection signal="mouse_exited" from="TabContainer/CRAFT/Panel/item8" to="TabContainer/CRAFT/Panel" method="_on_item8_mouse_exited"]
 [connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item9" to="TabContainer/CRAFT/Panel" method="_on_item9_mouse_entered"]
 [connection signal="mouse_exited" from="TabContainer/CRAFT/Panel/item9" to="TabContainer/CRAFT/Panel" method="_on_item9_mouse_exited"]
+[connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item10" to="TabContainer/CRAFT/Panel" method="_on_item9_mouse_entered"]
+[connection signal="mouse_exited" from="TabContainer/CRAFT/Panel/item10" to="TabContainer/CRAFT/Panel" method="_on_item9_mouse_exited"]
+[connection signal="pressed" from="TabContainer/CRAFT/craft" to="TabContainer/CRAFT" method="_on_craft_pressed"]
+[connection signal="pressed" from="TabContainer/CRAFT/reset" to="TabContainer/CRAFT" method="_on_reset_pressed"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://src/devices/items/test/Candle.tres" type="Resource" id=1]
+[ext_resource path="res://src/devices/items/test/Armor.tres" type="Resource" id=2]
+[ext_resource path="res://src/devices/items/test/Beam.tres" type="Resource" id=3]
+[ext_resource path="res://src/devices/items/scripts/recipe_jrj.gd" type="Script" id=4]
+
+
+
+
+[resource]
+script = ExtResource( 4 )
+rows = [ false, false, false, false, true, false, true, false, false ]
+items = [ null, null, null, null, ExtResource( 1 ), null, ExtResource( 2 ), null, null ]
+result = ExtResource( 3 )
