@@ -12,11 +12,19 @@ onready var craft_list = get_node(\"/TabContainer/CRAFT/items_list\")
 
 onready var player_inventory = get_node(\"../../inventory\")
 
+var update_inventory := false
+
+
 func _ready():
 	get_tree().paused = true
-	player_inventory.update()
+	update_inventory = true
 	pass
 	
+	
+func _physics_process(delta):
+	if update_inventory:
+		player_inventory.update()
+		update_inventory = false
 	
 func _unhandled_input(event):
 	if event.is_action_pressed(\"escape\") or event.is_action_pressed(\"inventory\"):
@@ -37,7 +45,8 @@ func get_craftlist():
 func update():
 	for item in player_inventory.inventory:
 			item_list.add_item(\"\",item.icon)
-			craft_list.add_item(item.name,item.icon)"
+			craft_list.add_item(item.name,item.icon)
+"
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Panel
@@ -83,6 +92,7 @@ var recipes = []
 var add_to_table = 0
 
 onready var inventory = get_node(\"../../../../inventory\")
+onready var UI_Inventory = get_node(\"../..\")
 
 
 func _ready():
@@ -254,6 +264,7 @@ func craft():
 		crafted = result
 		$Panel/item10.add_item(\"\",crafted.icon)
 		$message_panel/message.text = crafted.name + \" crafted and added to the inventory\"
+		UI_Inventory.update_inventory = true
 	else:
 		crafted = null
 		$Panel/item10.remove_item(0)
@@ -323,6 +334,7 @@ func _on_craft_pressed():
 			if crafted != null:
 				add_crafted_to_inventory()
 				inventory.update()
+				UI_Inventory.update_inventory = true
 			else:
 				$message_panel/message.text = \"Wrong Combination of Items\"
 	else:
@@ -383,6 +395,7 @@ func add_crafted_to_inventory():
 
 func _on_reset_pressed():
 	update()
+	UI_Inventory.update_inventory = true
 	
 	
 	
@@ -399,21 +412,22 @@ func recipes():
 		print(recipe)
 	
 func list_files_in_directory(path):
-    var files = []
-    var dir = Directory.new()
-    dir.open(path)
-    dir.list_dir_begin()
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin()
 
-    while true:
-        var file = dir.get_next()
-        if file == \"\":
-            break
-        elif not file.begins_with(\".\"):
-            files.append(file)
+	while true:
+		var file = dir.get_next()
+		if file == \"\":
+			break
+		elif not file.begins_with(\".\"):
+			files.append(file)
 
-    dir.list_dir_end()
+	dir.list_dir_end()
 
-    return files"
+	return files
+"
 
 [node name="inventory" type="Control"]
 pause_mode = 2
@@ -444,7 +458,6 @@ margin_top = 18.0
 rect_min_size = Vector2( 256, 126 )
 
 [node name="item_description" type="Panel" parent="TabContainer/INVENTORY"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -698,8 +711,8 @@ margin_bottom = 20.0
 text = "Please insert items to be crafted into the table"
 autowrap = true
 clip_text = true
-[connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
 [connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY/item_description" method="_on_item_list_item_selected"]
 [connection signal="item_activated" from="TabContainer/CRAFT/items_list" to="TabContainer/CRAFT" method="_on_items_list_item_activated"]
 [connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item1" to="TabContainer/CRAFT/Panel" method="_on_item1_mouse_entered"]

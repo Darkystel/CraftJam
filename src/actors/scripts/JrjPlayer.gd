@@ -1,6 +1,8 @@
 extends Actor
-class_name Player
+class_name JrjPlayer
 const _TAG = "Player : "
+
+
 
 #####################################
 #            CONSTANTS              #
@@ -13,6 +15,11 @@ const _INVENTORY = "INV"
 #####################################
 onready var inventory = $inventory
 #####################################
+
+
+onready var env = get_parent()
+
+var shake := false
 
 func _physics_process(delta):
 	var snap_vector = Vector2.DOWN * 2
@@ -33,6 +40,12 @@ func _physics_process(delta):
 		$character.play("fall")
 	elif is_on_floor():
 		$character.play("idle")
+	if shake:
+		$main_camera.set_offset(Vector2( \
+		rand_range(-1, 1) * 1, \
+		rand_range(-24, -23) * 1 \
+		))
+		
 
 func _save() -> Dictionary:
 	return {
@@ -47,11 +60,22 @@ func damage_player():
 	print("player damaged")
 	
 func detected_eyes():
-	$DetectedByEnemy.position = Vector2(-128,-128)
 	$DetectedByEnemy.show()
-	$eyes.interpolate_property($DetectedByEnemy,"scale",Vector2(1,1),Vector2(0,0),2,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT)
-	$eyes.start()
-	yield($eyes,"tween_all_completed")
+	$DetectedByEnemy/AnimationPlayer.play("shake")
+	$DetectedByEnemy/eyes.interpolate_property($DetectedByEnemy/eye1,"scale", Vector2(0.3,0.3), Vector2(1,1), 1.5 ,Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
+	$DetectedByEnemy/eyes.start()
+	shake = false
+	yield($DetectedByEnemy/eyes,"tween_all_completed")
+	shake = false
+	$main_camera.set_offset(Vector2(0,-24))
 	$DetectedByEnemy.hide()
+
+
+func add_to_inventory(item):
+	$inventory.add_to_inventory(item)
+
+func add_to_craft_inventory(item):
+	$inventory.add_to_craft_inventory(item)
+	
 	
 	

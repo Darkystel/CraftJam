@@ -3,78 +3,9 @@
 [ext_resource path="res://src/actors/player_data/DetectedByEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/actors/character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/actors/scripts/JrjPlayer.gd" type="Script" id=4]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends Actor
-class_name JrjPlayer
-const _TAG = \"Player : \"
-
-#####################################
-#            CONSTANTS              #
-#####################################
-const _INVENTORY = \"INV\"
-#####################################
-
-#####################################
-#          PUBLIC VARIABLES         #
-#####################################
-onready var inventory = $inventory
-#####################################
-
-
-onready var env = get_parent()
-
-func _physics_process(delta):
-	var snap_vector = Vector2.DOWN * 2
-	var direction = Input.get_action_strength(\"move_right\") - Input.get_action_strength(\"move_left\")
-	if direction < 0: $character.flip_h = true
-	elif direction > 0: $character.flip_h = false
-	if Input.is_action_just_pressed(\"jump\"):
-		if is_on_floor() :
-			$character.play(\"jump\")
-			velocity.y = -jumping_height
-			snap_vector = Vector2.ZERO
-	velocity.x = direction * movement_speed
-	velocity.y += gravity
-	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector2.UP)
-	if abs(velocity.x) > 0 and is_on_floor():
-		$character.play(\"walk\")
-	elif not is_on_floor() and velocity.y > 0:
-		$character.play(\"fall\")
-	elif is_on_floor():
-		$character.play(\"idle\")
-
-func _save() -> Dictionary:
-	return {
-		_INVENTORY: inventory._save(),
-		
-	}
-func _load(data: Dictionary):
-	if data.has(_INVENTORY): inventory._load(data[_INVENTORY])
-	else: push_error(_TAG + \"Failed to load \" + _INVENTORY + \" data from data dictionary.\")
-
-func damage_player():
-	print(\"player damaged\")
-	
-func detected_eyes():
-	$DetectedByEnemy.show()
-	$DetectedByEnemy/AnimationPlayer.play(\"shake\")
-	$DetectedByEnemy/eyes.interpolate_property($DetectedByEnemy/eye1,\"scale\", Vector2(0.3,0.3), Vector2(1,1), 1.5 ,Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
-	$DetectedByEnemy/eyes.start()
-	yield($DetectedByEnemy/eyes,\"tween_all_completed\")
-	$DetectedByEnemy.hide()
-
-
-func add_to_inventory(item):
-	$inventory.add_to_inventory(item)
-
-func add_to_craft_inventory(item):
-	$inventory.add_to_craft_inventory(item)
-	
-	
-	"
-
-[sub_resource type="GDScript" id=2]
 script/source = "extends Node
 
 export var capacity = 10
@@ -91,6 +22,8 @@ var craft_list
 func _physics_process(delta):
 	if display:
 		overlay = get_node(\"../UI_controller/inventory\")
+		update()
+		display = false
 
 func add_to_inventory(item):
 	if items_collected != capacity:
@@ -127,7 +60,7 @@ func update():
 
 "
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 5.0
 height = 4.0
 
@@ -135,27 +68,26 @@ height = 4.0
 "player",
 ]]
 z_index = 1
-script = SubResource( 1 )
+script = ExtResource( 4 )
 
 [node name="DetectedByEnemy" parent="." instance=ExtResource( 1 )]
 visible = false
 
 [node name="inventory" type="Node" parent="."]
 pause_mode = 2
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="character" parent="." instance=ExtResource( 2 )]
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="main_camera" type="Camera2D" parent="."]
 offset = Vector2( 0, -24 )
 current = true
 zoom = Vector2( 1.25, 1.25 )
 limit_smoothed = true
-drag_margin_v_enabled = false
 drag_margin_left = 0.06
 drag_margin_right = 0.06
 

@@ -24,7 +24,6 @@ tile_data = PoolIntArray( 131106, 1, 262146, 196642, 1, 262149, 262178, 1, 26214
 [node name="pickables" type="Node" parent="." groups=[
 "map_save",
 ]]
-editor/display_folded = true
 
 [node name="pickable_jrj4" parent="pickables" instance=ExtResource( 3 )]
 position = Vector2( 110, 107 )
@@ -69,16 +68,22 @@ item = ExtResource( 4 )
 [node name="enemy" parent="." instance=ExtResource( 8 )]
 position = Vector2( 470, 85 )
 
+[node name="enemy2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 379.112, 83.0098 )
+
 [node name="Teleporter" parent="." instance=ExtResource( 9 )]
 position = Vector2( 310, 60 )
 
+[node name="From" parent="Teleporter" index="0"]
+position = Vector2( 3.22637, -64.1685 )
+
 [node name="FromS" parent="Teleporter/From" index="0"]
-frame = 4
+frame = 1
 
 [node name="To" parent="Teleporter" index="1"]
 position = Vector2( -320, 38 )
 
 [node name="ToS" parent="Teleporter/To" index="0"]
-frame = 1
+frame = 8
 
 [editable path="Teleporter"]

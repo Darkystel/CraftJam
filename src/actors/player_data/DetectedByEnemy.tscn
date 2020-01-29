@@ -1,10 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/temp_assets/detection eyes.png" type="Texture" id=1]
 [ext_resource path="res://assets/light_textures/red_eye.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "shake"
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.361502, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 0.995305, 0.0272727 ), -0.247195, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 5, 1 )
+flag_disable_z = true
+direction = Vector3( 1, -1, 0 )
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+scale_curve = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("eye1:position")
@@ -72,8 +89,16 @@ scale = Vector2( 0.405008, 1 )
 texture = ExtResource( 2 )
 energy = 0.072888
 
+[node name="Particles2D" type="Particles2D" parent="eye1"]
+position = Vector2( -0.25684, -0.0899811 )
+amount = 30
+speed_scale = 5.0
+explosiveness = 0.77
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
-anims/shake = SubResource( 1 )
+anims/shake = SubResource( 4 )
 
 [node name="eyes" type="Tween" parent="."]
