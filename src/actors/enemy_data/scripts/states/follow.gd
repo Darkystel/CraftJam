@@ -17,8 +17,7 @@ func _update(delta):
 			_root.walk_left(_root.movement_speed)
 		elif _root.position.x < destination.x:
 			_root.walk_right(_root.movement_speed)
-		#ERROR under this comment (errors commented out)
-		#if sense_data.obstacle_encounter():
-			#return "aggro_wait"
+		if sense_data.obstacle_encounter():
+			return "aggro_wait"
 	else:
 		return "search"

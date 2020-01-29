@@ -4,6 +4,7 @@
 [ext_resource path="res://src/actors/character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/UI_controller.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/actors/scripts/JrjPlayer.gd" type="Script" id=4]
+[ext_resource path="res://assets/light_textures/player_light.png" type="Texture" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
@@ -60,15 +61,12 @@ func update():
 
 "
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 5.0
-height = 4.0
-
 [node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
 z_index = 1
 script = ExtResource( 4 )
+jumping_height = 205.0
 
 [node name="DetectedByEnemy" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -79,10 +77,6 @@ script = SubResource( 1 )
 
 [node name="character" parent="." instance=ExtResource( 2 )]
 
-[node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -7 )
-shape = SubResource( 2 )
-
 [node name="main_camera" type="Camera2D" parent="."]
 offset = Vector2( 0, -24 )
 current = true
@@ -92,3 +86,12 @@ drag_margin_left = 0.06
 drag_margin_right = 0.06
 
 [node name="UI_controller" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -3, -13 )
+polygon = PoolVector2Array( -2, 13, 5, 13, 8, 13, 8, 10, 8, 6, 8, 0, 6, 0, -2, 0, -2, 7, -2, 10 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 5 )
+shadow_enabled = true
+shadow_item_cull_mask = 4

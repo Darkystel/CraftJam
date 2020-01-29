@@ -85,7 +85,6 @@ var row33
 
 
 var rows_id = 0
-
 var items = [null,null,null,null,null,null,null,null,null]
 var recipes = []
 
@@ -467,6 +466,9 @@ margin_top = -61.0
 margin_right = -8.0
 margin_bottom = 55.0
 script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="TabContainer/INVENTORY/item_description"]
 margin_left = 4.0
@@ -711,8 +713,8 @@ margin_bottom = 20.0
 text = "Please insert items to be crafted into the table"
 autowrap = true
 clip_text = true
-[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
 [connection signal="tab_changed" from="TabContainer" to="TabContainer/INVENTORY" method="_on_TabContainer_tab_changed"]
+[connection signal="tab_changed" from="TabContainer" to="TabContainer/CRAFT" method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="TabContainer/INVENTORY/item_list" to="TabContainer/INVENTORY/item_description" method="_on_item_list_item_selected"]
 [connection signal="item_activated" from="TabContainer/CRAFT/items_list" to="TabContainer/CRAFT" method="_on_items_list_item_activated"]
 [connection signal="mouse_entered" from="TabContainer/CRAFT/Panel/item1" to="TabContainer/CRAFT/Panel" method="_on_item1_mouse_entered"]

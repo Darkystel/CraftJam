@@ -59,12 +59,13 @@ func _load(data: Dictionary):
 func damage_player():
 	print("player damaged")
 	
+	
 func detected_eyes():
 	$DetectedByEnemy.show()
 	$DetectedByEnemy/AnimationPlayer.play("shake")
 	$DetectedByEnemy/eyes.interpolate_property($DetectedByEnemy/eye1,"scale", Vector2(0.3,0.3), Vector2(1,1), 1.5 ,Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
 	$DetectedByEnemy/eyes.start()
-	shake = false
+	shake = true
 	yield($DetectedByEnemy/eyes,"tween_all_completed")
 	shake = false
 	$main_camera.set_offset(Vector2(0,-24))
