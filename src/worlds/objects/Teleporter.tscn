@@ -68,6 +68,7 @@ collision_layer = 0
 [node name="FromS" type="AnimatedSprite" parent="From"]
 frames = SubResource( 1 )
 animation = "idle"
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="From"]
@@ -82,7 +83,7 @@ __meta__ = {
 [node name="ToS" type="AnimatedSprite" parent="To"]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 7
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="To"]

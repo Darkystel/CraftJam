@@ -34,6 +34,7 @@ func _update_interface():
 	for item in items:
 		var item_texture = load(DataImporter.items[item][Constants.ITEM_TEXTURE_PATH])
 		item_list.add_item(item, item_texture)
+		
 func _on_items_list_item_activated(index):
 	if player != null:
 		if player.inventory.add_item(items[index]):

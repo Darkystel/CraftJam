@@ -57,16 +57,17 @@ func damage_player():
 	print(\"player damaged\")
 	
 func detected_eyes():
-	$DetectedByEnemy.position = Vector2(-128,-128)
 	$DetectedByEnemy.show()
-	$eyes.interpolate_property($DetectedByEnemy,\"scale\",Vector2(1,1),Vector2(0,0),2,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT)
-	$eyes.start()
-	yield($eyes,\"tween_all_completed\")
+	$DetectedByEnemy/AnimationPlayer.play(\"shake\")
+	$DetectedByEnemy/eyes.interpolate_property($DetectedByEnemy/eye1,\"scale\", Vector2(0.3,0.3), Vector2(1,1), 1.5 ,Tween.TRANS_LINEAR,Tween.EASE_OUT_IN)
+	$DetectedByEnemy/eyes.start()
+	yield($DetectedByEnemy/eyes,\"tween_all_completed\")
 	$DetectedByEnemy.hide()
-	
+
+
 func add_to_inventory(item):
 	$inventory.add_to_inventory(item)
-	
+
 func add_to_craft_inventory(item):
 	$inventory.add_to_craft_inventory(item)
 	
@@ -81,14 +82,15 @@ var items_collected = 0
 var inventory = []
 var craft_inventory = []
 
+var display = false
 var overlay
 var item_list
 var craft_list 
 
 
 func _physics_process(delta):
-	overlay = get_node(\"../UI_controller/inventory\")
-	update()
+	if display:
+		overlay = get_node(\"../UI_controller/inventory\")
 
 func add_to_inventory(item):
 	if items_collected != capacity:
@@ -118,7 +120,7 @@ func update():
 		item_list.clear()
 		craft_list.clear()
 		for item in inventory:
-			item_list.add_item(item.name,item.icon)
+			item_list.add_item(\"\",item.icon)
 			craft_list.add_item(item.name,item.icon)
 		
 
@@ -134,8 +136,6 @@ height = 4.0
 ]]
 z_index = 1
 script = SubResource( 1 )
-
-[node name="eyes" type="Tween" parent="."]
 
 [node name="DetectedByEnemy" parent="." instance=ExtResource( 1 )]
 visible = false

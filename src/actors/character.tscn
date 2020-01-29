@@ -253,8 +253,7 @@ script = SubResource( 1 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "pickup"
-frame = 2
+animation = "idle"
 offset = Vector2( 0, -8 )
 
 [node name="animator" type="AnimationPlayer" parent="."]

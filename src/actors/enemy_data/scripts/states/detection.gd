@@ -6,6 +6,7 @@ var _root
 func _enter():
 	print('Enter detect state')
 	_root.stop()
+	_root.vision.get_vision_data().player.detected_eyes()
 	_root.play_animation("detect")
 
 func _on_animator_animation_finished(animation):

@@ -6,7 +6,7 @@ onready var aggro_area = $aggro_area
 onready var  line_of_sight = $line_of_sight
 #################################
 
-var player: Player = null
+var player= null
 var player_in_sight: bool = false
 var position_of_last_seen: Vector2
 

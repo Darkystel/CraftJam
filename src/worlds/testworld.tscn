@@ -1,69 +1,84 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/actors/jrj_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/brown_ground.tres" type="TileSet" id=2]
-[ext_resource path="res://src/worlds/objects/chest.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/tools/pickable_jrj.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/devices/items/test/Armor.tres" type="Resource" id=5]
-[ext_resource path="res://src/devices/items/test/Candle.tres" type="Resource" id=6]
-[ext_resource path="res://src/devices/items/test/Flower.tres" type="Resource" id=7]
-[ext_resource path="res://src/devices/items/test/Beam.tres" type="Resource" id=8]
+[ext_resource path="res://src/tools/pickable_jrj.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/devices/items/test/Armor.tres" type="Resource" id=4]
+[ext_resource path="res://src/devices/items/test/Candle.tres" type="Resource" id=5]
+[ext_resource path="res://src/devices/items/test/Flower.tres" type="Resource" id=6]
+[ext_resource path="res://src/devices/items/test/Beam.tres" type="Resource" id=7]
+[ext_resource path="res://src/actors/enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/worlds/objects/Teleporter.tscn" type="PackedScene" id=9]
 
 [node name="testworld" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 150, 90 )
+position = Vector2( 39, 40 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 524287, 1, 0, 458752, 1, 131076, 458753, 1, 1, 458754, 1, 1, 458755, 1, 1, 458756, 1, 131076, 458757, 1, 131076, 458758, 1, 1, 458759, 1, 1, 458760, 1, 131076, 458761, 1, 1, 458762, 1, 131076, 458763, 1, 1, 458764, 1, 131076, 458765, 1, 131076, 458766, 1, 1, 458767, 1, 131076, 458768, 1, 2, 589823, 1, 131072, 524288, 1, 4, 524289, 1, 4, 524290, 1, 4, 524291, 1, 4, 524292, 1, 131073, 524293, 1, 131073, 524294, 1, 131073, 524295, 1, 4, 524296, 1, 4, 524297, 1, 131073, 524298, 1, 4, 524299, 1, 131073, 524300, 1, 131073, 524301, 1, 4, 524302, 1, 4, 524303, 1, 131073, 524304, 1, 131074 )
-
-[node name="chest" parent="." instance=ExtResource( 3 )]
-position = Vector2( 208, 112 )
-collection = "Starting Items"
+tile_data = PoolIntArray( 131106, 1, 262146, 196642, 1, 262149, 262178, 1, 262147, 327699, 1, 262146, 327714, 1, 262149, 393235, 1, 262149, 393250, 1, 262147, 524287, 1, 0, 458752, 1, 131076, 458753, 1, 1, 458754, 1, 1, 458755, 1, 1, 458756, 1, 131076, 458757, 1, 131076, 458758, 1, 1, 458759, 1, 1, 458760, 1, 131076, 458761, 1, 1, 458762, 1, 131076, 458763, 1, 1, 458764, 1, 131076, 458765, 1, 131076, 458766, 1, 1, 458767, 1, 131076, 458768, 1, 1, 458769, 1, 1, 458770, 1, 1, 458771, 1, 262145, 458772, 1, 1, 458773, 1, 1, 458774, 1, 131076, 458775, 1, 1, 458776, 1, 1, 458777, 1, 1, 458778, 1, 1, 458779, 1, 131076, 458780, 1, 1, 458781, 1, 131076, 458782, 1, 131076, 458783, 1, 1, 458784, 1, 131076, 458785, 1, 131076, 458786, 1, 458756, 589823, 1, 131072, 524288, 1, 4, 524289, 1, 4, 524290, 1, 4, 524291, 1, 4, 524292, 1, 131073, 524293, 1, 131073, 524294, 1, 131073, 524295, 1, 4, 524296, 1, 4, 524297, 1, 131073, 524298, 1, 4, 524299, 1, 131073, 524300, 1, 131073, 524301, 1, 4, 524302, 1, 4, 524303, 1, 131073, 524304, 1, 131073, 524305, 1, 131073, 524306, 1, 131073, 524307, 1, 4, 524308, 1, 4, 524309, 1, 4, 524310, 1, 4, 524311, 1, 4, 524312, 1, 131073, 524313, 1, 131073, 524314, 1, 4, 524315, 1, 131073, 524316, 1, 4, 524317, 1, 4, 524318, 1, 131073, 524319, 1, 131073, 524320, 1, 4, 524321, 1, 131073, 524322, 1, 131074 )
 
 [node name="pickables" type="Node" parent="." groups=[
 "map_save",
 ]]
+editor/display_folded = true
 
-[node name="pickable_jrj4" parent="pickables" instance=ExtResource( 4 )]
+[node name="pickable_jrj4" parent="pickables" instance=ExtResource( 3 )]
 position = Vector2( 110, 107 )
-item = ExtResource( 5 )
+item = ExtResource( 4 )
 
-[node name="pickable_jrj5" parent="pickables" instance=ExtResource( 4 )]
+[node name="pickable_jrj5" parent="pickables" instance=ExtResource( 3 )]
 position = Vector2( 90, 107 )
-item = ExtResource( 6 )
+item = ExtResource( 5 )
 
-[node name="pickable_jrj6" parent="pickables" instance=ExtResource( 4 )]
+[node name="pickable_jrj6" parent="pickables" instance=ExtResource( 3 )]
 position = Vector2( 70, 106 )
-item = ExtResource( 7 )
-
-[node name="pickable_jrj7" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 49, 106 )
-item = ExtResource( 8 )
-
-[node name="pickable_jrj8" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 30, 106 )
-item = ExtResource( 5 )
-
-[node name="pickable_jrj9" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 10, 107 )
 item = ExtResource( 6 )
 
-[node name="pickable_jrj10" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 130, 107 )
+[node name="pickable_jrj7" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 49, 106 )
 item = ExtResource( 7 )
 
-[node name="pickable_jrj13" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 130, 107 )
-item = ExtResource( 7 )
+[node name="pickable_jrj8" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 30, 106 )
+item = ExtResource( 4 )
 
-[node name="pickable_jrj11" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 150, 107 )
-item = ExtResource( 8 )
-
-[node name="pickable_jrj12" parent="pickables" instance=ExtResource( 4 )]
-position = Vector2( 168, 107 )
+[node name="pickable_jrj9" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 10, 107 )
 item = ExtResource( 5 )
+
+[node name="pickable_jrj10" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 130, 107 )
+item = ExtResource( 6 )
+
+[node name="pickable_jrj13" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 130, 107 )
+item = ExtResource( 6 )
+
+[node name="pickable_jrj11" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 150, 107 )
+item = ExtResource( 7 )
+
+[node name="pickable_jrj12" parent="pickables" instance=ExtResource( 3 )]
+position = Vector2( 168, 107 )
+item = ExtResource( 4 )
+
+[node name="enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 470, 85 )
+
+[node name="Teleporter" parent="." instance=ExtResource( 9 )]
+position = Vector2( 310, 60 )
+
+[node name="FromS" parent="Teleporter/From" index="0"]
+frame = 4
+
+[node name="To" parent="Teleporter" index="1"]
+position = Vector2( -320, 38 )
+
+[node name="ToS" parent="Teleporter/To" index="0"]
+frame = 1
+
+[editable path="Teleporter"]

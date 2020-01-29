@@ -16,9 +16,11 @@ func _on_pickable_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
 		in_sight = true
+		$RichTextLabel.text = " pick"
 	
 
 
 func _on_pickable_jrj_body_exited(body):
 	if body.is_in_group("player"):
 		in_sight = false
+		$RichTextLabel.text = ""

@@ -5,11 +5,18 @@
 [ext_resource path="res://src/devices/items/test/Beam.tres" type="Resource" id=3]
 [ext_resource path="res://src/devices/items/scripts/recipe_jrj.gd" type="Script" id=4]
 
-
-
-
 [resource]
 script = ExtResource( 4 )
 rows = [ false, false, false, false, true, false, true, false, false ]
+rows2 = [ false, true, false, true, false, false, false, false, false ]
+rows3 = [ false, false, false, false, false, true, false, true, false ]
+rows4 = [ false, false, true, false, true, false, false, false, false ]
+rows5 = [ false, false, false, false, false, false, false, false, false ]
+rows6 = [ false, false, false, false, false, false, false, false, false ]
 items = [ null, null, null, null, ExtResource( 1 ), null, ExtResource( 2 ), null, null ]
+items2 = [ null, ExtResource( 1 ), null, ExtResource( 2 ), null, null, null, null, null ]
+items3 = [ null, null, null, null, null, ExtResource( 1 ), null, ExtResource( 2 ), null ]
+items4 = [ null, null, ExtResource( 1 ), null, ExtResource( 2 ), null, null, null, null ]
+items5 = [ null, null, null, null, null, null, null, null, null ]
+items6 = [ null, null, null, null, null, null, null, null, null ]
 result = ExtResource( 3 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/themes/crafting_menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/UI/Panel_jrj_fixed.gd" type="Script" id=2]
@@ -14,11 +14,13 @@ onready var player_inventory = get_node(\"../../inventory\")
 
 func _ready():
 	get_tree().paused = true
+	player_inventory.update()
 	pass
 	
 	
 func _unhandled_input(event):
 	if event.is_action_pressed(\"escape\") or event.is_action_pressed(\"inventory\"):
+		player_inventory.display = false
 		get_UI_controller().pop_overlay()
 		get_tree().paused = false
 		
@@ -28,24 +30,22 @@ func _unhandled_input(event):
 func get_itemlist():
 	return $TabContainer/INVENTORY/item_list
 	
+	
 func get_craftlist():
 	return $TabContainer/CRAFT/items_list
 
 func update():
 	for item in player_inventory.inventory:
-			item_list.add_item(item.name,item.icon)
+			item_list.add_item(\"\",item.icon)
 			craft_list.add_item(item.name,item.icon)"
 
 [sub_resource type="GDScript" id=2]
-script/source = "extends Tabs
-"
-
-[sub_resource type="GDScript" id=3]
 script/source = "extends Panel
 
 var item_selected
 
 onready var inventory = get_node(\"../../../../../inventory\")
+
 
 func update_item(item):
 	$Panel2/item_name.text = item.name
@@ -58,7 +58,7 @@ func _on_item_list_item_selected(index):
 
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 script/source = "extends IMTabs
 
 var item_selected
@@ -322,6 +322,7 @@ func _on_craft_pressed():
 			craft()
 			if crafted != null:
 				add_crafted_to_inventory()
+				inventory.update()
 			else:
 				$message_panel/message.text = \"Wrong Combination of Items\"
 	else:
@@ -441,7 +442,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
 rect_min_size = Vector2( 256, 126 )
-script = SubResource( 2 )
 
 [node name="item_description" type="Panel" parent="TabContainer/INVENTORY"]
 editor/display_folded = true
@@ -453,7 +453,7 @@ margin_left = -104.0
 margin_top = -61.0
 margin_right = -8.0
 margin_bottom = 55.0
-script = SubResource( 3 )
+script = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="TabContainer/INVENTORY/item_description"]
 margin_left = 4.0
@@ -502,10 +502,11 @@ margin_bottom = -4.0
 
 [node name="item_list" type="ItemList" parent="TabContainer/INVENTORY"]
 margin_left = 8.0
-margin_top = 14.0
-margin_right = 140.0
+margin_top = 11.0
+margin_right = 144.0
 margin_bottom = 98.0
-allow_reselect = true
+max_columns = 6
+fixed_column_width = 16
 fixed_icon_size = Vector2( 16, 16 )
 
 [node name="Label" type="Label" parent="TabContainer/INVENTORY"]
@@ -548,17 +549,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 18.0
 rect_min_size = Vector2( 256, 126 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="items_list" type="ItemList" parent="TabContainer/CRAFT"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -108.0
-margin_top = -49.0
-margin_right = -8.0
-margin_bottom = 37.0
+margin_left = 20.0
+margin_top = 14.0
+margin_right = 120.0
+margin_bottom = 100.0
 fixed_icon_size = Vector2( 16, 16 )
 
 [node name="Label" type="Label" parent="TabContainer/CRAFT"]
