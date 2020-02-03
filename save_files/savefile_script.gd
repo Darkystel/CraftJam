@@ -3,8 +3,6 @@ extends Node
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_home"):
-		get_tree().change_scene("res://src/worlds/testworld2.tscn")
 	if Input.is_action_just_pressed("ui_end"):
 		save_game()
 	if Input.is_action_just_pressed("ui_page_up"):

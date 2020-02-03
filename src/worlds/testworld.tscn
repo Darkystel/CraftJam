@@ -100,7 +100,13 @@ position = Vector2( 310, 60 )
 [node name="From" parent="Teleporter" index="0"]
 position = Vector2( 3.22637, -64.1685 )
 
+[node name="FromS" parent="Teleporter/From" index="0"]
+frame = 7
+
 [node name="To" parent="Teleporter" index="1"]
 position = Vector2( -320, 38 )
+
+[node name="ToS" parent="Teleporter/To" index="0"]
+frame = 4
 
 [editable path="Teleporter"]
