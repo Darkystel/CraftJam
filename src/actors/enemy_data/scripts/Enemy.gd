@@ -11,6 +11,7 @@ export(float) var max_walk_away_distance = 96.0
 export(float) var run_away_speed = 55
 
 var health = 100.0
+var alive  := true
 
 ####################################
 onready var vision = $vision_system
@@ -64,3 +65,13 @@ func damage(hit_points: float):
 
 func stop():
 	velocity.x = 0
+
+func save():
+	var save_dict =  {
+	"filename" : get_filename(),
+	"parent" : get_parent().get_path(),
+	"pos_x" : position.x, # Vector2 is not supported by JSON
+	"pos_y" : position.y,
+	"alive" : true
+	}
+	return save_dict

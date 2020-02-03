@@ -708,6 +708,7 @@ animations = [ {
 extents = Vector2( 4, 8 )
 
 [node name="enemy" type="KinematicBody2D" groups=[
+"Persist",
 "enemy",
 ]]
 collision_layer = 2
@@ -770,6 +771,7 @@ position = Vector2( 0, -23 )
 scale = Vector2( 0.16, 0.16 )
 frames = SubResource( 8 )
 animation = "floating"
+frame = 28
 playing = true
 
 [node name="eyes" type="Node2D" parent="animator"]
@@ -850,8 +852,8 @@ one_shot = true
 [node name="die" type="Node" parent="FSM"]
 script = ExtResource( 52 )
 [connection signal="out_of_vision" from="vision_system" to="FSM/walk_away" method="_on_vision_system_out_of_vision"]
-[connection signal="animation_finished" from="animator" to="FSM/detection" method="_on_animator_animation_finished"]
 [connection signal="animation_finished" from="animator" to="FSM/die" method="_on_animator_animation_finished"]
+[connection signal="animation_finished" from="animator" to="FSM/detection" method="_on_animator_animation_finished"]
 [connection signal="looking_left" from="animator" to="sensors" method="_on_animator_looking_left"]
 [connection signal="looking_right" from="animator" to="sensors" method="_on_animator_looking_right"]
 [connection signal="animation_finished" from="animator/AnimationPlayer" to="animator" method="animation_finished"]

@@ -1,0 +1,11 @@
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Armor.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":110,"pos_y":107}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Candle.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":90,"pos_y":107}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Flower.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":70,"pos_y":106}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Beam.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":49,"pos_y":106}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Armor.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":30,"pos_y":106}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Candle.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":10,"pos_y":107}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Flower.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":130,"pos_y":107}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Flower.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":130,"pos_y":107}
+{"filename":"res://src/tools/pickable_jrj.tscn","item_path":"res://src/devices/items/test/Beam.tres","parent":"/root/testworld/pickables","picked":false,"pos_x":150,"pos_y":107}
+{"alive":true,"filename":"res://src/actors/enemy.tscn","parent":"/root/testworld","pos_x":557.432617,"pos_y":31.999754}
+{"alive":true,"filename":"res://src/actors/enemy.tscn","parent":"/root/testworld","pos_x":412.815674,"pos_y":111.872147}

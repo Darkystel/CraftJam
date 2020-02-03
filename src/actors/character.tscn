@@ -22,6 +22,8 @@ func play(animation: String):
 
 func _on_animation_finished(anim_name):
 	emit_signal(\"animation_finished\", anim_name)
+	if anim_name == \"pickup\":
+		get_parent().pick = false
 "
 
 [sub_resource type="Animation" id=2]
@@ -253,7 +255,7 @@ script = SubResource( 1 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "idle"
+animation = "fall"
 offset = Vector2( 0, -8 )
 
 [node name="animator" type="AnimationPlayer" parent="."]

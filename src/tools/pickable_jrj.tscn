@@ -23,7 +23,9 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 7.0
 
-[node name="pickable_jrj" type="Area2D"]
+[node name="pickable_jrj" type="Area2D" groups=[
+"Persist",
+]]
 collision_layer = 16
 script = ExtResource( 1 )
 
